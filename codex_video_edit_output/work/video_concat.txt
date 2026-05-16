@@ -1,0 +1,8 @@
+file '/Users/sedatceylan/Library/Mobile Documents/com~apple~CloudDocs/Seyfo/seyfwb1/codex_video_edit_output/clips/video_01.mp4'
+file '/Users/sedatceylan/Library/Mobile Documents/com~apple~CloudDocs/Seyfo/seyfwb1/codex_video_edit_output/clips/video_02.mp4'
+file '/Users/sedatceylan/Library/Mobile Documents/com~apple~CloudDocs/Seyfo/seyfwb1/codex_video_edit_output/clips/video_03.mp4'
+file '/Users/sedatceylan/Library/Mobile Documents/com~apple~CloudDocs/Seyfo/seyfwb1/codex_video_edit_output/clips/video_04.mp4'
+file '/Users/sedatceylan/Library/Mobile Documents/com~apple~CloudDocs/Seyfo/seyfwb1/codex_video_edit_output/clips/video_05.mp4'
+file '/Users/sedatceylan/Library/Mobile Documents/com~apple~CloudDocs/Seyfo/seyfwb1/codex_video_edit_output/clips/video_06.mp4'
+file '/Users/sedatceylan/Library/Mobile Documents/com~apple~CloudDocs/Seyfo/seyfwb1/codex_video_edit_output/clips/video_07.mp4'
+file '/Users/sedatceylan/Library/Mobile Documents/com~apple~CloudDocs/Seyfo/seyfwb1/codex_video_edit_output/clips/video_08.mp4'

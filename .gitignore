@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Claude local config
+.claude/
+
+# Large videos exceeding GitHub's 100MB limit
+codex_video_edit_output/backinsel_4k_video_reel.mp4
+codex_video_edit_output/backinsel_4k_master_showcase.mp4
+
+# Backup files
+index.backup-before-codex-redesign.html
