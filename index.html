@@ -100,8 +100,9 @@ button{font:inherit;color:inherit}
   border-bottom:1px solid transparent;transition:background .25s ease,color .25s ease,border-color .25s ease,padding .25s ease;
 }
 .nav.scrolled{background:rgba(28,21,16,.82);backdrop-filter:blur(20px);border-color:var(--white-line);padding-block:12px}
-.brand{font-family:var(--serif);font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-.04em;line-height:1}
+.brand{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--serif);font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-.04em;line-height:1}
 .brand span{font-style:italic;color:var(--honey)}
+.brand-mark{width:26px;height:26px;flex-shrink:0;color:var(--honey)}
 .nav-links{display:flex;align-items:center;justify-content:center;gap:clamp(.9rem,2.4vw,2.1rem);font-size:.72rem;font-weight:760;letter-spacing:.18em;text-transform:uppercase}
 .nav-links a{opacity:.72;transition:opacity .2s ease,color .2s ease}
 .nav-links a:hover,.nav-links a:focus-visible{opacity:1;color:var(--honey)}
@@ -154,6 +155,7 @@ button{font:inherit;color:inherit}
 .scroll-cue{position:absolute;z-index:2;right:clamp(18px,4vw,58px);bottom:24px;writing-mode:vertical-rl;font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,247,232,.58)}
 
 .section{position:relative;padding:clamp(74px,10vw,154px) clamp(18px,4vw,58px)}
+section[id]{scroll-margin-top:96px}
 .wrap{width:min(1240px,100%);margin:0 auto}
 .kicker{font-size:.72rem;font-weight:860;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:1rem}
 .display{
@@ -288,6 +290,10 @@ button{font:inherit;color:inherit}
 .product--vitrine img{object-position:50% 42%}
 .product--top img{object-position:50% 28%}
 .product--bread img{object-position:50% 52%}
+.product--brand img{object-position:50% 55%}
+.product--drink-link img{object-position:50% 38%}
+.product-body a{color:var(--honey);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.product-body a:hover{color:var(--cream)}
 
 .split{background:radial-gradient(circle at 14% 18%,rgba(211,125,73,.15),transparent 34%),linear-gradient(180deg,#17100c,#0b0806);overflow:hidden}
 .split-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.02fr);gap:clamp(34px,8vw,102px);align-items:center}
@@ -360,14 +366,14 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 }
 .social-rail.ready{opacity:1;transform:translate(0,-50%)}
 .social-rail a{
-  position:relative;width:48px;height:48px;border-radius:999px;
+  position:relative;width:42px;height:42px;border-radius:999px;
   display:grid;place-items:center;color:#fff;overflow:hidden;
-  box-shadow:0 10px 26px rgba(0,0,0,.45),0 0 0 1px rgba(0,0,0,.18);
+  box-shadow:0 8px 20px rgba(0,0,0,.38),0 0 0 1px rgba(0,0,0,.18);
   transition:transform .25s ease,box-shadow .25s ease;
 }
-.social-rail a:hover,.social-rail a:focus-visible{transform:scale(1.09);box-shadow:0 14px 32px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.18)}
+.social-rail a:hover,.social-rail a:focus-visible{transform:scale(1.08);box-shadow:0 12px 26px rgba(0,0,0,.5),0 0 0 1px rgba(0,0,0,.18)}
 .social-rail a:focus-visible{outline:2px solid var(--honey);outline-offset:3px}
-.social-rail .icon{width:24px;height:24px;fill:#fff;stroke:none}
+.social-rail .icon{width:20px;height:20px;fill:#fff;stroke:none}
 .social-rail .s-wa{background:#25D366}
 .social-rail .s-ig{background:radial-gradient(circle at 28% 108%, #fdf497 0%, #fdf497 5%, #fd5949 38%, #d6249f 58%, #285aeb 95%)}
 .social-rail .s-tt{background:#000}
@@ -443,10 +449,18 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 <a class="skip" href="#main">Zum Inhalt</a>
 
 <nav class="nav" id="nav" aria-label="Hauptnavigation">
-  <a class="brand" href="#top">Back<span>insel</span></a>
+  <a class="brand" href="#top" aria-label="Backinsel — zur Startseite">
+    <svg class="brand-mark" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M16 14.2 L15.4 18.2 H16.6 L16 14.2 Z"/>
+      <path d="M16 14 Q10.5 11 6 13 Q9 9 13.5 10 Q9.5 7 7 6 Q12 5 16 9 Q20 5 25 6 Q22.5 7 18.5 10 Q23 9 26 13 Q21.5 11 16 14 Z"/>
+      <path d="M5 22 C8 19 12 18 16 18 C20 18 24 19 27 22 L27 23 C27 23.6 26.5 24 26 24 L6 24 C5.5 24 5 23.6 5 23 Z"/>
+      <path d="M4 27.2 q2 -1.4 4 0 t4 0 t4 0 t4 0 t4 0 t4 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    </svg>
+    Back<span>insel</span>
+  </a>
   <div class="nav-links">
     <a href="#neu">Neu</a>
-    <a href="#theke">Theke</a>
+    <a href="#theke">Vitrine</a>
     <a href="#sortiment">Sortiment</a>
     <a href="#besuch">Besuch</a>
   </div>
@@ -574,15 +588,15 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
           <img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt="Backinsel Theke mit belegten Broten und Backwaren" data-stage-img="2">
           <img src="assets/images/new/b21e4c7f-2b85-4cbf-82aa-5791de21f9a1.jpg" alt="Backinsel Matcha-Getränk" data-stage-img="3">
           <div class="stage-label">
-            <strong id="stageTitle">Croissant-Vitrine</strong>
-            <span id="stageText">Gefüllt, glasiert, fruchtig oder schokoladig: die süße Seite der Backinsel.</span>
+            <strong id="stageTitle">Süße Vitrine</strong>
+            <span id="stageText">Kuchen, Croissants, glasiertes Gebäck und kleine Highlights direkt in der Auslage.</span>
           </div>
         </div>
         <div class="stage-rail" role="tablist" aria-label="Thekenbereiche">
           <button class="stage-card active" type="button" data-stage="0" role="tab" aria-selected="true" aria-controls="stagePanel">
             <span>01 · Süß</span>
-            <strong>Croissant-Vitrine</strong>
-            <p>Gefüllte Croissants, Plunder und kleine Highlights für den direkten Blickfang.</p>
+            <strong>Süße Vitrine</strong>
+            <p>Kuchen, Croissants und glasiertes Gebäck — direkt im Blickfeld.</p>
           </button>
           <button class="stage-card" type="button" data-stage="1" role="tab" aria-selected="false" aria-controls="stagePanel">
             <span>02 · Backwaren</span>
@@ -596,7 +610,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
           </button>
           <button class="stage-card" type="button" data-stage="3" role="tab" aria-selected="false" aria-controls="stagePanel">
             <span>04 · Drinks</span>
-            <strong>Cold Cups</strong>
+            <strong>Kalte Getränke</strong>
             <p>Iced Matcha, Iced Latte und kalte Becher für den heißen Tag.</p>
           </button>
         </div>
@@ -624,20 +638,16 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
     </div>
   </section>
 
-  <section class="marquee" aria-label="Sortiment-Momente">
+  <section class="marquee" aria-label="Backinsel Momente">
     <div class="marquee-track" aria-hidden="true">
       <div class="marquee-item"><img src="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" alt=""><div><span>Vitrine</span><b>Süße Auslage</b></div></div>
       <div class="marquee-item"><img src="assets/images/new/2ddd28e5-3150-47e1-970f-2a5620b4d87a.jpg" alt=""><div><span>Backwaren</span><b>Brotregal</b></div></div>
       <div class="marquee-item"><img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt=""><div><span>Theke</span><b>Belegte Brote</b></div></div>
-      <div class="marquee-item"><img src="assets/images/new/b21e4c7f-2b85-4cbf-82aa-5791de21f9a1.jpg" alt=""><div><span>Drinks</span><b>Matcha</b></div></div>
-      <div class="marquee-item"><img src="assets/images/new/a86b64e8-3c41-49c5-a729-1b539e8a271a.jpg" alt=""><div><span>Warm</span><b>Schokolade</b></div></div>
-      <div class="marquee-item"><img src="assets/images/new/b729dfa3-3424-4384-ae52-d93864a9922c.jpg" alt=""><div><span>Kalt</span><b>Erfrischung</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-brand-table.jpg" alt=""><div><span>Auswahl</span><b>Backinsel Spotlight</b></div></div>
       <div class="marquee-item"><img src="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" alt=""><div><span>Vitrine</span><b>Süße Auslage</b></div></div>
       <div class="marquee-item"><img src="assets/images/new/2ddd28e5-3150-47e1-970f-2a5620b4d87a.jpg" alt=""><div><span>Backwaren</span><b>Brotregal</b></div></div>
       <div class="marquee-item"><img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt=""><div><span>Theke</span><b>Belegte Brote</b></div></div>
-      <div class="marquee-item"><img src="assets/images/new/b21e4c7f-2b85-4cbf-82aa-5791de21f9a1.jpg" alt=""><div><span>Drinks</span><b>Matcha</b></div></div>
-      <div class="marquee-item"><img src="assets/images/new/a86b64e8-3c41-49c5-a729-1b539e8a271a.jpg" alt=""><div><span>Warm</span><b>Schokolade</b></div></div>
-      <div class="marquee-item"><img src="assets/images/new/b729dfa3-3424-4384-ae52-d93864a9922c.jpg" alt=""><div><span>Kalt</span><b>Erfrischung</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-brand-table.jpg" alt=""><div><span>Auswahl</span><b>Backinsel Spotlight</b></div></div>
     </div>
   </section>
 
@@ -646,66 +656,42 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       <div class="catalog-head">
         <div data-reveal>
           <div class="kicker">Aus der Vitrine</div>
-          <h2 class="display">Was heute Lust auf Backinsel macht.</h2>
+          <h2 class="display">Frisch aus der Vitrine.</h2>
         </div>
         <div class="filterbar" data-reveal role="toolbar" aria-label="Sortiment filtern">
           <button class="active" type="button" data-filter="all" aria-pressed="true">Alles</button>
           <button type="button" data-filter="sweet" aria-pressed="false">Süß</button>
           <button type="button" data-filter="savory" aria-pressed="false">Herzhaft</button>
+          <button type="button" data-filter="bread" aria-pressed="false">Backwaren</button>
           <button type="button" data-filter="drinks" aria-pressed="false">Drinks</button>
         </div>
       </div>
 
       <div class="catalog-grid" data-reveal>
         <article class="product product--vitrine" data-category="sweet">
-          <figure><img src="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" alt="Volle Backinsel Vitrine" loading="lazy"></figure>
+          <figure><img src="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" alt="Volle Backinsel Vitrine mit Kuchen und Gebäck" loading="lazy"></figure>
           <span class="product-badge">Thekenblick</span>
-          <div class="product-body"><small>Süße Vitrine</small><h3>Volle Auslage</h3><p>Kuchen, Gebäck und Croissants direkt aus der Vitrine.</p></div>
-        </article>
-        <article class="product product--contain" data-category="drinks">
-          <figure><img src="assets/images/new/70649efb-8183-4382-b287-5adbf85dfa12.jpg" alt="Strawberry Matcha — fruchtig und süß" loading="lazy"></figure>
-          <span class="product-badge">Fruchtig</span>
-          <div class="product-body"><small>Drinks</small><h3>Strawberry Matcha</h3><p>Fruchtig, süß und perfekt abgestimmt.</p></div>
-        </article>
-        <article class="product product--contain" data-category="drinks">
-          <figure><img src="assets/images/new/866ffcd9-ca85-497e-bd14-300d08fc1301.jpg" alt="Frisch gepresster Orangensaft im Glas" loading="lazy"></figure>
-          <span class="product-badge">Frisch</span>
-          <div class="product-body"><small>Drinks</small><h3>Orangensaft</h3><p>Frisch gepresst, auch zum Genießen vor Ort.</p></div>
-        </article>
-        <article class="product product--contain" data-category="drinks">
-          <figure><img src="assets/images/new/67dc90b3-2c3b-4338-a318-eb91394184a1.jpg" alt="Chai Latte heiß in der Tasse" loading="lazy"></figure>
-          <span class="product-badge">Heiß</span>
-          <div class="product-body"><small>Drinks</small><h3>Chai Latte</h3><p>Mit Zimt und Kardamom — heiß im Becher oder vor Ort.</p></div>
-        </article>
-        <article class="product product--top" data-category="drinks">
-          <figure><img src="assets/images/new/5c64cdcb-f2ed-4a3e-b111-a05de0317f27.jpg" alt="Iced Dark Mocha — schokoladig und intensiv" loading="lazy"></figure>
-          <span class="product-badge">Iced</span>
-          <div class="product-body"><small>Drinks</small><h3>Iced Dark Mocha</h3><p>Schokoladig, intensiv und herrlich erfrischend.</p></div>
+          <div class="product-body"><small>Süße Vitrine</small><h3>Kuchen &amp; Gebäck</h3><p>Wechselnde Auswahl an Kuchenstücken, Croissants und glasiertem Gebäck direkt aus der Vitrine.</p></div>
         </article>
         <article class="product product--vitrine" data-category="savory">
           <figure><img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt="Belegte Brote an der Backinsel Theke" loading="lazy"></figure>
           <span class="product-badge">Mittag</span>
           <div class="product-body"><small>Herzhaft</small><h3>Belegte Brote</h3><p>Frisch belegte Auswahl für den schnellen Halt am Morgen oder zur Mittagszeit.</p></div>
         </article>
-        <article class="product product--drink" data-category="drinks">
-          <figure><img src="assets/images/new/b21e4c7f-2b85-4cbf-82aa-5791de21f9a1.jpg" alt="Backinsel Matcha" loading="lazy"></figure>
-          <span class="product-badge">Kalt & warm</span>
-          <div class="product-body"><small>Drinks</small><h3>Matcha & Kaffee</h3><p>Warme Klassiker und moderne Becher für den Weg durch Wedding.</p></div>
-        </article>
-        <article class="product product--contain" data-category="drinks">
-          <figure><img src="assets/images/new/11499af2-d4b2-4faf-ac7e-d285c661bd7e.jpg" alt="Matcha Latte heiß in der Tasse" loading="lazy"></figure>
-          <span class="product-badge">Heiß</span>
-          <div class="product-body"><small>Drinks</small><h3>Matcha Latte</h3><p>Heiß in der Tasse, auch zum Genießen vor Ort.</p></div>
-        </article>
-        <article class="product product--bread" data-category="savory">
+        <article class="product product--bread" data-category="bread">
           <figure><img src="assets/images/new/2ddd28e5-3150-47e1-970f-2a5620b4d87a.jpg" alt="Brote und Brötchen im Backinsel Regal" loading="lazy"></figure>
           <span class="product-badge">Backwaren</span>
-          <div class="product-body"><small>Backwaren</small><h3>Brote & Brötchen</h3><p>Goldene Brötchen, Brote und Laugengebäck direkt aus dem Regal.</p></div>
+          <div class="product-body"><small>Backwaren</small><h3>Brote &amp; Brötchen</h3><p>Goldene Brötchen, Krustenbrote und Laugengebäck direkt aus dem warmen Regal.</p></div>
         </article>
-        <article class="product product--drink" data-category="drinks">
-          <figure><img src="assets/images/new/a86b64e8-3c41-49c5-a729-1b539e8a271a.jpg" alt="Backinsel heißes Getränk" loading="lazy"></figure>
-          <span class="product-badge">To go</span>
-          <div class="product-body"><small>Drinks</small><h3>Tee & Kaffee</h3><p>Warme Getränke für den ruhigen Moment im Laden oder unterwegs.</p></div>
+        <article class="product product--brand" data-category="sweet">
+          <figure><img src="assets/images/backinsel-brand-table.jpg" alt="Backinsel Auswahl mit Logo, Broten und süßem Gebäck" loading="lazy"></figure>
+          <span class="product-badge">Spotlight</span>
+          <div class="product-body"><small>Auswahl</small><h3>Süß, herzhaft, immer frisch</h3><p>Vom ersten Kaffee bis zum Nachmittagsstück — alles unter einem Dach.</p></div>
+        </article>
+        <article class="product product--drink-link" data-category="drinks">
+          <figure><img src="assets/images/new/0145a019-58f4-4740-93a2-d0af90e4a0ac.jpg" alt="Iced Karamell Latte und weitere neue Drinks" loading="lazy"></figure>
+          <span class="product-badge">Neu</span>
+          <div class="product-body"><small>Drinks</small><h3>Specials &amp; Becher</h3><p>Iced Latte, Matcha-Bar, Chai, Heiße Schokolade und Orangensaft — die ganze Auswahl im <a href="#neu">Neu-Bereich</a>.</p></div>
         </article>
       </div>
     </div>
@@ -859,10 +845,10 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   }
 
   const stageData = [
-    ["Croissant-Vitrine", "Gefüllt, glasiert, fruchtig oder schokoladig: die süße Seite der Backinsel."],
+    ["Süße Vitrine", "Kuchen, Croissants, glasiertes Gebäck und kleine Highlights direkt in der Auslage."],
     ["Brotregal", "Brote, Brötchen und Laugengebäck aus dem warmen Holzregal."],
     ["Belegte Brote", "Herzhaft, frisch und direkt verständlich für Frühstück, Mittag oder Wegpause."],
-    ["Cold Cups", "Iced Matcha, Iced Latte und kalte Becher für den heißen Tag."]
+    ["Kalte Getränke", "Iced Matcha, Iced Latte und kalte Becher für den heißen Tag."]
   ];
   const stageButtons = [...document.querySelectorAll("[data-stage]")];
   const stageImages = [...document.querySelectorAll("[data-stage-img]")];
