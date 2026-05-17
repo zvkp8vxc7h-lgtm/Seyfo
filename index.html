@@ -25,8 +25,12 @@
   "@type": "Bakery",
   "name": "Backinsel",
   "image": "assets/images/backinsel-croissant-display.jpg",
+  "logo": "assets/images/backinsel-logo.svg",
   "telephone": "+49 172 169 21 38",
   "email": "back_insel@web.de",
+  "priceRange": "€",
+  "servesCuisine": ["Backwaren", "Kuchen", "Kaffee", "Sandwiches"],
+  "hasMenu": "#sortiment",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Badstraße 23",
@@ -39,7 +43,7 @@
     {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "04:00", "closes": "19:00"},
     {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "05:00", "closes": "18:00"}
   ],
-  "sameAs": ["https://www.instagram.com/backinsel2026", "https://www.tiktok.com/@backinsel2026"]
+  "sameAs": ["https://www.instagram.com/backinsel2026", "https://www.tiktok.com/@backinsel2026", "https://wa.me/491721692138"]
 }
 </script>
 
@@ -327,6 +331,9 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 .foot-brand span{display:block;font-style:italic;color:var(--honey);transform:translateX(.18em)}
 .foot-links{display:grid;gap:.7rem;text-align:right;font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
 .foot-links a:hover{color:var(--honey)}
+.foot-social{display:flex;justify-content:flex-end;gap:.75rem}
+.foot-social a{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border:1px solid rgba(255,247,232,.18);border-radius:999px;background:rgba(255,247,232,.04)}
+.foot-social a:hover{background:var(--honey);border-color:var(--honey);color:var(--night)}
 
 .legal{background:#110d0a;color:rgba(255,247,232,.68);padding:0 clamp(18px,4vw,58px) 54px}
 .legal details{width:min(900px,100%);margin:0 auto;border-top:1px solid rgba(255,247,232,.14)}
@@ -378,6 +385,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   .map{aspect-ratio:4/5}
   .foot{grid-template-columns:1fr}
   .foot-links{text-align:left}
+  .foot-social{justify-content:flex-start}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -703,6 +711,11 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
     <div class="foot-brand">Back<span>insel</span></div>
     <div class="foot-links">
       <span>Bäckerei · Berlin Wedding</span>
+      <div class="foot-social" aria-label="Social Media">
+        <a href="https://wa.me/491721692138" target="_blank" rel="noopener noreferrer" aria-label="Backinsel auf WhatsApp"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 18.6 6.5 15A7.6 7.6 0 1 1 9 17.4z"></path><path d="M9.7 8.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.4.5c.5.9 1.2 1.6 2.1 2.1l.5-.4c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.6.4-1.6.4-2.7 0-1.5-.5-3-1.8-4-3.2-1-1.5-1.4-2.9-1.1-4.1z"></path></svg></a>
+        <a href="https://www.instagram.com/backinsel2026" target="_blank" rel="noopener noreferrer" aria-label="Backinsel auf Instagram"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"></rect><circle cx="12" cy="12" r="3.5"></circle><circle cx="17" cy="7" r=".7" fill="currentColor" stroke="none"></circle></svg></a>
+        <a href="https://www.tiktok.com/@backinsel2026" target="_blank" rel="noopener noreferrer" aria-label="Backinsel auf TikTok"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v10.2a4.1 4.1 0 1 1-3.2-4"></path><path d="M14 4c.7 2.7 2.4 4.3 5 4.7"></path></svg></a>
+      </div>
       <a href="#impressum">Impressum</a>
       <a href="#datenschutz">Datenschutz</a>
     </div>
