@@ -179,24 +179,31 @@ button{font:inherit;color:inherit}
 .neu-banner-tag b{display:block;font-family:var(--serif);font-size:clamp(1.4rem,2.4vw,2.3rem);font-weight:400;letter-spacing:-.03em;line-height:1}
 .neu-banner-tag span{font-size:.68rem;font-weight:850;letter-spacing:.2em;text-transform:uppercase;color:var(--honey);margin-bottom:.4rem;display:block}
 .neu-banner-arrow{width:44px;height:44px;border:1px solid rgba(255,247,232,.35);border-radius:999px;display:grid;place-items:center;flex-shrink:0;background:rgba(15,11,8,.4);backdrop-filter:blur(6px);color:var(--cream);font-size:1.1rem}
-.neu-rail-wrap{position:relative}
-.neu-rail{display:flex;gap:clamp(14px,2vw,22px);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;scrollbar-width:thin;scrollbar-color:rgba(247,216,145,.45) transparent;margin:0 calc(clamp(18px,4vw,58px) * -1);padding-inline:clamp(18px,4vw,58px);scroll-padding-inline:clamp(18px,4vw,58px)}
-.neu-rail::-webkit-scrollbar{height:7px}
-.neu-rail::-webkit-scrollbar-track{background:transparent}
-.neu-rail::-webkit-scrollbar-thumb{background:rgba(247,216,145,.35);border-radius:999px}
-.neu-card{flex:0 0 clamp(220px,26vw,300px);scroll-snap-align:start;position:relative;border:1px solid var(--white-line);background:#100c08;overflow:hidden;aspect-ratio:2/3;transition:transform .35s ease,border-color .35s ease;isolation:isolate}
+.neu-groups{display:grid;gap:clamp(36px,4.5vw,62px)}
+.neu-group{display:grid;gap:clamp(14px,1.6vw,22px)}
+.neu-group-head{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;padding-bottom:.4rem;border-bottom:1px solid rgba(247,216,145,.18)}
+.neu-group-head small{font-size:.66rem;font-weight:860;letter-spacing:.22em;text-transform:uppercase;color:var(--copper)}
+.neu-group-head h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,2.4vw,2.1rem);letter-spacing:-.025em;color:var(--cream);line-height:1}
+.neu-group-head .meta{margin-left:auto;font-size:.66rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,247,232,.5)}
+.neu-grid{display:grid;gap:clamp(12px,1.4vw,18px);grid-template-columns:repeat(var(--cols,5),minmax(0,1fr))}
+.neu-card{position:relative;border:1px solid var(--white-line);background:#100c08;overflow:hidden;aspect-ratio:2/3;transition:transform .35s ease,border-color .35s ease;isolation:isolate}
 .neu-card:hover{transform:translateY(-6px);border-color:rgba(246,213,140,.55)}
 .neu-card img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
 .neu-card:hover img{transform:scale(1.04)}
-.neu-card-tag{position:absolute;z-index:2;left:14px;right:14px;bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:.6rem;color:var(--cream);opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
+.neu-card-tag{position:absolute;z-index:2;left:12px;right:12px;bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:.6rem;color:var(--cream);opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease}
 .neu-card:hover .neu-card-tag,.neu-card:focus-within .neu-card-tag{opacity:1;transform:translateY(0)}
-.neu-card-tag b{font-family:var(--serif);font-size:1.05rem;font-weight:400;letter-spacing:-.02em;text-shadow:0 2px 14px rgba(0,0,0,.7)}
-.neu-card-tag span{font-size:.62rem;font-weight:850;letter-spacing:.18em;text-transform:uppercase;color:var(--honey);background:rgba(15,11,8,.7);padding:.35rem .55rem;border:1px solid rgba(247,216,145,.3);backdrop-filter:blur(6px)}
-.neu-cue{margin-top:1.2rem;font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,247,232,.55)}
+.neu-card-tag b{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:-.02em;text-shadow:0 2px 14px rgba(0,0,0,.7)}
+.neu-card-tag span{font-size:.6rem;font-weight:850;letter-spacing:.18em;text-transform:uppercase;color:var(--honey);background:rgba(15,11,8,.7);padding:.3rem .5rem;border:1px solid rgba(247,216,145,.3);backdrop-filter:blur(6px)}
 
+@media (max-width:1020px){
+  .neu-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 @media (max-width:760px){
   .neu-head{grid-template-columns:1fr;align-items:start;gap:1rem}
   .neu-banners{grid-template-columns:1fr}
+  .neu-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .neu-card-tag{opacity:1;transform:translateY(0)}
+  .neu-card-tag b{font-size:.85rem}
 }
 
 .manifest{background:radial-gradient(circle at 88% 16%,rgba(247,216,145,.1),transparent 32%),linear-gradient(180deg,#130d09,#0f0b08);border-bottom:1px solid var(--line)}
@@ -347,6 +354,44 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   72%,100%{transform:translateX(78%) rotate(2deg);opacity:0}
 }
 
+.social-rail{
+  position:fixed;z-index:49;top:50%;left:clamp(10px,1.6vw,22px);transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:6px;padding:9px 7px;
+  border:1px solid rgba(255,247,232,.22);background:rgba(15,11,8,.6);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-radius:999px;box-shadow:0 18px 48px rgba(0,0,0,.45);
+  opacity:0;transform:translate(-12px,-50%);transition:opacity .4s ease,transform .4s ease;
+}
+.social-rail.ready{opacity:1;transform:translate(0,-50%)}
+.social-rail a{
+  width:38px;height:38px;border-radius:999px;display:grid;place-items:center;
+  color:var(--cream);border:1px solid transparent;
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.social-rail a:hover,.social-rail a:focus-visible{background:var(--honey);color:var(--night);border-color:var(--honey);transform:scale(1.06)}
+.social-rail .icon{width:18px;height:18px;stroke:currentColor;stroke-width:1.7;fill:none}
+.social-rail::before{
+  content:"";position:absolute;left:50%;top:-12px;transform:translateX(-50%);
+  width:1px;height:18px;background:linear-gradient(180deg,transparent,rgba(247,216,145,.4));
+}
+.social-rail::after{
+  content:"";position:absolute;left:50%;bottom:-12px;transform:translateX(-50%);
+  width:1px;height:18px;background:linear-gradient(0deg,transparent,rgba(247,216,145,.4));
+}
+
+.to-top{
+  position:fixed;z-index:49;right:clamp(14px,2vw,24px);bottom:clamp(14px,2vw,24px);
+  width:48px;height:48px;border-radius:999px;border:1px solid rgba(255,247,232,.22);
+  background:rgba(15,11,8,.66);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  color:var(--cream);display:grid;place-items:center;cursor:pointer;
+  box-shadow:0 18px 48px rgba(0,0,0,.45);
+  opacity:0;pointer-events:none;transform:translateY(12px);
+  transition:opacity .25s ease,transform .25s ease,background .2s ease,color .2s ease;
+}
+.to-top.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+.to-top:hover,.to-top:focus-visible{background:var(--honey);color:var(--night);border-color:var(--honey)}
+.to-top svg{width:20px;height:20px}
+
 @media(max-width:1020px){
   .nav{grid-template-columns:1fr auto}
   .nav-links{display:none}
@@ -356,6 +401,13 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   .filterbar{justify-content:flex-start}
   .stage-rail{grid-template-columns:repeat(2,minmax(0,1fr))}
   .stage-card:hover,.stage-card:focus-visible,.stage-card.active{transform:translateY(-2px)}
+}
+@media(max-width:760px){
+  .social-rail{top:auto;left:50%;bottom:14px;transform:translateX(-50%) translateY(8px);flex-direction:row;padding:6px 8px;gap:3px;border-radius:999px}
+  .social-rail.ready{transform:translateX(-50%) translateY(0)}
+  .social-rail a{width:36px;height:36px}
+  .social-rail::before,.social-rail::after{display:none}
+  .to-top{bottom:76px;right:14px;width:44px;height:44px}
 }
 @media(max-width:680px){
   body::before{background-size:28px 28px}
@@ -382,6 +434,9 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   .foot{grid-template-columns:1fr}
   .foot-links{text-align:left}
   .foot-social{justify-content:flex-start}
+  .neu-card{flex:0 0 76vw;max-width:280px}
+  .neu-banner{aspect-ratio:4/3}
+  .product figure{aspect-ratio:1/1}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -442,7 +497,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
           <div class="kicker">Neu auf der Karte</div>
           <h2 class="display">Specials, frisch im Schaufenster.</h2>
         </div>
-        <p class="lead" data-reveal>Zwei Highlights vorne in der Vitrine und eine ganze Reihe neuer Tassen und Cold Cups — von Iced Karamell Latte bis Orangensaft frisch gepresst.</p>
+        <p class="lead" data-reveal>Zwei Highlights vorne in der Vitrine und drei Reihen frischer Becher — Iced Coffee, eine Matcha Bar und warme Klassiker wie Chai Latte, Heiße Schokolade oder Orangensaft frisch gepresst.</p>
       </div>
 
       <div class="neu-banners" data-reveal>
@@ -462,23 +517,49 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
         </a>
       </div>
 
-      <div class="neu-rail-wrap" data-reveal>
-        <div class="neu-rail" role="list" aria-label="Neue Drinks der Backinsel">
-          <article class="neu-card" role="listitem"><img src="assets/images/new/0145a019-58f4-4740-93a2-d0af90e4a0ac.jpg" alt="Iced Karamell Latte — cremig, süß und mit feiner Karamellnote" loading="lazy"><div class="neu-card-tag"><b>Iced Karamell Latte</b><span>Iced</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/c198018e-92bd-4e5d-b0cd-03c74576d071.jpg" alt="Iced Vanilla Latte — cremig, mild und mit Vanille verfeinert" loading="lazy"><div class="neu-card-tag"><b>Iced Vanilla Latte</b><span>Iced</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/18f88aad-cc7c-4052-8d52-84afb0cf787c.jpg" alt="Iced Latte — sanft, ausgewogen und einfach lecker" loading="lazy"><div class="neu-card-tag"><b>Iced Latte</b><span>Iced</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/2e1e9484-a41d-43dd-bd13-af4f5555d8fa.jpg" alt="Iced Americano — klassisch, stark und erfrischend" loading="lazy"><div class="neu-card-tag"><b>Iced Americano</b><span>Iced</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/5c64cdcb-f2ed-4a3e-b111-a05de0317f27.jpg" alt="Iced Dark Mocha — schokoladig, intensiv und erfrischend" loading="lazy"><div class="neu-card-tag"><b>Iced Dark Mocha</b><span>Iced</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/b729dfa3-3424-4384-ae52-d93864a9922c.jpg" alt="Matcha Latte iced — cremig, mild und herrlich erfrischend" loading="lazy"><div class="neu-card-tag"><b>Matcha Latte</b><span>Iced</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/70649efb-8183-4382-b287-5adbf85dfa12.jpg" alt="Strawberry Matcha — fruchtig, süß und perfekt abgestimmt" loading="lazy"><div class="neu-card-tag"><b>Strawberry Matcha</b><span>Iced</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/fa9f9979-62e7-486a-aa7d-dedd478ab512.jpg" alt="Mango Matcha — exotisch, fruchtig und erfrischend" loading="lazy"><div class="neu-card-tag"><b>Mango Matcha</b><span>Iced</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/b21e4c7f-2b85-4cbf-82aa-5791de21f9a1.jpg" alt="Kokos Matcha — cremig, leicht und mit tropischer Note" loading="lazy"><div class="neu-card-tag"><b>Kokos Matcha</b><span>Iced</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/11499af2-d4b2-4faf-ac7e-d285c661bd7e.jpg" alt="Matcha Latte heiß, in der Tasse vor Ort zu genießen" loading="lazy"><div class="neu-card-tag"><b>Matcha Latte</b><span>Heiß</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/67dc90b3-2c3b-4338-a318-eb91394184a1.jpg" alt="Chai Latte heiß mit Zimt und Kardamom" loading="lazy"><div class="neu-card-tag"><b>Chai Latte</b><span>Heiß</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/a86b64e8-3c41-49c5-a729-1b539e8a271a.jpg" alt="Heiße Schokolade mit Sahnehaube und Schokoraspeln" loading="lazy"><div class="neu-card-tag"><b>Heiße Schokolade</b><span>Heiß</span></div></article>
-          <article class="neu-card" role="listitem"><img src="assets/images/new/866ffcd9-ca85-497e-bd14-300d08fc1301.jpg" alt="Frisch gepresster Orangensaft im Glas" loading="lazy"><div class="neu-card-tag"><b>Orangensaft</b><span>Frisch</span></div></article>
+      <div class="neu-groups" data-reveal>
+        <div class="neu-group">
+          <header class="neu-group-head">
+            <small>01 · Iced Coffee</small>
+            <h3>Kalte Kaffee-Becher</h3>
+            <span class="meta">5 Sorten</span>
+          </header>
+          <div class="neu-grid" style="--cols:5">
+            <article class="neu-card"><img src="assets/images/new/0145a019-58f4-4740-93a2-d0af90e4a0ac.jpg" alt="Iced Karamell Latte — cremig, süß und mit feiner Karamellnote" loading="lazy"><div class="neu-card-tag"><b>Iced Karamell Latte</b><span>Iced</span></div></article>
+            <article class="neu-card"><img src="assets/images/new/c198018e-92bd-4e5d-b0cd-03c74576d071.jpg" alt="Iced Vanilla Latte — cremig, mild und mit Vanille verfeinert" loading="lazy"><div class="neu-card-tag"><b>Iced Vanilla Latte</b><span>Iced</span></div></article>
+            <article class="neu-card"><img src="assets/images/new/18f88aad-cc7c-4052-8d52-84afb0cf787c.jpg" alt="Iced Latte — sanft, ausgewogen und einfach lecker" loading="lazy"><div class="neu-card-tag"><b>Iced Latte</b><span>Iced</span></div></article>
+            <article class="neu-card"><img src="assets/images/new/2e1e9484-a41d-43dd-bd13-af4f5555d8fa.jpg" alt="Iced Americano — klassisch, stark und erfrischend" loading="lazy"><div class="neu-card-tag"><b>Iced Americano</b><span>Iced</span></div></article>
+            <article class="neu-card"><img src="assets/images/new/5c64cdcb-f2ed-4a3e-b111-a05de0317f27.jpg" alt="Iced Dark Mocha — schokoladig, intensiv und erfrischend" loading="lazy"><div class="neu-card-tag"><b>Iced Dark Mocha</b><span>Iced</span></div></article>
+          </div>
         </div>
-        <div class="neu-cue">← Wischen für mehr</div>
+
+        <div class="neu-group">
+          <header class="neu-group-head">
+            <small>02 · Iced Matcha Bar</small>
+            <h3>Matcha kalt &amp; fruchtig</h3>
+            <span class="meta">4 Sorten</span>
+          </header>
+          <div class="neu-grid" style="--cols:4">
+            <article class="neu-card"><img src="assets/images/new/b729dfa3-3424-4384-ae52-d93864a9922c.jpg" alt="Matcha Latte iced — cremig, mild und herrlich erfrischend" loading="lazy"><div class="neu-card-tag"><b>Matcha Latte</b><span>Iced</span></div></article>
+            <article class="neu-card"><img src="assets/images/new/70649efb-8183-4382-b287-5adbf85dfa12.jpg" alt="Strawberry Matcha — fruchtig, süß und perfekt abgestimmt" loading="lazy"><div class="neu-card-tag"><b>Strawberry Matcha</b><span>Iced</span></div></article>
+            <article class="neu-card"><img src="assets/images/new/fa9f9979-62e7-486a-aa7d-dedd478ab512.jpg" alt="Mango Matcha — exotisch, fruchtig und erfrischend" loading="lazy"><div class="neu-card-tag"><b>Mango Matcha</b><span>Iced</span></div></article>
+            <article class="neu-card"><img src="assets/images/new/b21e4c7f-2b85-4cbf-82aa-5791de21f9a1.jpg" alt="Kokos Matcha — cremig, leicht und mit tropischer Note" loading="lazy"><div class="neu-card-tag"><b>Kokos Matcha</b><span>Iced</span></div></article>
+          </div>
+        </div>
+
+        <div class="neu-group">
+          <header class="neu-group-head">
+            <small>03 · Warm &amp; Frisch</small>
+            <h3>Heißgetränke &amp; Saft</h3>
+            <span class="meta">4 Sorten</span>
+          </header>
+          <div class="neu-grid" style="--cols:4">
+            <article class="neu-card"><img src="assets/images/new/11499af2-d4b2-4faf-ac7e-d285c661bd7e.jpg" alt="Matcha Latte heiß, in der Tasse vor Ort zu genießen" loading="lazy"><div class="neu-card-tag"><b>Matcha Latte</b><span>Heiß</span></div></article>
+            <article class="neu-card"><img src="assets/images/new/67dc90b3-2c3b-4338-a318-eb91394184a1.jpg" alt="Chai Latte heiß mit Zimt und Kardamom" loading="lazy"><div class="neu-card-tag"><b>Chai Latte</b><span>Heiß</span></div></article>
+            <article class="neu-card"><img src="assets/images/new/a86b64e8-3c41-49c5-a729-1b539e8a271a.jpg" alt="Heiße Schokolade mit Sahnehaube und Schokoraspeln" loading="lazy"><div class="neu-card-tag"><b>Heiße Schokolade</b><span>Heiß</span></div></article>
+            <article class="neu-card"><img src="assets/images/new/866ffcd9-ca85-497e-bd14-300d08fc1301.jpg" alt="Frisch gepresster Orangensaft im Glas" loading="lazy"><div class="neu-card-tag"><b>Orangensaft</b><span>Frisch</span></div></article>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -698,6 +779,22 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   </section>
 </main>
 
+<aside class="social-rail" id="socialRail" aria-label="Backinsel auf Social Media">
+  <a href="https://www.instagram.com/backinsel2026" target="_blank" rel="noopener noreferrer" aria-label="Backinsel auf Instagram">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"></rect><circle cx="12" cy="12" r="3.5"></circle><circle cx="17" cy="7" r=".75" fill="currentColor" stroke="none"></circle></svg>
+  </a>
+  <a href="https://www.tiktok.com/@backinsel2026" target="_blank" rel="noopener noreferrer" aria-label="Backinsel auf TikTok">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v10.2a4.1 4.1 0 1 1-3.2-4"></path><path d="M14 4c.7 2.7 2.4 4.3 5 4.7"></path></svg>
+  </a>
+  <a href="https://wa.me/491626413496" target="_blank" rel="noopener noreferrer" aria-label="Backinsel auf WhatsApp">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 18.6 6.5 15A7.6 7.6 0 1 1 9 17.4z"></path><path d="M9.7 8.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.4.5c.5.9 1.2 1.6 2.1 2.1l.5-.4c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.6.4-1.6.4-2.7 0-1.5-.5-3-1.8-4-3.2-1-1.5-1.4-2.9-1.1-4.1z"></path></svg>
+  </a>
+</aside>
+
+<button class="to-top" type="button" id="toTop" aria-label="Nach oben scrollen">
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+</button>
+
 <footer>
   <div class="foot">
     <div class="foot-brand">Back<span>insel</span></div>
@@ -892,6 +989,25 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       ? `öffnet heute ${String(openHour).padStart(2, "0")}:00`
       : `öffnet morgen`;
     statusText.textContent = `Heute geschlossen · ${reopens}`;
+  }
+
+  const socialRail = document.getElementById("socialRail");
+  if (socialRail) {
+    window.setTimeout(() => socialRail.classList.add("ready"), 420);
+  }
+
+  const toTop = document.getElementById("toTop");
+  if (toTop) {
+    const threshold = () => Math.max(360, window.innerHeight * 0.6);
+    const checkTop = () => {
+      toTop.classList.toggle("visible", window.scrollY > threshold());
+    };
+    window.addEventListener("scroll", checkTop, {passive: true});
+    window.addEventListener("resize", checkTop);
+    toTop.addEventListener("click", () => {
+      window.scrollTo({top: 0, behavior: reduceMotion ? "auto" : "smooth"});
+    });
+    checkTop();
   }
 })();
 </script>
