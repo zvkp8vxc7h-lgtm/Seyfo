@@ -100,18 +100,29 @@ button{font:inherit;color:inherit}
   border-bottom:1px solid transparent;transition:background .25s ease,color .25s ease,border-color .25s ease,padding .25s ease;
 }
 .nav.scrolled{background:rgba(28,21,16,.82);backdrop-filter:blur(20px);border-color:var(--white-line);padding-block:12px}
-.brand{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--serif);font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-.04em;line-height:1}
+.brand{display:inline-flex;align-items:center;gap:.68rem;font-family:var(--serif);font-size:clamp(1.55rem,2.35vw,2.2rem);letter-spacing:-.045em;line-height:1}
 .brand span{font-style:italic;color:var(--honey)}
-.brand-mark{width:26px;height:26px;flex-shrink:0;color:var(--honey)}
+.brand-photo{width:66px;height:46px;border-radius:999px;overflow:hidden;border:1px solid rgba(247,216,145,.55);background:rgba(255,246,228,.08);box-shadow:0 10px 28px rgba(0,0,0,.26);flex:0 0 auto}
+.brand-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 48%;transform:scale(1.9);filter:saturate(1.04) contrast(1.04)}
 .nav-links{display:flex;align-items:center;justify-content:center;gap:clamp(.9rem,2.4vw,2.1rem);font-size:.72rem;font-weight:760;letter-spacing:.18em;text-transform:uppercase}
 .nav-links a{opacity:.72;transition:opacity .2s ease,color .2s ease}
 .nav-links a:hover,.nav-links a:focus-visible{opacity:1;color:var(--honey)}
-.nav-cta{justify-self:end;display:inline-flex;align-items:center;gap:.55rem;border:1px solid rgba(255,247,232,.28);border-radius:999px;padding:.65rem .9rem;font-size:.75rem;font-weight:760;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,247,232,.08)}
+.nav-actions{justify-self:end;display:flex;align-items:center;gap:.65rem}
+.nav-cta{display:inline-flex;align-items:center;gap:.55rem;border:1px solid rgba(255,247,232,.28);border-radius:999px;padding:.65rem .9rem;font-size:.75rem;font-weight:760;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,247,232,.08)}
 .nav-cta:hover{background:var(--cream);color:var(--night)}
+.lang-switch{display:inline-flex;align-items:center;border:1px solid rgba(255,247,232,.22);border-radius:999px;padding:3px;background:rgba(255,247,232,.06)}
+.lang-switch button{border:0;border-radius:999px;background:transparent;color:rgba(255,247,232,.66);min-width:34px;height:30px;padding:0 .55rem;font-size:.66rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
+.lang-switch button.active{background:var(--honey);color:var(--night)}
 
 .hero{position:relative;min-height:100svh;overflow:hidden;background:var(--night);color:var(--cream);display:grid;align-items:end}
 .hero-media{position:absolute;inset:0;overflow:hidden}
 .hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(1.08) contrast(1.08);transform:translateY(calc(var(--scroll,0) * .12px)) scale(1.06);will-change:transform;display:block}
+.hero-media .hero-repair{
+  inset:0 0 auto 0;height:38%;object-position:center 46%;z-index:1;
+  filter:saturate(1.02) contrast(1.03) brightness(.92);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 62%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 0%,#000 62%,transparent 100%);
+}
 .hero::after{
   content:"";position:absolute;inset:0;
   background:
@@ -410,8 +421,12 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 }
 @media(max-width:680px){
   body::before{background-size:28px 28px}
-  .nav{padding:13px 14px}
+  .nav{padding:13px 14px;gap:.55rem}
+  .brand{font-size:1.45rem}
+  .brand-photo{width:52px;height:36px}
+  .nav-actions{gap:.4rem}
   .nav-cta{padding:.58rem .7rem;font-size:.66rem;letter-spacing:.08em}
+  .lang-switch button{min-width:30px;height:28px;padding:0 .42rem;font-size:.6rem}
   .hero{min-height:94svh}
   .hero-inner{padding:112px 16px 42px;gap:1.3rem}
   .hero h1{font-size:clamp(4.25rem,24vw,7.3rem)}
@@ -450,75 +465,77 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 
 <nav class="nav" id="nav" aria-label="Hauptnavigation">
   <a class="brand" href="#top" aria-label="Backinsel — zur Startseite">
-    <svg class="brand-mark" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
-      <path d="M16 14.2 L15.4 18.2 H16.6 L16 14.2 Z"/>
-      <path d="M16 14 Q10.5 11 6 13 Q9 9 13.5 10 Q9.5 7 7 6 Q12 5 16 9 Q20 5 25 6 Q22.5 7 18.5 10 Q23 9 26 13 Q21.5 11 16 14 Z"/>
-      <path d="M5 22 C8 19 12 18 16 18 C20 18 24 19 27 22 L27 23 C27 23.6 26.5 24 26 24 L6 24 C5.5 24 5 23.6 5 23 Z"/>
-      <path d="M4 27.2 q2 -1.4 4 0 t4 0 t4 0 t4 0 t4 0 t4 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-    </svg>
+    <span class="brand-photo" aria-hidden="true"><img src="assets/images/backinsel-logo-scene.jpg" alt=""></span>
     Back<span>insel</span>
   </a>
   <div class="nav-links">
-    <a href="#neu">Neu</a>
-    <a href="#theke">Vitrine</a>
-    <a href="#sortiment">Sortiment</a>
-    <a href="#besuch">Besuch</a>
+    <a href="#neu" data-i18n="nav.new">Neu</a>
+    <a href="#theke" data-i18n="nav.vitrine">Vitrine</a>
+    <a href="#sortiment" data-i18n="nav.assortment">Sortiment</a>
+    <a href="#besuch" data-i18n="nav.visit">Besuch</a>
   </div>
-  <a class="nav-cta" href="#sortiment">Sortiment ansehen</a>
+  <div class="nav-actions">
+    <div class="lang-switch" aria-label="Sprache wechseln">
+      <button type="button" data-lang="de" class="active" aria-pressed="true">DE</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="nav-cta" href="#sortiment" data-i18n="nav.cta">Sortiment ansehen</a>
+  </div>
 </nav>
 
 <main id="main">
   <section class="hero" id="top" aria-label="Backinsel Bäckerei">
     <div class="hero-media" aria-hidden="true">
-      <img class="active" src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt="Backinsel Theke mit belegten Broten, Brot und Backwaren im Hintergrund">
+      <img class="active" src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt="Backinsel Vitrine mit belegten Broten, Brot und Backwaren im Hintergrund">
+      <img class="hero-repair" src="assets/images/new/2ddd28e5-3150-47e1-970f-2a5620b4d87a.jpg" alt="" aria-hidden="true">
     </div>
     <div class="hero-inner">
       <div>
-        <span class="eyebrow">Bäckerei · Berlin Wedding</span>
+        <span class="eyebrow" data-i18n="hero.eyebrow">Bäckerei · Berlin Wedding</span>
         <h1>Back<span>insel</span></h1>
         <div class="hero-copy">
-          <p>Frische Croissants, Kuchen, belegte Brote, Kaffee und kalte Getränke aus der Vitrine der Backinsel.</p>
+          <p data-i18n="hero.copy">Frische Croissants, Kuchen, belegte Brote, Kaffee und kalte Getränke aus der Vitrine der Backinsel.</p>
         </div>
         <div class="hero-actions">
-          <a class="button" href="#sortiment">Sortiment entdecken</a>
-          <a class="button alt" href="https://www.google.com/maps/search/?api=1&amp;query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer">Route öffnen</a>
+          <a class="button" href="#sortiment" data-i18n="hero.primary">Sortiment entdecken</a>
+          <a class="button alt" href="https://www.google.com/maps/search/?api=1&amp;query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer" data-i18n="hero.route">Route öffnen</a>
         </div>
       </div>
       <aside class="hero-panel" aria-label="Backinsel Kurzinfo">
-        <p>Morgens warm, mittags herzhaft, nachmittags süß: ein Laden für den kleinen Genussmoment in Wedding.</p>
+        <p data-i18n="hero.panel">Morgens warm, mittags herzhaft, nachmittags süß: ein Laden für den kleinen Genussmoment in Wedding.</p>
         <div class="hero-facts">
-          <span><b>Adresse</b><small>Badstraße 23</small></span>
-          <span><b>Backstube</b><small>Täglich frisch</small></span>
-          <span><b>Nähe</b><small>U8 Pankstraße</small></span>
-          <span><b>Sortiment</b><small>Täglich wechselnd</small></span>
+          <span><b data-i18n="hero.fact.address">Adresse</b><small>Badstraße 23</small></span>
+          <span><b data-i18n="hero.fact.bakery">Backstube</b><small data-i18n="hero.fact.fresh">Täglich frisch</small></span>
+          <span><b data-i18n="hero.fact.near">Nähe</b><small>U8 Pankstraße</small></span>
+          <span><b data-i18n="hero.fact.assortment">Sortiment</b><small data-i18n="hero.fact.changing">Täglich wechselnd</small></span>
         </div>
       </aside>
     </div>
-    <div class="scroll-cue" aria-hidden="true">Scroll · Specials & Theke</div>
+    <div class="scroll-cue" aria-hidden="true" data-i18n="hero.scroll">Scroll · Specials & Vitrine</div>
   </section>
 
   <section class="section neu" id="neu" aria-label="Neu auf der Karte">
     <div class="wrap">
       <div class="neu-head">
         <div data-reveal>
-          <div class="kicker">Neu auf der Karte</div>
-          <h2 class="display">Specials, frisch im Schaufenster.</h2>
+          <div class="kicker" data-i18n="new.kicker">Neu auf der Karte</div>
+          <h2 class="display" data-i18n="new.title">Specials, frisch im Schaufenster.</h2>
         </div>
-        <p class="lead" data-reveal>Zwei Highlights vorne in der Vitrine und drei Reihen frischer Becher — Iced Coffee, eine Matcha Bar und warme Klassiker wie Chai Latte, Heiße Schokolade oder Orangensaft frisch gepresst.</p>
+        <p class="lead" data-reveal data-i18n="new.lead">Zwei Highlights vorne in der Vitrine und drei Reihen frischer Becher — Iced Coffee, eine Matcha Bar und warme Klassiker wie Chai Latte, Heiße Schokolade oder Orangensaft frisch gepresst.</p>
       </div>
 
       <div class="neu-banners" data-reveal>
         <a class="neu-banner" href="#sortiment" aria-label="New York Roll Croissant in vier Sorten">
           <img src="assets/images/new/055e6713-51a0-4510-a3be-b2b57ef155a4.jpg" alt="New York Roll Croissant in vier Sorten: Pistazie, Himbeere, Blaubeere und Cacao" loading="lazy">
           <div class="neu-banner-tag">
-            <div><span>Neu · Süß</span><b>New York Roll Croissant</b></div>
+            <div><span data-i18n="new.banner.sweet">Neu · Süß</span><b>New York Roll Croissant</b></div>
             <div class="neu-banner-arrow" aria-hidden="true">→</div>
           </div>
         </a>
         <a class="neu-banner" href="#sortiment" aria-label="Slush Eis in drei Sorten">
           <img src="assets/images/new/1e3ee284-783e-477a-88fd-9f733b3749cb.jpg" alt="Slush Eis in drei Sorten — eiskalt, fruchtig und erfrischend" loading="lazy">
           <div class="neu-banner-tag">
-            <div><span>Neu · Sommer</span><b>Slush Eis</b></div>
+            <div><span data-i18n="new.banner.summer">Neu · Sommer</span><b>Slush Eis</b></div>
             <div class="neu-banner-arrow" aria-hidden="true">→</div>
           </div>
         </a>
@@ -527,9 +544,9 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       <div class="neu-groups" data-reveal>
         <div class="neu-group">
           <header class="neu-group-head">
-            <small>01 · Iced Coffee</small>
-            <h3>Kalte Kaffee-Becher</h3>
-            <span class="meta">5 Sorten</span>
+            <small data-i18n="new.group.coffee.small">01 · Iced Coffee</small>
+            <h3 data-i18n="new.group.coffee.title">Kalte Kaffee-Becher</h3>
+            <span class="meta" data-i18n="new.group.coffee.meta">5 Sorten</span>
           </header>
           <div class="neu-grid" style="--cols:5">
             <article class="neu-card"><img src="assets/images/new/0145a019-58f4-4740-93a2-d0af90e4a0ac.jpg" alt="Iced Karamell Latte — cremig, süß und mit feiner Karamellnote" loading="lazy"><div class="neu-card-tag"><b>Iced Karamell Latte</b><span>Iced</span></div></article>
@@ -542,9 +559,9 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 
         <div class="neu-group">
           <header class="neu-group-head">
-            <small>02 · Iced Matcha Bar</small>
-            <h3>Matcha kalt &amp; fruchtig</h3>
-            <span class="meta">4 Sorten</span>
+            <small data-i18n="new.group.matcha.small">02 · Iced Matcha Bar</small>
+            <h3 data-i18n="new.group.matcha.title">Matcha kalt &amp; fruchtig</h3>
+            <span class="meta" data-i18n="new.group.matcha.meta">4 Sorten</span>
           </header>
           <div class="neu-grid" style="--cols:4">
             <article class="neu-card"><img src="assets/images/new/b729dfa3-3424-4384-ae52-d93864a9922c.jpg" alt="Matcha Latte iced — cremig, mild und herrlich erfrischend" loading="lazy"><div class="neu-card-tag"><b>Matcha Latte</b><span>Iced</span></div></article>
@@ -556,9 +573,9 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 
         <div class="neu-group">
           <header class="neu-group-head">
-            <small>03 · Warm &amp; Frisch</small>
-            <h3>Heißgetränke &amp; Saft</h3>
-            <span class="meta">4 Sorten</span>
+            <small data-i18n="new.group.warm.small">03 · Warm &amp; Frisch</small>
+            <h3 data-i18n="new.group.warm.title">Heißgetränke &amp; Saft</h3>
+            <span class="meta" data-i18n="new.group.warm.meta">4 Sorten</span>
           </header>
           <div class="neu-grid" style="--cols:4">
             <article class="neu-card"><img src="assets/images/new/11499af2-d4b2-4faf-ac7e-d285c661bd7e.jpg" alt="Matcha Latte heiß, in der Tasse vor Ort zu genießen" loading="lazy"><div class="neu-card-tag"><b>Matcha Latte</b><span>Heiß</span></div></article>
@@ -571,47 +588,47 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
     </div>
   </section>
 
-  <section class="section showcase showcase-flush" id="theke" aria-label="Thekenreise">
+  <section class="section showcase showcase-flush" id="theke" aria-label="Vitrinenreise">
     <div class="wrap">
       <div class="showcase-head">
         <div data-reveal>
-          <div class="kicker">Frisch in der Auslage</div>
-          <h2 class="display">Ein Blick in die Vitrine.</h2>
+          <div class="kicker" data-i18n="vitrine.kicker">Frisch in der Auslage</div>
+          <h2 class="display" data-i18n="vitrine.title">Ein Blick in die Vitrine.</h2>
         </div>
-        <p class="lead" data-reveal>Vier Sortimentswelten, ein Blick in die Vitrine: süßes Gebäck, Kuchenstücke, herzhafte Brote und Getränke für den Morgen, die Pause und den Nachmittag.</p>
+        <p class="lead" data-reveal data-i18n="vitrine.lead">Vier Sortimentswelten, ein Blick in die Vitrine: süßes Gebäck, Kuchenstücke, herzhafte Brote und Getränke für den Morgen, die Pause und den Nachmittag.</p>
       </div>
 
       <div class="stage" data-reveal>
         <div class="stage-main" id="stagePanel" role="tabpanel" aria-live="polite">
           <img class="active" src="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" alt="Volle Backinsel Vitrine mit süßem Gebäck" data-stage-img="0">
           <img src="assets/images/new/2ddd28e5-3150-47e1-970f-2a5620b4d87a.jpg" alt="Backinsel Brotregal mit Broten und Brötchen" data-stage-img="1">
-          <img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt="Backinsel Theke mit belegten Broten und Backwaren" data-stage-img="2">
+          <img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt="Backinsel Vitrine mit belegten Broten und Backwaren" data-stage-img="2">
           <img src="assets/images/new/b21e4c7f-2b85-4cbf-82aa-5791de21f9a1.jpg" alt="Backinsel Matcha-Getränk" data-stage-img="3">
           <div class="stage-label">
             <strong id="stageTitle">Süße Vitrine</strong>
             <span id="stageText">Kuchen, Croissants, glasiertes Gebäck und kleine Highlights direkt in der Auslage.</span>
           </div>
         </div>
-        <div class="stage-rail" role="tablist" aria-label="Thekenbereiche">
+        <div class="stage-rail" role="tablist" aria-label="Vitrinenbereiche">
           <button class="stage-card active" type="button" data-stage="0" role="tab" aria-selected="true" aria-controls="stagePanel">
-            <span>01 · Süß</span>
-            <strong>Süße Vitrine</strong>
-            <p>Kuchen, Croissants und glasiertes Gebäck — direkt im Blickfeld.</p>
+            <span data-i18n="stage.0.small">01 · Süß</span>
+            <strong data-i18n="stage.0.title">Süße Vitrine</strong>
+            <p data-i18n="stage.0.copy">Kuchen, Croissants und glasiertes Gebäck — direkt im Blickfeld.</p>
           </button>
           <button class="stage-card" type="button" data-stage="1" role="tab" aria-selected="false" aria-controls="stagePanel">
-            <span>02 · Backwaren</span>
-            <strong>Brotregal</strong>
-            <p>Brote, Brötchen und Laugengebäck aus dem warmen Holzregal.</p>
+            <span data-i18n="stage.1.small">02 · Backwaren</span>
+            <strong data-i18n="stage.1.title">Brotregal</strong>
+            <p data-i18n="stage.1.copy">Brote, Brötchen und Laugengebäck aus dem warmen Holzregal.</p>
           </button>
           <button class="stage-card" type="button" data-stage="2" role="tab" aria-selected="false" aria-controls="stagePanel">
-            <span>03 · Herzhaft</span>
-            <strong>Belegte Brote</strong>
-            <p>Für Mittagspause, Arbeitsweg und schnellen Hunger in Wedding.</p>
+            <span data-i18n="stage.2.small">03 · Herzhaft</span>
+            <strong data-i18n="stage.2.title">Belegte Brote</strong>
+            <p data-i18n="stage.2.copy">Für Mittagspause, Arbeitsweg und schnellen Hunger in Wedding.</p>
           </button>
           <button class="stage-card" type="button" data-stage="3" role="tab" aria-selected="false" aria-controls="stagePanel">
-            <span>04 · Drinks</span>
-            <strong>Kalte Getränke</strong>
-            <p>Iced Matcha, Iced Latte und kalte Becher für den heißen Tag.</p>
+            <span data-i18n="stage.3.small">04 · Drinks</span>
+            <strong data-i18n="stage.3.title">Kalte Getränke</strong>
+            <p data-i18n="stage.3.copy">Iced Matcha, Iced Latte und kalte Becher für den heißen Tag.</p>
           </button>
         </div>
       </div>
@@ -621,18 +638,18 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   <section class="section manifest" aria-label="Backinsel Frische">
     <div class="wrap manifest-grid">
       <div data-reveal>
-        <div class="kicker">Frisch gebacken in Wedding</div>
-        <h2 class="display">Erst der Duft. Dann der erste Biss.</h2>
+        <div class="kicker" data-i18n="manifest.kicker">Frisch gebacken in Wedding</div>
+        <h2 class="display" data-i18n="manifest.title">Erst der Duft. Dann der erste Biss.</h2>
       </div>
       <div class="manifest-copy" data-reveal>
-        <p class="lead">In der Backinsel trifft klassisches Bäckereihandwerk auf eine volle Vitrine: buttrige Croissants, saftige Kuchenstücke, belegte Brote und Getränke für den Weg durch den Tag.</p>
-        <p class="lead">Was morgens aus der Backstube kommt, landet direkt hinter Glas. Mal fruchtig, mal schokoladig, mal herzhaft, immer nah am Laden und an der Nachbarschaft.</p>
+        <p class="lead" data-i18n="manifest.copy1">In der Backinsel trifft klassisches Bäckereihandwerk auf eine volle Vitrine: buttrige Croissants, saftige Kuchenstücke, belegte Brote und Getränke für den Weg durch den Tag.</p>
+        <p class="lead" data-i18n="manifest.copy2">Was morgens aus der Backstube kommt, landet direkt hinter Glas. Mal fruchtig, mal schokoladig, mal herzhaft, immer nah am Laden und an der Nachbarschaft.</p>
         <div class="manifest-signature" aria-label="Sortimentbereiche">
-          <span class="tag">Backwaren</span>
-          <span class="tag">Kuchen</span>
+          <span class="tag" data-i18n="tag.baked">Backwaren</span>
+          <span class="tag" data-i18n="tag.cakes">Kuchen</span>
           <span class="tag">Croissants</span>
-          <span class="tag">Sandwiches</span>
-          <span class="tag">Drinks</span>
+          <span class="tag" data-i18n="tag.sandwiches">Sandwiches</span>
+          <span class="tag" data-i18n="tag.drinks">Drinks</span>
         </div>
       </div>
     </div>
@@ -640,14 +657,14 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 
   <section class="marquee" aria-label="Backinsel Momente">
     <div class="marquee-track" aria-hidden="true">
-      <div class="marquee-item"><img src="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" alt=""><div><span>Vitrine</span><b>Süße Auslage</b></div></div>
-      <div class="marquee-item"><img src="assets/images/new/2ddd28e5-3150-47e1-970f-2a5620b4d87a.jpg" alt=""><div><span>Backwaren</span><b>Brotregal</b></div></div>
-      <div class="marquee-item"><img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt=""><div><span>Theke</span><b>Belegte Brote</b></div></div>
-      <div class="marquee-item"><img src="assets/images/backinsel-brand-table.jpg" alt=""><div><span>Auswahl</span><b>Backinsel Spotlight</b></div></div>
-      <div class="marquee-item"><img src="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" alt=""><div><span>Vitrine</span><b>Süße Auslage</b></div></div>
-      <div class="marquee-item"><img src="assets/images/new/2ddd28e5-3150-47e1-970f-2a5620b4d87a.jpg" alt=""><div><span>Backwaren</span><b>Brotregal</b></div></div>
-      <div class="marquee-item"><img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt=""><div><span>Theke</span><b>Belegte Brote</b></div></div>
-      <div class="marquee-item"><img src="assets/images/backinsel-brand-table.jpg" alt=""><div><span>Auswahl</span><b>Backinsel Spotlight</b></div></div>
+      <div class="marquee-item"><img src="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" alt=""><div><span data-i18n="marquee.vitrine">Vitrine</span><b data-i18n="marquee.sweet">Süße Auslage</b></div></div>
+      <div class="marquee-item"><img src="assets/images/new/2ddd28e5-3150-47e1-970f-2a5620b4d87a.jpg" alt=""><div><span data-i18n="tag.baked">Backwaren</span><b data-i18n="stage.1.title">Brotregal</b></div></div>
+      <div class="marquee-item"><img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt=""><div><span data-i18n="marquee.vitrine">Vitrine</span><b data-i18n="stage.2.title">Belegte Brote</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-brand-table.jpg" alt=""><div><span data-i18n="product.brand.small">Auswahl</span><b data-i18n="marquee.spotlight">Backinsel Spotlight</b></div></div>
+      <div class="marquee-item"><img src="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" alt=""><div><span data-i18n="marquee.vitrine">Vitrine</span><b data-i18n="marquee.sweet">Süße Auslage</b></div></div>
+      <div class="marquee-item"><img src="assets/images/new/2ddd28e5-3150-47e1-970f-2a5620b4d87a.jpg" alt=""><div><span data-i18n="tag.baked">Backwaren</span><b data-i18n="stage.1.title">Brotregal</b></div></div>
+      <div class="marquee-item"><img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt=""><div><span data-i18n="marquee.vitrine">Vitrine</span><b data-i18n="stage.2.title">Belegte Brote</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-brand-table.jpg" alt=""><div><span data-i18n="product.brand.small">Auswahl</span><b data-i18n="marquee.spotlight">Backinsel Spotlight</b></div></div>
     </div>
   </section>
 
@@ -655,43 +672,43 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
     <div class="wrap">
       <div class="catalog-head">
         <div data-reveal>
-          <div class="kicker">Aus der Vitrine</div>
-          <h2 class="display">Frisch aus der Vitrine.</h2>
+          <div class="kicker" data-i18n="catalog.kicker">Aus der Vitrine</div>
+          <h2 class="display" data-i18n="catalog.title">Frisch aus der Vitrine.</h2>
         </div>
         <div class="filterbar" data-reveal role="toolbar" aria-label="Sortiment filtern">
-          <button class="active" type="button" data-filter="all" aria-pressed="true">Alles</button>
-          <button type="button" data-filter="sweet" aria-pressed="false">Süß</button>
-          <button type="button" data-filter="savory" aria-pressed="false">Herzhaft</button>
-          <button type="button" data-filter="bread" aria-pressed="false">Backwaren</button>
-          <button type="button" data-filter="drinks" aria-pressed="false">Drinks</button>
+          <button class="active" type="button" data-filter="all" aria-pressed="true" data-i18n="filter.all">Alles</button>
+          <button type="button" data-filter="sweet" aria-pressed="false" data-i18n="filter.sweet">Süß</button>
+          <button type="button" data-filter="savory" aria-pressed="false" data-i18n="filter.savory">Herzhaft</button>
+          <button type="button" data-filter="bread" aria-pressed="false" data-i18n="filter.bread">Backwaren</button>
+          <button type="button" data-filter="drinks" aria-pressed="false" data-i18n="filter.drinks">Drinks</button>
         </div>
       </div>
 
       <div class="catalog-grid" data-reveal>
         <article class="product product--vitrine" data-category="sweet">
           <figure><img src="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" alt="Volle Backinsel Vitrine mit Kuchen und Gebäck" loading="lazy"></figure>
-          <span class="product-badge">Thekenblick</span>
-          <div class="product-body"><small>Süße Vitrine</small><h3>Kuchen &amp; Gebäck</h3><p>Wechselnde Auswahl an Kuchenstücken, Croissants und glasiertem Gebäck direkt aus der Vitrine.</p></div>
+          <span class="product-badge" data-i18n="product.sweet.badge">Vitrinenblick</span>
+          <div class="product-body"><small data-i18n="stage.0.title">Süße Vitrine</small><h3 data-i18n="product.sweet.title">Kuchen &amp; Gebäck</h3><p data-i18n="product.sweet.copy">Wechselnde Auswahl an Kuchenstücken, Croissants und glasiertem Gebäck direkt aus der Vitrine.</p></div>
         </article>
         <article class="product product--vitrine" data-category="savory">
-          <figure><img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt="Belegte Brote an der Backinsel Theke" loading="lazy"></figure>
-          <span class="product-badge">Mittag</span>
-          <div class="product-body"><small>Herzhaft</small><h3>Belegte Brote</h3><p>Frisch belegte Auswahl für den schnellen Halt am Morgen oder zur Mittagszeit.</p></div>
+          <figure><img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt="Belegte Brote an der Backinsel Vitrine" loading="lazy"></figure>
+          <span class="product-badge" data-i18n="product.savory.badge">Mittag</span>
+          <div class="product-body"><small data-i18n="filter.savory">Herzhaft</small><h3 data-i18n="stage.2.title">Belegte Brote</h3><p data-i18n="product.savory.copy">Frisch belegte Auswahl für den schnellen Halt am Morgen oder zur Mittagszeit.</p></div>
         </article>
         <article class="product product--bread" data-category="bread">
           <figure><img src="assets/images/new/2ddd28e5-3150-47e1-970f-2a5620b4d87a.jpg" alt="Brote und Brötchen im Backinsel Regal" loading="lazy"></figure>
-          <span class="product-badge">Backwaren</span>
-          <div class="product-body"><small>Backwaren</small><h3>Brote &amp; Brötchen</h3><p>Goldene Brötchen, Krustenbrote und Laugengebäck direkt aus dem warmen Regal.</p></div>
+          <span class="product-badge" data-i18n="filter.bread">Backwaren</span>
+          <div class="product-body"><small data-i18n="filter.bread">Backwaren</small><h3 data-i18n="product.bread.title">Brote &amp; Brötchen</h3><p data-i18n="product.bread.copy">Goldene Brötchen, Krustenbrote und Laugengebäck direkt aus dem warmen Regal.</p></div>
         </article>
         <article class="product product--brand" data-category="sweet">
           <figure><img src="assets/images/backinsel-brand-table.jpg" alt="Backinsel Auswahl mit Logo, Broten und süßem Gebäck" loading="lazy"></figure>
-          <span class="product-badge">Spotlight</span>
-          <div class="product-body"><small>Auswahl</small><h3>Süß, herzhaft, immer frisch</h3><p>Vom ersten Kaffee bis zum Nachmittagsstück — alles unter einem Dach.</p></div>
+          <span class="product-badge" data-i18n="product.brand.badge">Spotlight</span>
+          <div class="product-body"><small data-i18n="product.brand.small">Auswahl</small><h3 data-i18n="product.brand.title">Süß, herzhaft, immer frisch</h3><p data-i18n="product.brand.copy">Vom ersten Kaffee bis zum Nachmittagsstück — alles unter einem Dach.</p></div>
         </article>
         <article class="product product--drink-link" data-category="drinks">
           <figure><img src="assets/images/new/0145a019-58f4-4740-93a2-d0af90e4a0ac.jpg" alt="Iced Karamell Latte und weitere neue Drinks" loading="lazy"></figure>
-          <span class="product-badge">Neu</span>
-          <div class="product-body"><small>Drinks</small><h3>Specials &amp; Becher</h3><p>Iced Latte, Matcha-Bar, Chai, Heiße Schokolade und Orangensaft — die ganze Auswahl im <a href="#neu">Neu-Bereich</a>.</p></div>
+          <span class="product-badge" data-i18n="nav.new">Neu</span>
+          <div class="product-body"><small data-i18n="filter.drinks">Drinks</small><h3 data-i18n="product.drinks.title">Specials &amp; Becher</h3><p data-i18n-html="product.drinks.copy">Iced Latte, Matcha-Bar, Chai, Heiße Schokolade und Orangensaft — die ganze Auswahl im <a href="#neu">Neu-Bereich</a>.</p></div>
         </article>
       </div>
     </div>
@@ -700,17 +717,17 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   <section class="section split" aria-label="Backinsel Atmosphäre">
     <div class="wrap split-grid">
       <div class="split-media" data-reveal>
-        <figure><img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt="Innenansicht der Backinsel Theke" loading="lazy"></figure>
+        <figure><img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt="Innenansicht der Backinsel Vitrine" loading="lazy"></figure>
         <figure><img src="assets/images/backinsel-brand-table.jpg" alt="Backinsel Logo mit Backwaren im Laden" loading="lazy"></figure>
       </div>
       <div class="split-copy" data-reveal>
-        <div class="kicker">Aus dem Laden</div>
-        <h2 class="display">Warm, nah und voller Auswahl.</h2>
-        <p class="lead">Backinsel lebt vom Blick in die Vitrine: goldene Croissants, glänzende Glasuren, frisches Brot und belegte Klassiker. Die Auswahl wechselt mit dem Tag, aber der Eindruck bleibt gleich: reich gefüllt, freundlich und direkt an der Badstraße.</p>
+        <div class="kicker" data-i18n="split.kicker">Aus dem Laden</div>
+        <h2 class="display" data-i18n="split.title">Warm, nah und voller Auswahl.</h2>
+        <p class="lead" data-i18n="split.copy">Backinsel lebt vom Blick in die Vitrine: goldene Croissants, glänzende Glasuren, frisches Brot und belegte Klassiker. Die Auswahl wechselt mit dem Tag, aber der Eindruck bleibt gleich: reich gefüllt, freundlich und direkt an der Badstraße.</p>
         <div class="proof-grid" aria-label="Backinsel Merkmale">
-          <div class="proof"><b>01</b><span>Volle Vitrine</span></div>
-          <div class="proof"><b>02</b><span>Morgens frisch</span></div>
-          <div class="proof"><b>03</b><span>Direkt vor Ort</span></div>
+          <div class="proof"><b>01</b><span data-i18n="proof.1">Volle Vitrine</span></div>
+          <div class="proof"><b>02</b><span data-i18n="proof.2">Morgens frisch</span></div>
+          <div class="proof"><b>03</b><span data-i18n="proof.3">Direkt vor Ort</span></div>
         </div>
       </div>
     </div>
@@ -719,14 +736,14 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   <section class="section visit" id="besuch" aria-label="Besuch und Kontakt">
     <div class="wrap visit-grid">
       <div data-reveal>
-        <div class="kicker">Besuch</div>
-        <h2 class="display">Badstraße 23.<br>Berlin Wedding.</h2>
-        <p class="lead">Nur ein paar Minuten von der U8 Pankstraße entfernt. Für die aktuelle Auswahl, Reservierungen oder Fragen genügt eine kurze Nachricht oder der direkte Besuch im Laden.</p>
+        <div class="kicker" data-i18n="visit.kicker">Besuch</div>
+        <h2 class="display" data-i18n-html="visit.title">Badstraße 23.<br>Berlin Wedding.</h2>
+        <p class="lead" data-i18n="visit.copy">Nur ein paar Minuten von der U8 Pankstraße entfernt. Für die aktuelle Auswahl, Reservierungen oder Fragen genügt eine kurze Nachricht oder der direkte Besuch im Laden.</p>
         <div class="map" aria-label="Karte zu Badstraße 23">
           <iframe title="Standort Backinsel" loading="lazy" referrerpolicy="no-referrer" src="https://www.openstreetmap.org/export/embed.html?bbox=13.379%2C52.546%2C13.391%2C52.553&amp;layer=mapnik&amp;marker=52.5497%2C13.3849"></iframe>
         </div>
         <div class="visit-links">
-          <a class="button" href="https://www.google.com/maps/search/?api=1&amp;query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer">Route öffnen</a>
+          <a class="button" href="https://www.google.com/maps/search/?api=1&amp;query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer" data-i18n="hero.route">Route öffnen</a>
           <a class="button alt" href="https://wa.me/491626413496" target="_blank" rel="noopener noreferrer">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 18.6 6.5 15A7.6 7.6 0 1 1 9 17.4z"></path><path d="M9.7 8.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.4.5c.5.9 1.2 1.6 2.1 2.1l.5-.4c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.6.4-1.6.4-2.7 0-1.5-.5-3-1.8-4-3.2-1-1.5-1.4-2.9-1.1-4.1z"></path></svg>
             WhatsApp
@@ -736,7 +753,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 
       <aside class="visit-card" data-reveal aria-label="Öffnungszeiten und Kontakt">
         <div class="status" id="status"><span class="dot"></span><span id="statusText">Heute geöffnet</span></div>
-        <h3>Öffnungszeiten</h3>
+        <h3 data-i18n="visit.hours">Öffnungszeiten</h3>
         <div class="hours">
           <div class="hours-row" id="h-mo"><span class="day">Mo</span><span class="line"></span><span class="time">04:00 - 19:00</span></div>
           <div class="hours-row" id="h-di"><span class="day">Di</span><span class="line"></span><span class="time">04:00 - 19:00</span></div>
@@ -778,37 +795,37 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   <div class="foot">
     <div class="foot-brand">Back<span>insel</span></div>
     <div class="foot-links">
-      <span>Bäckerei · Berlin Wedding</span>
+      <span data-i18n="hero.eyebrow">Bäckerei · Berlin Wedding</span>
       <div class="foot-social" aria-label="Social Media">
         <a href="https://wa.me/491626413496" target="_blank" rel="noopener noreferrer" aria-label="Backinsel auf WhatsApp"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 18.6 6.5 15A7.6 7.6 0 1 1 9 17.4z"></path><path d="M9.7 8.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.4.5c.5.9 1.2 1.6 2.1 2.1l.5-.4c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.6.4-1.6.4-2.7 0-1.5-.5-3-1.8-4-3.2-1-1.5-1.4-2.9-1.1-4.1z"></path></svg></a>
         <a href="https://www.instagram.com/backinsel2026" target="_blank" rel="noopener noreferrer" aria-label="Backinsel auf Instagram"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"></rect><circle cx="12" cy="12" r="3.5"></circle><circle cx="17" cy="7" r=".7" fill="currentColor" stroke="none"></circle></svg></a>
         <a href="https://www.tiktok.com/@backinsel2026" target="_blank" rel="noopener noreferrer" aria-label="Backinsel auf TikTok"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v10.2a4.1 4.1 0 1 1-3.2-4"></path><path d="M14 4c.7 2.7 2.4 4.3 5 4.7"></path></svg></a>
       </div>
-      <a href="#impressum">Impressum</a>
-      <a href="#datenschutz">Datenschutz</a>
+      <a href="#impressum" data-i18n="legal.imprint">Impressum</a>
+      <a href="#datenschutz" data-i18n="legal.privacy">Datenschutz</a>
     </div>
   </div>
 </footer>
 
 <section class="legal" aria-label="Rechtliches">
   <details id="impressum">
-    <summary>Impressum</summary>
+    <summary data-i18n="legal.imprint">Impressum</summary>
     <div class="legal-body">
-      <p>Angaben gemäß § 5 TMG.</p>
-      <h3>Anbieter</h3>
+      <p data-i18n="legal.imprint.copy">Angaben gemäß § 5 TMG.</p>
+      <h3 data-i18n="legal.provider">Anbieter</h3>
       <p>Backinsel<br>Badstraße 23<br>13357 Berlin · Deutschland</p>
-      <h3>Kontakt</h3>
-      <p>Telefon: <a href="tel:+491626413496">+49 162 641 34 96</a><br>E-Mail: <a href="mailto:back_insel@web.de">back_insel@web.de</a></p>
+      <h3 data-i18n="legal.contact">Kontakt</h3>
+      <p><span data-i18n="legal.phone">Telefon</span>: <a href="tel:+491626413496">+49 162 641 34 96</a><br>E-Mail: <a href="mailto:back_insel@web.de">back_insel@web.de</a></p>
     </div>
   </details>
   <details id="datenschutz">
-    <summary>Datenschutz</summary>
+    <summary data-i18n="legal.privacy">Datenschutz</summary>
     <div class="legal-body">
-      <p>Diese Seite setzt keine Cookies und nutzt kein Tracking. Beim Aufruf werden technische Log-Daten durch den Hosting-Anbieter verarbeitet.</p>
-      <h3>Karte</h3>
-      <p>Beim Laden der eingebundenen OpenStreetMap-Karte kann Ihre IP-Adresse an OpenStreetMap übertragen werden.</p>
-      <h3>Externe Links</h3>
-      <p>Links zu Instagram, TikTok, WhatsApp und Google Maps öffnen externe Anbieter erst nach einem Klick.</p>
+      <p data-i18n="legal.privacy.copy">Diese Seite setzt keine Cookies und nutzt kein Tracking. Beim Aufruf werden technische Log-Daten durch den Hosting-Anbieter verarbeitet.</p>
+      <h3 data-i18n="legal.map">Karte</h3>
+      <p data-i18n="legal.map.copy">Beim Laden der eingebundenen OpenStreetMap-Karte kann Ihre IP-Adresse an OpenStreetMap übertragen werden.</p>
+      <h3 data-i18n="legal.external">Externe Links</h3>
+      <p data-i18n="legal.external.copy">Links zu Instagram, TikTok, WhatsApp und Google Maps öffnen externe Anbieter erst nach einem Klick.</p>
     </div>
   </details>
 </section>
@@ -820,6 +837,261 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   const nav = document.getElementById("nav");
   const bar = document.getElementById("scrollbar");
   const splitFigures = [...document.querySelectorAll(".split-media figure")];
+  const translations = {
+    de: {
+      title: "Backinsel · Bäckerei in Berlin Wedding",
+      description: "Backinsel in Berlin Wedding: frische Backwaren, Kuchen, Croissants, belegte Brote, Kaffee und kalte Getränke an der Badstraße 23.",
+      "nav.new": "Neu",
+      "nav.vitrine": "Vitrine",
+      "nav.assortment": "Sortiment",
+      "nav.visit": "Besuch",
+      "nav.cta": "Sortiment ansehen",
+      "hero.eyebrow": "Bäckerei · Berlin Wedding",
+      "hero.copy": "Frische Croissants, Kuchen, belegte Brote, Kaffee und kalte Getränke aus der Vitrine der Backinsel.",
+      "hero.primary": "Sortiment entdecken",
+      "hero.route": "Route öffnen",
+      "hero.panel": "Morgens warm, mittags herzhaft, nachmittags süß: ein Laden für den kleinen Genussmoment in Wedding.",
+      "hero.fact.address": "Adresse",
+      "hero.fact.bakery": "Backstube",
+      "hero.fact.fresh": "Täglich frisch",
+      "hero.fact.near": "Nähe",
+      "hero.fact.assortment": "Sortiment",
+      "hero.fact.changing": "Täglich wechselnd",
+      "hero.scroll": "Scroll · Specials & Vitrine",
+      "new.kicker": "Neu auf der Karte",
+      "new.title": "Specials, frisch im Schaufenster.",
+      "new.lead": "Zwei Highlights vorne in der Vitrine und drei Reihen frischer Becher — Iced Coffee, eine Matcha Bar und warme Klassiker wie Chai Latte, Heiße Schokolade oder Orangensaft frisch gepresst.",
+      "new.banner.sweet": "Neu · Süß",
+      "new.banner.summer": "Neu · Sommer",
+      "new.group.coffee.small": "01 · Iced Coffee",
+      "new.group.coffee.title": "Kalte Kaffee-Becher",
+      "new.group.coffee.meta": "5 Sorten",
+      "new.group.matcha.small": "02 · Iced Matcha Bar",
+      "new.group.matcha.title": "Matcha kalt & fruchtig",
+      "new.group.matcha.meta": "4 Sorten",
+      "new.group.warm.small": "03 · Warm & Frisch",
+      "new.group.warm.title": "Heißgetränke & Saft",
+      "new.group.warm.meta": "4 Sorten",
+      "vitrine.kicker": "Frisch in der Auslage",
+      "vitrine.title": "Ein Blick in die Vitrine.",
+      "vitrine.lead": "Vier Sortimentswelten, ein Blick in die Vitrine: süßes Gebäck, Kuchenstücke, herzhafte Brote und Getränke für den Morgen, die Pause und den Nachmittag.",
+      "stage.0.small": "01 · Süß",
+      "stage.0.title": "Süße Vitrine",
+      "stage.0.copy": "Kuchen, Croissants und glasiertes Gebäck — direkt im Blickfeld.",
+      "stage.1.small": "02 · Backwaren",
+      "stage.1.title": "Brotregal",
+      "stage.1.copy": "Brote, Brötchen und Laugengebäck aus dem warmen Holzregal.",
+      "stage.2.small": "03 · Herzhaft",
+      "stage.2.title": "Belegte Brote",
+      "stage.2.copy": "Für Mittagspause, Arbeitsweg und schnellen Hunger in Wedding.",
+      "stage.3.small": "04 · Drinks",
+      "stage.3.title": "Kalte Getränke",
+      "stage.3.copy": "Iced Matcha, Iced Latte und kalte Becher für den heißen Tag.",
+      "manifest.kicker": "Frisch gebacken in Wedding",
+      "manifest.title": "Erst der Duft. Dann der erste Biss.",
+      "manifest.copy1": "In der Backinsel trifft klassisches Bäckereihandwerk auf eine volle Vitrine: buttrige Croissants, saftige Kuchenstücke, belegte Brote und Getränke für den Weg durch den Tag.",
+      "manifest.copy2": "Was morgens aus der Backstube kommt, landet direkt hinter Glas. Mal fruchtig, mal schokoladig, mal herzhaft, immer nah am Laden und an der Nachbarschaft.",
+      "tag.baked": "Backwaren",
+      "tag.cakes": "Kuchen",
+      "tag.sandwiches": "Sandwiches",
+      "tag.drinks": "Drinks",
+      "marquee.vitrine": "Vitrine",
+      "marquee.sweet": "Süße Auslage",
+      "marquee.spotlight": "Backinsel Spotlight",
+      "catalog.kicker": "Aus der Vitrine",
+      "catalog.title": "Frisch aus der Vitrine.",
+      "filter.all": "Alles",
+      "filter.sweet": "Süß",
+      "filter.savory": "Herzhaft",
+      "filter.bread": "Backwaren",
+      "filter.drinks": "Drinks",
+      "product.sweet.badge": "Vitrinenblick",
+      "product.sweet.title": "Kuchen & Gebäck",
+      "product.sweet.copy": "Wechselnde Auswahl an Kuchenstücken, Croissants und glasiertem Gebäck direkt aus der Vitrine.",
+      "product.savory.badge": "Mittag",
+      "product.savory.copy": "Frisch belegte Auswahl für den schnellen Halt am Morgen oder zur Mittagszeit.",
+      "product.bread.title": "Brote & Brötchen",
+      "product.bread.copy": "Goldene Brötchen, Krustenbrote und Laugengebäck direkt aus dem warmen Regal.",
+      "product.brand.badge": "Spotlight",
+      "product.brand.small": "Auswahl",
+      "product.brand.title": "Süß, herzhaft, immer frisch",
+      "product.brand.copy": "Vom ersten Kaffee bis zum Nachmittagsstück — alles unter einem Dach.",
+      "product.drinks.title": "Specials & Becher",
+      "product.drinks.copy": "Iced Latte, Matcha-Bar, Chai, Heiße Schokolade und Orangensaft — die ganze Auswahl im <a href=\"#neu\">Neu-Bereich</a>.",
+      "split.kicker": "Aus dem Laden",
+      "split.title": "Warm, nah und voller Auswahl.",
+      "split.copy": "Backinsel lebt vom Blick in die Vitrine: goldene Croissants, glänzende Glasuren, frisches Brot und belegte Klassiker. Die Auswahl wechselt mit dem Tag, aber der Eindruck bleibt gleich: reich gefüllt, freundlich und direkt an der Badstraße.",
+      "proof.1": "Volle Vitrine",
+      "proof.2": "Morgens frisch",
+      "proof.3": "Direkt vor Ort",
+      "visit.kicker": "Besuch",
+      "visit.title": "Badstraße 23.<br>Berlin Wedding.",
+      "visit.copy": "Nur ein paar Minuten von der U8 Pankstraße entfernt. Für die aktuelle Auswahl, Reservierungen oder Fragen genügt eine kurze Nachricht oder der direkte Besuch im Laden.",
+      "visit.hours": "Öffnungszeiten",
+      "legal.imprint": "Impressum",
+      "legal.privacy": "Datenschutz",
+      "legal.imprint.copy": "Angaben gemäß § 5 TMG.",
+      "legal.provider": "Anbieter",
+      "legal.contact": "Kontakt",
+      "legal.phone": "Telefon",
+      "legal.privacy.copy": "Diese Seite setzt keine Cookies und nutzt kein Tracking. Beim Aufruf werden technische Log-Daten durch den Hosting-Anbieter verarbeitet.",
+      "legal.map": "Karte",
+      "legal.map.copy": "Beim Laden der eingebundenen OpenStreetMap-Karte kann Ihre IP-Adresse an OpenStreetMap übertragen werden.",
+      "legal.external": "Externe Links",
+      "legal.external.copy": "Links zu Instagram, TikTok, WhatsApp und Google Maps öffnen externe Anbieter erst nach einem Klick.",
+      statusOpen: "Heute geöffnet bis",
+      statusClosed: "Heute geschlossen",
+      statusOpensToday: "öffnet heute",
+      statusOpensTomorrow: "öffnet morgen",
+      stageData: [
+        ["Süße Vitrine", "Kuchen, Croissants, glasiertes Gebäck und kleine Highlights direkt in der Auslage."],
+        ["Brotregal", "Brote, Brötchen und Laugengebäck aus dem warmen Holzregal."],
+        ["Belegte Brote", "Herzhaft, frisch und direkt verständlich für Frühstück, Mittag oder Wegpause."],
+        ["Kalte Getränke", "Iced Matcha, Iced Latte und kalte Becher für den heißen Tag."]
+      ]
+    },
+    en: {
+      title: "Backinsel · Bakery in Berlin Wedding",
+      description: "Backinsel in Berlin Wedding: fresh baked goods, cakes, croissants, sandwiches, coffee and cold drinks at Badstraße 23.",
+      "nav.new": "New",
+      "nav.vitrine": "Display",
+      "nav.assortment": "Selection",
+      "nav.visit": "Visit",
+      "nav.cta": "View selection",
+      "hero.eyebrow": "Bakery · Berlin Wedding",
+      "hero.copy": "Fresh croissants, cakes, sandwiches, coffee and cold drinks from the Backinsel display.",
+      "hero.primary": "Explore selection",
+      "hero.route": "Open route",
+      "hero.panel": "Warm in the morning, savory at noon, sweet in the afternoon: a small everyday stop in Wedding.",
+      "hero.fact.address": "Address",
+      "hero.fact.bakery": "Bakery",
+      "hero.fact.fresh": "Fresh daily",
+      "hero.fact.near": "Nearby",
+      "hero.fact.assortment": "Selection",
+      "hero.fact.changing": "Changes daily",
+      "hero.scroll": "Scroll · Specials & display",
+      "new.kicker": "New on the menu",
+      "new.title": "Specials, fresh in the window.",
+      "new.lead": "Two highlights up front and three fresh cup lines: iced coffee, a matcha bar and warm classics like chai latte, hot chocolate or freshly pressed orange juice.",
+      "new.banner.sweet": "New · Sweet",
+      "new.banner.summer": "New · Summer",
+      "new.group.coffee.small": "01 · Iced coffee",
+      "new.group.coffee.title": "Cold coffee cups",
+      "new.group.coffee.meta": "5 varieties",
+      "new.group.matcha.small": "02 · Iced matcha bar",
+      "new.group.matcha.title": "Cold & fruity matcha",
+      "new.group.matcha.meta": "4 varieties",
+      "new.group.warm.small": "03 · Warm & fresh",
+      "new.group.warm.title": "Hot drinks & juice",
+      "new.group.warm.meta": "4 varieties",
+      "vitrine.kicker": "Fresh in the display",
+      "vitrine.title": "A look into the display.",
+      "vitrine.lead": "Four worlds in one bakery display: sweet pastries, cake slices, savory sandwiches and drinks for the morning, the break and the afternoon.",
+      "stage.0.small": "01 · Sweet",
+      "stage.0.title": "Sweet display",
+      "stage.0.copy": "Cakes, croissants and glazed pastries right in view.",
+      "stage.1.small": "02 · Baked goods",
+      "stage.1.title": "Bread shelf",
+      "stage.1.copy": "Breads, rolls and pretzels from the warm wooden shelf.",
+      "stage.2.small": "03 · Savory",
+      "stage.2.title": "Sandwiches",
+      "stage.2.copy": "For lunch breaks, commutes and quick hunger in Wedding.",
+      "stage.3.small": "04 · Drinks",
+      "stage.3.title": "Cold drinks",
+      "stage.3.copy": "Iced matcha, iced latte and cold cups for a warm day.",
+      "manifest.kicker": "Freshly baked in Wedding",
+      "manifest.title": "First the aroma. Then the first bite.",
+      "manifest.copy1": "At Backinsel, classic bakery craft meets a full display: buttery croissants, juicy cake slices, sandwiches and drinks for every part of the day.",
+      "manifest.copy2": "What comes from the bakery in the morning lands directly behind glass. Fruity, chocolatey or savory, always close to the shop and the neighborhood.",
+      "tag.baked": "Baked goods",
+      "tag.cakes": "Cakes",
+      "tag.sandwiches": "Sandwiches",
+      "tag.drinks": "Drinks",
+      "marquee.vitrine": "Display",
+      "marquee.sweet": "Sweet selection",
+      "marquee.spotlight": "Backinsel spotlight",
+      "catalog.kicker": "From the display",
+      "catalog.title": "Fresh from the display.",
+      "filter.all": "All",
+      "filter.sweet": "Sweet",
+      "filter.savory": "Savory",
+      "filter.bread": "Baked goods",
+      "filter.drinks": "Drinks",
+      "product.sweet.badge": "Display view",
+      "product.sweet.title": "Cakes & pastries",
+      "product.sweet.copy": "A changing selection of cake slices, croissants and glazed pastries directly from the display.",
+      "product.savory.badge": "Noon",
+      "product.savory.copy": "Freshly prepared sandwiches for a quick stop in the morning or around lunchtime.",
+      "product.bread.title": "Bread & rolls",
+      "product.bread.copy": "Golden rolls, crusty breads and pretzels directly from the warm shelf.",
+      "product.brand.badge": "Spotlight",
+      "product.brand.small": "Selection",
+      "product.brand.title": "Sweet, savory, always fresh",
+      "product.brand.copy": "From the first coffee to the afternoon treat, all under one roof.",
+      "product.drinks.title": "Specials & cups",
+      "product.drinks.copy": "Iced latte, matcha bar, chai, hot chocolate and orange juice — see the full choice in the <a href=\"#neu\">new section</a>.",
+      "split.kicker": "From the shop",
+      "split.title": "Warm, local and full of choice.",
+      "split.copy": "Backinsel lives from the look into the display: golden croissants, glossy glazes, fresh bread and savory classics. The choice changes with the day, but the impression stays the same: full, friendly and right on Badstraße.",
+      "proof.1": "Full display",
+      "proof.2": "Fresh mornings",
+      "proof.3": "Right here",
+      "visit.kicker": "Visit",
+      "visit.title": "Badstraße 23.<br>Berlin Wedding.",
+      "visit.copy": "Just a few minutes from U8 Pankstraße. For today's selection, reservations or questions, send a quick message or visit the shop directly.",
+      "visit.hours": "Opening hours",
+      "legal.imprint": "Legal notice",
+      "legal.privacy": "Privacy",
+      "legal.imprint.copy": "Information according to § 5 TMG.",
+      "legal.provider": "Provider",
+      "legal.contact": "Contact",
+      "legal.phone": "Phone",
+      "legal.privacy.copy": "This site does not use cookies and does not use tracking. Technical log data may be processed by the hosting provider when the site is accessed.",
+      "legal.map": "Map",
+      "legal.map.copy": "When the embedded OpenStreetMap map loads, your IP address may be transferred to OpenStreetMap.",
+      "legal.external": "External links",
+      "legal.external.copy": "Links to Instagram, TikTok, WhatsApp and Google Maps open external providers only after a click.",
+      statusOpen: "Open today until",
+      statusClosed: "Closed today",
+      statusOpensToday: "opens today",
+      statusOpensTomorrow: "opens tomorrow",
+      stageData: [
+        ["Sweet display", "Cakes, croissants, glazed pastries and small highlights directly in the display."],
+        ["Bread shelf", "Breads, rolls and pretzels from the warm wooden shelf."],
+        ["Sandwiches", "Savory, fresh and easy for breakfast, lunch or a quick stop."],
+        ["Cold drinks", "Iced matcha, iced latte and cold cups for a warm day."]
+      ]
+    }
+  };
+  const savedLang = localStorage.getItem("backinsel-lang");
+  let activeLang = savedLang || ((navigator.language || "").toLowerCase().startsWith("en") ? "en" : "de");
+  if (!translations[activeLang]) activeLang = "de";
+  const applyLanguage = (lang) => {
+    activeLang = translations[lang] ? lang : "de";
+    const copy = translations[activeLang];
+    document.documentElement.lang = activeLang;
+    document.title = copy.title;
+    document.querySelector("meta[name='description']")?.setAttribute("content", copy.description);
+    document.querySelector("meta[property='og:title']")?.setAttribute("content", copy.title);
+    document.querySelector("meta[property='og:description']")?.setAttribute("content", copy.description);
+    document.querySelectorAll("[data-i18n]").forEach((node) => {
+      const value = copy[node.dataset.i18n];
+      if (value) node.textContent = value;
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach((node) => {
+      const value = copy[node.dataset.i18nHtml];
+      if (value) node.innerHTML = value;
+    });
+    document.querySelectorAll("[data-lang]").forEach((button) => {
+      const isActive = button.dataset.lang === activeLang;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+    localStorage.setItem("backinsel-lang", activeLang);
+    stageData = copy.stageData;
+    if (stageTitle && stageText) setStage(stageIndex);
+    if (typeof updateStatus === "function") updateStatus();
+  };
   const updateChrome = () => {
     const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     const progress = Math.min(1, window.scrollY / max);
@@ -844,12 +1116,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
     }, {passive: true});
   }
 
-  const stageData = [
-    ["Süße Vitrine", "Kuchen, Croissants, glasiertes Gebäck und kleine Highlights direkt in der Auslage."],
-    ["Brotregal", "Brote, Brötchen und Laugengebäck aus dem warmen Holzregal."],
-    ["Belegte Brote", "Herzhaft, frisch und direkt verständlich für Frühstück, Mittag oder Wegpause."],
-    ["Kalte Getränke", "Iced Matcha, Iced Latte und kalte Becher für den heißen Tag."]
-  ];
+  let stageData = translations[activeLang].stageData;
   const stageButtons = [...document.querySelectorAll("[data-stage]")];
   const stageImages = [...document.querySelectorAll("[data-stage-img]")];
   const stageTitle = document.getElementById("stageTitle");
@@ -948,27 +1215,36 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
     revealItems.forEach((item) => item.classList.add("visible"));
   }
 
-  const rows = ["h-so","h-mo","h-di","h-mi","h-do","h-fr","h-sa"];
-  const hours = [[5,18],[4,19],[4,19],[4,19],[4,19],[4,19],[5,18]];
-  const now = new Date();
-  const day = now.getDay();
-  const row = document.getElementById(rows[day]);
-  if (row) row.classList.add("today");
-
-  const [openHour, closeHour] = hours[day];
-  const decimalHour = now.getHours() + now.getMinutes() / 60;
-  const isOpen = decimalHour >= openHour && decimalHour < closeHour;
   const status = document.getElementById("status");
   const statusText = document.getElementById("statusText");
-  if (isOpen) {
-    statusText.textContent = `Heute geöffnet bis ${String(closeHour).padStart(2, "0")}:00`;
-  } else {
-    status.classList.add("closed");
-    const reopens = decimalHour < openHour
-      ? `öffnet heute ${String(openHour).padStart(2, "0")}:00`
-      : `öffnet morgen`;
-    statusText.textContent = `Heute geschlossen · ${reopens}`;
-  }
+  const rows = ["h-so","h-mo","h-di","h-mi","h-do","h-fr","h-sa"];
+  const hours = [[5,18],[4,19],[4,19],[4,19],[4,19],[4,19],[5,18]];
+  const berlinNow = () => new Date(new Date().toLocaleString("en-US", {timeZone: "Europe/Berlin"}));
+  const updateStatus = () => {
+    const now = berlinNow();
+    const day = now.getDay();
+    document.querySelectorAll(".hours-row.today").forEach((item) => item.classList.remove("today"));
+    const row = document.getElementById(rows[day]);
+    if (row) row.classList.add("today");
+    const [openHour, closeHour] = hours[day];
+    const decimalHour = now.getHours() + now.getMinutes() / 60;
+    const isOpen = decimalHour >= openHour && decimalHour < closeHour;
+    const copy = translations[activeLang];
+    status.classList.toggle("closed", !isOpen);
+    if (isOpen) {
+      statusText.textContent = `${copy.statusOpen} ${String(closeHour).padStart(2, "0")}:00`;
+    } else {
+      const reopens = decimalHour < openHour
+        ? `${copy.statusOpensToday} ${String(openHour).padStart(2, "0")}:00`
+        : copy.statusOpensTomorrow;
+      statusText.textContent = `${copy.statusClosed} · ${reopens}`;
+    }
+  };
+  updateStatus();
+  document.querySelectorAll("[data-lang]").forEach((button) => {
+    button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+  });
+  applyLanguage(activeLang);
 
   const socialRail = document.getElementById("socialRail");
   if (socialRail) {
