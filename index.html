@@ -3,26 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#f5efe4">
+<meta name="theme-color" content="#1c1510">
 <meta name="robots" content="index,follow">
 
 <title>Backinsel · Bäckerei in Berlin Wedding</title>
-<meta name="description" content="Backinsel ist eine Bäckerei in Berlin Wedding. Frisches Gebäck, Kaffee und eine ruhige Theke an der Badstraße 23.">
+<meta name="description" content="Backinsel in Berlin Wedding: frische Backwaren, Kuchen, Croissants, belegte Brote, Kaffee und kalte Getränke an der Badstraße 23.">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
 <meta property="og:title" content="Backinsel · Bäckerei in Berlin Wedding">
-<meta property="og:description" content="Eine Bäckerei an der Badstraße 23 in Berlin Wedding.">
-<meta property="og:image" content="secme%20resimler/02-cilekli-croissant.jpg">
+<meta property="og:description" content="Backwaren, Kuchen, Sandwiches und Getränke frisch aus der Backinsel an der Badstraße 23.">
+<meta property="og:image" content="assets/images/backinsel-croissant-display.jpg">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f5efe4'/%3E%3Ctext x='50%25' y='59%25' font-family='Georgia,serif' font-size='22' text-anchor='middle' fill='%234e3426'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="assets/videos/backinsel-hero.mp4" as="video" type="video/mp4">
+<link rel="preload" href="assets/images/backinsel-croissant-display.jpg" as="image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231c1510'/%3E%3Ctext x='50%25' y='61%25' font-family='Georgia,serif' font-size='22' text-anchor='middle' fill='%23f6d58c'%3EB%3C/text%3E%3C/svg%3E">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Bakery",
   "name": "Backinsel",
-  "image": "secme%20resimler/02-cilekli-croissant.jpg",
+  "image": "assets/images/backinsel-croissant-display.jpg",
   "telephone": "+49 172 169 21 38",
   "email": "back_insel@web.de",
   "address": {
@@ -45,287 +47,542 @@
 *,*::before,*::after{box-sizing:border-box}
 *{margin:0}
 :root{
-  --bg:#f5efe4;
-  --bg-soft:#ebe0d0;
-  --ink:#211912;
-  --text:#3f3329;
-  --muted:#7b6c5f;
-  --line:rgba(33,25,18,.16);
-  --clay:#8d5c43;
-  --green:#536657;
-  --cream:#fffaf2;
-  --shadow:0 24px 80px rgba(33,25,18,.12);
+  --night:#0b0806;
+  --espresso:#15100c;
+  --walnut:#d49a62;
+  --copper:#d37d49;
+  --honey:#f7d891;
+  --pistachio:#a8be86;
+  --cherry:#d24a43;
+  --cream:#fff6e4;
+  --paper:#120d0a;
+  --mist:#2a2119;
+  --ink:#fff6e4;
+  --muted:#c9b7a0;
+  --line:rgba(255,246,228,.15);
+  --white-line:rgba(255,247,232,.18);
+  --shadow:0 34px 110px rgba(0,0,0,.36);
   --serif:Georgia,"Times New Roman",serif;
   --sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
-html{scroll-behavior:smooth;background:var(--bg);color:var(--ink);-webkit-text-size-adjust:100%}
-body{font-family:var(--sans);font-size:16px;line-height:1.55;background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;background:var(--night);color:var(--ink);-webkit-text-size-adjust:100%}
+body{
+  min-width:320px;font-family:var(--sans);font-size:16px;line-height:1.5;
+  background:var(--paper);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.12;mix-blend-mode:screen;
+  background-image:
+    linear-gradient(90deg,rgba(255,246,228,.055) 1px,transparent 1px),
+    linear-gradient(180deg,rgba(255,246,228,.045) 1px,transparent 1px);
+  background-size:42px 42px;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:59;pointer-events:none;opacity:.72;
+  background:radial-gradient(520px circle at var(--mx,50%) var(--my,28%),rgba(247,216,145,.13),transparent 56%);
+  transition:opacity .25s ease;
+}
 img,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-button{font:inherit}
-::selection{background:var(--ink);color:var(--bg)}
+button{font:inherit;color:inherit}
+::selection{background:var(--night);color:var(--cream)}
 
-.skip{position:absolute;left:-999px;top:12px;z-index:100;background:var(--ink);color:var(--cream);padding:.75rem 1rem}
+.skip{position:absolute;left:-999px;top:12px;z-index:100;background:var(--night);color:var(--cream);padding:.75rem 1rem}
 .skip:focus{left:12px}
+.scrollbar{position:fixed;z-index:70;top:0;left:0;height:3px;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--honey),var(--cherry),var(--pistachio))}
 
 .nav{
-  position:fixed;z-index:40;top:0;left:0;right:0;
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  padding:18px clamp(18px,4vw,54px);
-  color:var(--cream);
-  transition:background .25s ease,color .25s ease,border-color .25s ease,padding .25s ease;
-  border-bottom:1px solid transparent;
+  position:fixed;z-index:50;top:0;left:0;right:0;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;
+  padding:18px clamp(16px,3.8vw,54px);color:var(--cream);
+  border-bottom:1px solid transparent;transition:background .25s ease,color .25s ease,border-color .25s ease,padding .25s ease;
 }
-.nav.scrolled{background:rgba(245,239,228,.94);backdrop-filter:blur(16px);color:var(--ink);border-color:var(--line);padding-block:12px}
-.brand{font-family:var(--serif);font-size:1.45rem;letter-spacing:.01em;line-height:1}
-.nav-links{display:flex;align-items:center;gap:1.4rem;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:currentColor}
-.nav-links a{opacity:.82}
-.nav-links a:hover{opacity:1}
-.nav-place{font-size:.82rem;letter-spacing:.03em;opacity:.9}
+.nav.scrolled{background:rgba(28,21,16,.82);backdrop-filter:blur(20px);border-color:var(--white-line);padding-block:12px}
+.brand{font-family:var(--serif);font-size:clamp(1.4rem,2.2vw,2rem);letter-spacing:-.04em;line-height:1}
+.brand span{font-style:italic;color:var(--honey)}
+.nav-links{display:flex;align-items:center;justify-content:center;gap:clamp(.9rem,2.4vw,2.1rem);font-size:.72rem;font-weight:760;letter-spacing:.18em;text-transform:uppercase}
+.nav-links a{opacity:.72;transition:opacity .2s ease,color .2s ease}
+.nav-links a:hover,.nav-links a:focus-visible{opacity:1;color:var(--honey)}
+.nav-cta{justify-self:end;display:inline-flex;align-items:center;gap:.55rem;border:1px solid rgba(255,247,232,.28);border-radius:999px;padding:.65rem .9rem;font-size:.75rem;font-weight:760;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,247,232,.08)}
+.nav-cta:hover{background:var(--cream);color:var(--night)}
 
-.hero{
-  min-height:86svh;position:relative;display:grid;align-items:end;overflow:hidden;background:#22170f;color:var(--cream);
-}
-.hero-media{position:absolute;inset:0}
-.hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.98) contrast(.96);transform:scale(1.01)}
+.hero{position:relative;min-height:100svh;overflow:hidden;background:var(--night);color:var(--cream);display:grid;align-items:end}
+.hero-media{position:absolute;inset:0;overflow:hidden}
+.hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.08);transform:translateY(calc(var(--scroll,0) * .12px)) scale(1.08);will-change:transform}
+.hero-media img{display:none}
 .hero::after{
   content:"";position:absolute;inset:0;
   background:
-    linear-gradient(90deg,rgba(20,13,8,.7),rgba(20,13,8,.28) 54%,rgba(20,13,8,.18)),
-    linear-gradient(180deg,rgba(20,13,8,.28),rgba(20,13,8,.08) 38%,rgba(20,13,8,.6));
+    radial-gradient(circle at 72% 32%,rgba(246,213,140,.17),transparent 30%),
+    linear-gradient(90deg,rgba(28,21,16,.94),rgba(28,21,16,.6) 46%,rgba(28,21,16,.18)),
+    linear-gradient(180deg,rgba(28,21,16,.35),rgba(28,21,16,.1) 48%,rgba(28,21,16,.8));
 }
 .hero-inner{
-  position:relative;z-index:1;width:min(1260px,100%);
-  margin:0 auto;padding:130px clamp(20px,4vw,54px) clamp(40px,6vh,70px);
-  display:block;
+  position:relative;z-index:1;width:min(1440px,100%);margin:0 auto;
+  padding:132px clamp(18px,4vw,58px) clamp(34px,5vw,74px);
+  display:grid;grid-template-columns:minmax(0,1.02fr) minmax(280px,.58fr);gap:clamp(26px,5vw,82px);align-items:end;
 }
-.hero-content{max-width:660px}
-.hero h1{font-family:var(--serif);font-size:clamp(3.8rem,8.6vw,8rem);font-weight:400;line-height:.9;letter-spacing:-.045em;color:var(--cream)}
-.hero h1 span{font-style:italic;color:#e8c995}
-.hero-copy{max-width:520px;margin-top:1.2rem}
-.eyebrow{display:block;margin-bottom:.9rem;font-size:.72rem;font-weight:650;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,250,242,.72)}
-.hero-copy p{font-size:clamp(1.04rem,1.45vw,1.24rem);line-height:1.5;color:rgba(255,250,242,.86)}
-.hero-meta{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1.6rem;padding-top:1rem;border-top:1px solid rgba(255,250,242,.2);font-size:.84rem;color:rgba(255,250,242,.78)}
-.hero-meta strong{color:var(--cream);font-weight:650}
-.hero-actions{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:1.45rem}
-.hero-actions a{font-family:var(--serif);font-size:1.05rem;color:var(--cream);border-bottom:1px solid rgba(255,250,242,.65);padding-bottom:3px}
-.hero-actions a:hover{color:#e8c995;border-color:#e8c995}
+.eyebrow{display:inline-flex;align-items:center;gap:.65rem;margin-bottom:1rem;font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,247,232,.74)}
+.eyebrow::before{content:"";width:38px;height:1px;background:var(--honey)}
+.hero h1{
+  max-width:900px;font-family:var(--serif);font-weight:400;line-height:.82;
+  font-size:clamp(4.45rem,13vw,13.4rem);letter-spacing:-.075em;color:var(--cream);
+}
+.hero h1 span{display:block;font-style:italic;color:var(--honey);transform:translateX(.08em)}
+.hero-copy{max-width:690px;margin-top:1.35rem;display:grid;gap:1rem}
+.hero-copy p{font-size:clamp(1.08rem,1.7vw,1.42rem);line-height:1.5;color:rgba(255,247,232,.84)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:1.6rem}
+.button{
+  display:inline-flex;align-items:center;justify-content:center;min-height:46px;border:1px solid var(--white-line);
+  border-radius:999px;padding:.84rem 1.05rem;font-size:.78rem;font-weight:820;letter-spacing:.13em;text-transform:uppercase;
+  background:rgba(255,247,232,.1);color:var(--cream);transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease;
+}
+.button:hover,.button:focus-visible{transform:translateY(-2px);background:var(--cream);border-color:var(--cream);color:var(--night)}
+.button.alt{background:transparent;color:var(--cream)}
+.hero-panel{
+  border:1px solid var(--white-line);background:rgba(28,21,16,.42);backdrop-filter:blur(18px);
+  padding:clamp(18px,2.4vw,28px);box-shadow:0 28px 80px rgba(0,0,0,.18);
+  transform:translateY(calc(var(--scroll,0) * -.035px));
+  will-change:transform;
+}
+.hero-panel p{font-family:var(--serif);font-size:clamp(1.25rem,2vw,1.9rem);line-height:1.14;color:var(--cream);letter-spacing:-.03em}
+.hero-facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:1.35rem;background:var(--white-line)}
+.hero-facts span{background:rgba(28,21,16,.78);padding:1rem}
+.hero-facts b{display:block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--honey);margin-bottom:.3rem}
+.hero-facts small{font-size:.92rem;color:rgba(255,247,232,.8)}
+.scroll-cue{position:absolute;z-index:2;right:clamp(18px,4vw,58px);bottom:24px;writing-mode:vertical-rl;font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,247,232,.58)}
 
-.section{padding:clamp(68px,9vw,132px) clamp(20px,4vw,54px)}
-.wrap{width:min(1180px,100%);margin:0 auto}
-.intro{background:var(--bg);border-bottom:1px solid var(--line)}
-.intro-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(34px,7vw,96px);align-items:start}
-.section-kicker{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin-bottom:1rem}
-.intro h2,.visit h2{font-family:var(--serif);font-size:clamp(2.2rem,5.5vw,5.2rem);line-height:.98;font-weight:400;letter-spacing:-.035em;color:var(--ink)}
-.intro p{font-size:clamp(1.08rem,1.8vw,1.42rem);line-height:1.55;color:var(--text);max-width:780px}
-.intro p+p{margin-top:1rem}
+.section{position:relative;padding:clamp(74px,10vw,154px) clamp(18px,4vw,58px)}
+.wrap{width:min(1240px,100%);margin:0 auto}
+.kicker{font-size:.72rem;font-weight:860;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:1rem}
+.display{
+  font-family:var(--serif);font-weight:400;line-height:.93;letter-spacing:-.055em;color:var(--ink);
+  font-size:clamp(2.7rem,6.7vw,7.2rem);
+}
+.lead{font-size:clamp(1.08rem,1.75vw,1.42rem);line-height:1.55;color:var(--muted)}
 
-.wide-photo{height:clamp(420px,76svh,860px);overflow:hidden;background:var(--bg-soft)}
-.wide-photo img{width:100%;height:100%;object-fit:cover}
+.manifest{background:radial-gradient(circle at 88% 16%,rgba(247,216,145,.1),transparent 32%),linear-gradient(180deg,#130d09,#0f0b08);border-bottom:1px solid var(--line)}
+.manifest-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(36px,8vw,104px);align-items:start}
+.manifest-copy{display:grid;gap:1rem}
+.manifest-signature{margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.55rem}
+.tag{display:inline-flex;align-items:center;border:1px solid rgba(247,216,145,.28);border-radius:999px;padding:.58rem .72rem;font-size:.72rem;font-weight:820;letter-spacing:.12em;text-transform:uppercase;color:var(--honey);background:rgba(255,246,228,.05)}
 
-.rhythm{background:var(--cream)}
-.rhythm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.moment{display:grid;gap:.85rem}
-.moment figure{aspect-ratio:4/5;overflow:hidden;background:var(--bg-soft)}
-.moment img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
-.moment:hover img{transform:scale(1.035)}
-.moment h3{font-family:var(--serif);font-size:1.55rem;font-weight:400;color:var(--ink);letter-spacing:-.015em}
-.moment p{color:var(--muted);font-size:.96rem;max-width:30ch}
+.showcase{background:var(--night);color:var(--cream);overflow:hidden}
+.showcase::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(183,53,54,.14),transparent 34%,rgba(157,183,133,.12) 72%,transparent);pointer-events:none}
+.showcase-head{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,.72fr);gap:clamp(30px,6vw,82px);align-items:end;margin-bottom:clamp(28px,5vw,58px)}
+.showcase .display{color:var(--cream)}
+.showcase .lead{color:rgba(255,247,232,.68)}
+.stage{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.42fr);gap:clamp(20px,3vw,34px);align-items:stretch}
+.stage-main{position:relative;min-height:clamp(420px,65vw,760px);overflow:hidden;border:1px solid var(--white-line);background:#0f0b08;isolation:isolate}
+.stage-main img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .6s ease,transform 1.2s ease}
+.stage-main img.active{opacity:1;transform:scale(1)}
+.stage-main::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.54))}
+.stage-main::before{
+  content:"";position:absolute;inset:-20%;z-index:2;pointer-events:none;
+  background:linear-gradient(115deg,transparent 36%,rgba(255,246,228,.22) 48%,transparent 60%);
+  transform:translateX(-72%) rotate(2deg);animation:glassSweep 8s ease-in-out infinite;
+}
+.stage-label{position:absolute;z-index:2;left:clamp(16px,3vw,34px);right:clamp(16px,3vw,34px);bottom:clamp(16px,3vw,34px);display:flex;align-items:end;justify-content:space-between;gap:1rem;color:var(--cream)}
+.stage-label strong{font-family:var(--serif);font-size:clamp(2rem,4vw,4.4rem);font-weight:400;letter-spacing:-.05em;line-height:.95}
+.stage-label span{max-width:280px;color:rgba(255,247,232,.72);font-size:.95rem}
+.stage-rail{display:grid;gap:10px}
+.stage-card{
+  cursor:pointer;text-align:left;border:1px solid var(--white-line);background:rgba(255,247,232,.06);
+  padding:clamp(16px,2vw,24px);min-height:132px;transition:background .2s ease,border-color .2s ease,transform .2s ease;
+}
+.stage-card:hover,.stage-card:focus-visible,.stage-card.active{background:rgba(255,247,232,.14);border-color:rgba(246,213,140,.62);transform:translateX(-4px)}
+.stage-card span{display:block;font-size:.68rem;font-weight:860;letter-spacing:.19em;text-transform:uppercase;color:var(--honey);margin-bottom:.7rem}
+.stage-card strong{display:block;font-family:var(--serif);font-size:clamp(1.35rem,2.2vw,2.2rem);font-weight:400;line-height:1;letter-spacing:-.035em;color:var(--cream)}
+.stage-card p{margin-top:.65rem;color:rgba(255,247,232,.62);font-size:.92rem;line-height:1.45}
 
-.gallery{background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.gallery-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;margin-bottom:22px}
-.gallery h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.4rem);font-weight:400;line-height:1;color:var(--ink);letter-spacing:-.03em}
-.gallery p{max-width:360px;color:var(--muted)}
-.photo-grid{display:grid;grid-template-columns:1.25fr .85fr 1fr;grid-auto-rows:220px;gap:14px}
-.photo-grid figure{overflow:hidden;background:var(--bg-soft)}
-.photo-grid img{width:100%;height:100%;object-fit:cover}
-.photo-grid .tall{grid-row:span 2}
-.photo-grid .wide{grid-column:span 2}
+.marquee{padding:0;background:var(--night);border-top:1px solid var(--white-line);border-bottom:1px solid var(--white-line);overflow:hidden;color:var(--cream)}
+.marquee-track{display:flex;width:max-content;gap:0;animation:slide 34s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-item{display:grid;grid-template-columns:120px auto;align-items:center;gap:1rem;min-width:390px;padding:14px 26px;border-right:1px solid var(--white-line)}
+.marquee-item img{width:120px;height:82px;object-fit:cover}
+.marquee-item b{display:block;font-family:var(--serif);font-size:1.35rem;font-weight:400;letter-spacing:-.03em}
+.marquee-item span{font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--honey)}
+@keyframes slide{to{transform:translateX(-50%)}}
 
-.note{background:#2a221b;color:var(--cream)}
-.note .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.44fr);gap:clamp(32px,7vw,92px);align-items:center}
-.note blockquote{font-family:var(--serif);font-size:clamp(2rem,5vw,5rem);line-height:1.02;font-weight:400;letter-spacing:-.04em;color:var(--cream)}
-.note p{color:rgba(255,250,242,.68);font-size:1rem;max-width:360px}
+.catalog{background:linear-gradient(180deg,#100b08,#17100c);border-bottom:1px solid var(--line)}
+.catalog-head{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,.75fr);gap:clamp(28px,6vw,80px);align-items:end;margin-bottom:clamp(24px,4vw,42px)}
+.filterbar{display:flex;flex-wrap:wrap;gap:.55rem;justify-content:flex-end}
+.filterbar button{
+  border:1px solid rgba(255,246,228,.18);border-radius:999px;background:rgba(255,246,228,.04);color:var(--cream);
+  min-height:42px;padding:.7rem .85rem;font-size:.72rem;font-weight:840;letter-spacing:.12em;text-transform:uppercase;
+  transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+}
+.filterbar button:hover,.filterbar button:focus-visible,.filterbar button.active{background:var(--honey);border-color:var(--honey);color:var(--night);transform:translateY(-1px)}
+.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.product{
+  position:relative;display:grid;grid-template-rows:auto 1fr;min-height:100%;overflow:hidden;background:#1a120d;
+  border:1px solid rgba(255,246,228,.12);transition:transform .25s ease,box-shadow .25s ease,opacity .25s ease;
+  transform-style:preserve-3d;
+}
+.product::before{
+  content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;
+  background:radial-gradient(280px circle at var(--shine-x,50%) var(--shine-y,30%),rgba(247,216,145,.18),transparent 62%);
+  transition:opacity .25s ease;
+}
+.product:hover{transform:translateY(-7px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));box-shadow:var(--shadow)}
+.product:hover::before{opacity:1}
+.product[hidden]{display:none}
+.product figure{aspect-ratio:4/3;overflow:hidden;background:var(--mist)}
+.product img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .75s ease}
+.product:hover img{transform:scale(1.045)}
+.product-body{padding:1.05rem;display:grid;gap:.55rem}
+.product small{font-size:.66rem;font-weight:880;letter-spacing:.16em;text-transform:uppercase;color:var(--honey)}
+.product h3{font-family:var(--serif);font-size:clamp(1.45rem,2vw,2.1rem);font-weight:400;line-height:1;letter-spacing:-.04em;color:var(--ink)}
+.product p{color:var(--muted);font-size:.93rem}
+.product-badge{position:absolute;top:12px;right:12px;border:1px solid rgba(255,247,232,.36);background:rgba(28,21,16,.66);color:var(--cream);backdrop-filter:blur(12px);border-radius:999px;padding:.45rem .58rem;font-size:.64rem;font-weight:860;letter-spacing:.12em;text-transform:uppercase}
+.product--contain figure{background:#0f0b08}
+.product--contain img{object-fit:contain;padding:10px;transform:scale(1)}
+.product--contain:hover img{transform:scale(1.025)}
+.product--drink figure{background:#f3ead8}
+.product--drink img{object-fit:contain;padding:8px;transform:scale(1)}
+.product--drink:hover img{transform:scale(1.025)}
+.product--vitrine img{object-position:50% 42%}
+.product--top img{object-position:50% 28%}
+.product--bread img{object-position:50% 52%}
 
-.visit{background:var(--bg)}
-.visit-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.72fr);gap:clamp(36px,7vw,90px);align-items:start}
-.visit-copy p{margin-top:1.2rem;color:var(--muted);font-size:1.02rem;max-width:620px}
-.map{margin-top:2rem;aspect-ratio:16/10;overflow:hidden;background:var(--bg-soft);border:1px solid var(--line)}
-.map iframe{width:100%;height:100%;border:0;filter:saturate(.8) contrast(.96)}
-.links{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.4rem}
-.text-link{display:inline-flex;align-items:center;gap:.45rem;border-bottom:1px solid currentColor;padding-bottom:3px;color:var(--ink);font-family:var(--serif);font-size:1.05rem}
-.text-link:hover{color:var(--clay)}
+.split{background:radial-gradient(circle at 14% 18%,rgba(211,125,73,.15),transparent 34%),linear-gradient(180deg,#17100c,#0b0806);overflow:hidden}
+.split-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.02fr);gap:clamp(34px,8vw,102px);align-items:center}
+.split-media{position:relative;min-height:clamp(430px,56vw,720px)}
+.split-media figure{position:absolute;overflow:hidden;background:var(--mist);box-shadow:var(--shadow);will-change:transform}
+.split-media figure:first-child{left:0;top:0;width:68%;height:72%}
+.split-media figure:nth-child(2){right:0;bottom:0;width:52%;height:48%;border:10px solid #17100c}
+.split-media img{width:100%;height:100%;object-fit:cover}
+.split-copy{display:grid;gap:1.15rem}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:1.2rem;background:rgba(255,246,228,.14)}
+.proof{background:rgba(255,246,228,.055);padding:1.1rem}
+.proof b{display:block;font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--honey);line-height:1}
+.proof span{display:block;margin-top:.35rem;font-size:.72rem;font-weight:820;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
 
-.panel{background:var(--cream);border:1px solid var(--line);padding:clamp(24px,3vw,38px);box-shadow:var(--shadow)}
-.status{display:inline-flex;align-items:center;gap:.55rem;font-size:.72rem;font-weight:750;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:1.1rem}
-.status .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
-.status.closed{color:var(--muted)}
-.status.closed .dot{background:var(--muted)}
-.panel h3{font-family:var(--serif);font-size:1.75rem;font-weight:400;color:var(--ink);margin-bottom:1.1rem}
-.hours{display:grid;gap:.2rem}
-.hours-row{display:grid;grid-template-columns:44px 1fr auto;gap:.8rem;align-items:baseline;padding:.72rem 0;border-top:1px solid rgba(33,25,18,.08)}
-.hours-row .day{font-weight:650;color:var(--ink)}
-.hours-row .line{height:1px;background:rgba(33,25,18,.08)}
-.hours-row .time{font-variant-numeric:tabular-nums;color:var(--muted)}
-.hours-row.today .day,.hours-row.today .time{color:var(--clay)}
-.contact{margin-top:1.3rem;padding-top:1rem;border-top:1px solid var(--line);display:grid;gap:.6rem}
-.contact a{color:var(--ink)}
-.contact a:hover{color:var(--clay)}
+.visit{background:var(--night);color:var(--cream)}
+.visit .display{color:var(--cream)}
+.visit .lead{color:rgba(255,247,232,.66)}
+.visit-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(310px,.46fr);gap:clamp(28px,6vw,82px);align-items:start}
+.map{margin-top:2rem;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--white-line);background:#0e0a08}
+.map iframe{width:100%;height:100%;border:0;filter:saturate(.78) contrast(.95) invert(.92) hue-rotate(170deg)}
+.visit-links{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.2rem}
+.visit-card{border:1px solid var(--white-line);background:rgba(255,247,232,.06);padding:clamp(20px,3vw,34px)}
+.status{display:inline-flex;align-items:center;gap:.55rem;font-size:.7rem;font-weight:850;letter-spacing:.18em;text-transform:uppercase;color:var(--pistachio);margin-bottom:1rem}
+.status .dot{width:8px;height:8px;border-radius:50%;background:var(--pistachio);box-shadow:0 0 0 6px rgba(157,183,133,.12)}
+.status.closed{color:rgba(255,247,232,.58)}
+.status.closed .dot{background:rgba(255,247,232,.45);box-shadow:none}
+.visit-card h3{font-family:var(--serif);font-size:2rem;font-weight:400;letter-spacing:-.04em;margin-bottom:1rem}
+.hours{display:grid}
+.hours-row{display:grid;grid-template-columns:42px 1fr auto;gap:.7rem;align-items:baseline;padding:.72rem 0;border-top:1px solid rgba(255,247,232,.1)}
+.hours-row .day{font-weight:800;color:var(--cream)}
+.hours-row .line{height:1px;background:rgba(255,247,232,.1)}
+.hours-row .time{font-variant-numeric:tabular-nums;color:rgba(255,247,232,.64)}
+.hours-row.today .day,.hours-row.today .time{color:var(--honey)}
+.contact{margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--white-line);display:grid;gap:.62rem}
+.contact a{display:inline-flex;align-items:center;gap:.55rem;width:max-content;max-width:100%;color:rgba(255,246,228,.84)}
+.contact a:hover{color:var(--honey)}
 
-footer{background:#211912;color:rgba(255,250,242,.62);padding:48px clamp(20px,4vw,54px)}
-.foot{width:min(1180px,100%);margin:0 auto;display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
-.foot-brand{font-family:var(--serif);font-size:clamp(3rem,10vw,8rem);line-height:.85;letter-spacing:-.05em;color:var(--cream)}
-.foot-brand span{font-style:italic;color:#e8c995}
-.foot-links{display:flex;gap:1rem;flex-wrap:wrap;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase}
-.legal{background:#211912;color:rgba(255,250,242,.7);padding:0 clamp(20px,4vw,54px) 54px}
-.legal details{width:min(880px,100%);margin:0 auto;border-top:1px solid rgba(255,250,242,.16)}
-.legal summary{cursor:pointer;list-style:none;padding:1.1rem 0;color:var(--cream);font-family:var(--serif);font-size:1.05rem}
+footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4vw,58px)}
+.foot{width:min(1240px,100%);margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.5rem;align-items:end}
+.foot-brand{font-family:var(--serif);font-size:clamp(4.2rem,13vw,14rem);line-height:.78;letter-spacing:-.08em;color:var(--cream)}
+.foot-brand span{display:block;font-style:italic;color:var(--honey);transform:translateX(.18em)}
+.foot-links{display:grid;gap:.7rem;text-align:right;font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.foot-links a:hover{color:var(--honey)}
+
+.legal{background:#110d0a;color:rgba(255,247,232,.68);padding:0 clamp(18px,4vw,58px) 54px}
+.legal details{width:min(900px,100%);margin:0 auto;border-top:1px solid rgba(255,247,232,.14)}
+.legal summary{cursor:pointer;list-style:none;padding:1.08rem 0;color:var(--cream);font-family:var(--serif);font-size:1.1rem}
 .legal summary::-webkit-details-marker{display:none}
-.legal-body{padding:0 0 1.2rem;font-size:.9rem;line-height:1.7}
+.legal-body{padding:0 0 1.25rem;font-size:.9rem;line-height:1.72}
 .legal-body h3{font-size:.95rem;color:var(--cream);margin:1rem 0 .25rem}
-.legal-body a{color:#e8c995}
+.legal-body a{color:var(--honey)}
 
-@media(max-width:860px){
-  .nav-links{display:none}
-  .nav-place{font-size:.76rem}
-  .hero{min-height:82svh}
-  .hero-inner,.intro-grid,.note .wrap,.visit-grid{grid-template-columns:1fr}
-  .hero-copy{max-width:620px}
-  .rhythm-grid{grid-template-columns:1fr}
-  .moment figure{aspect-ratio:16/11}
-  .gallery-head{display:block}
-  .gallery p{margin-top:.85rem}
-  .photo-grid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}
-  .photo-grid .wide{grid-column:span 2}
+[data-reveal]{opacity:0;transform:translateY(34px);filter:blur(10px);transition:opacity .85s ease,transform .85s ease,filter .85s ease}
+[data-reveal].visible{opacity:1;transform:translateY(0);filter:blur(0)}
+@keyframes glassSweep{
+  0%,42%{transform:translateX(-78%) rotate(2deg);opacity:0}
+  52%{opacity:.62}
+  72%,100%{transform:translateX(78%) rotate(2deg);opacity:0}
 }
-@media(max-width:560px){
-  .hero h1{font-size:clamp(4rem,22vw,7rem)}
-  .hero-meta{display:grid;gap:.5rem}
-  .photo-grid{display:block}
-  .photo-grid figure{height:250px;margin-bottom:10px}
-  .panel{box-shadow:none}
-  .hours-row{grid-template-columns:38px 1fr auto;font-size:.92rem}
+
+@media(max-width:1020px){
+  .nav{grid-template-columns:1fr auto}
+  .nav-links{display:none}
+  .hero-inner,.manifest-grid,.showcase-head,.stage,.catalog-head,.split-grid,.visit-grid{grid-template-columns:1fr}
+  .hero-panel{max-width:620px}
+  .catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .filterbar{justify-content:flex-start}
+  .stage-rail{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stage-card:hover,.stage-card:focus-visible,.stage-card.active{transform:translateY(-2px)}
+}
+@media(max-width:680px){
+  body::before{background-size:28px 28px}
+  .nav{padding:13px 14px}
+  .nav-cta{padding:.58rem .7rem;font-size:.66rem;letter-spacing:.08em}
+  .hero{min-height:94svh}
+  .hero-inner{padding:112px 16px 42px;gap:1.3rem}
+  .hero h1{font-size:clamp(4.25rem,24vw,7.3rem)}
+  .hero-facts{grid-template-columns:1fr}
+  .scroll-cue{display:none}
+  .section{padding:68px 16px}
+  .stage-main{min-height:430px}
+  .stage-label{display:grid}
+  .stage-label span{max-width:none}
+  .stage-rail{grid-template-columns:1fr}
+  .catalog-grid{grid-template-columns:1fr}
+  .marquee-item{min-width:310px;grid-template-columns:92px auto;padding:12px 18px}
+  .marquee-item img{width:92px;height:68px}
+  .split-media{min-height:440px}
+  .split-media figure:first-child{width:78%;height:66%}
+  .split-media figure:nth-child(2){width:64%;height:43%;border-width:8px}
+  .proof-grid{grid-template-columns:1fr}
+  .map{aspect-ratio:4/5}
+  .foot{grid-template-columns:1fr}
+  .foot-links{text-align:left}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
+  body::after{display:none}
 }
 </style>
 </head>
 <body>
+<div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
 <a class="skip" href="#main">Zum Inhalt</a>
 
 <nav class="nav" id="nav" aria-label="Hauptnavigation">
-  <a class="brand" href="#top">Backinsel</a>
+  <a class="brand" href="#top">Back<span>insel</span></a>
   <div class="nav-links">
-    <a href="#backstube">Backstube</a>
-    <a href="#bilder">Bilder</a>
+    <a href="#theke">Theke</a>
+    <a href="#sortiment">Sortiment</a>
     <a href="#besuch">Besuch</a>
   </div>
-  <a class="nav-place" href="#besuch">Badstraße 23 · Berlin Wedding</a>
+  <a class="nav-cta" href="#sortiment">Sortiment ansehen</a>
 </nav>
 
 <main id="main">
-  <section class="hero" id="top" aria-label="Backinsel">
+  <section class="hero" id="top" aria-label="Backinsel Bäckerei">
     <div class="hero-media" aria-hidden="true">
-      <img src="secme%20resimler/02-cilekli-croissant.jpg" alt="">
+      <video autoplay muted loop playsinline poster="assets/videos/backinsel-hero-poster.jpg">
+        <source src="assets/videos/backinsel-hero.mp4" type="video/mp4">
+      </video>
+      <img src="assets/images/backinsel-croissant-display.jpg" alt="">
     </div>
     <div class="hero-inner">
-      <div class="hero-content">
-        <span class="eyebrow">Bäckerei in Berlin Wedding</span>
+      <div>
+        <span class="eyebrow">Bäckerei · Berlin Wedding</span>
         <h1>Back<span>insel</span></h1>
         <div class="hero-copy">
-          <p>Frisches Gebäck, Kaffee und Kuchen an der Badstraße 23.</p>
+          <p>Frische Croissants, Kuchen, belegte Brote, Kaffee und kalte Getränke aus der Vitrine der Backinsel.</p>
         </div>
         <div class="hero-actions">
-          <a href="#besuch">Öffnungszeiten ansehen</a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer">Route öffnen ↗</a>
-        </div>
-        <div class="hero-meta" aria-label="Kurzinfos">
-          <span><strong>Adresse</strong> Badstraße 23</span>
-          <span><strong>U-Bahn</strong> U9 Pankstraße</span>
+          <a class="button" href="#sortiment">Sortiment entdecken</a>
+          <a class="button alt" href="https://www.google.com/maps/search/?api=1&query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer">Route öffnen</a>
         </div>
       </div>
+      <aside class="hero-panel" aria-label="Backinsel Kurzinfo">
+        <p>Morgens warm, mittags herzhaft, nachmittags süß: ein Laden für den kleinen Genussmoment in Wedding.</p>
+        <div class="hero-facts">
+          <span><b>Adresse</b><small>Badstraße 23</small></span>
+          <span><b>Backstube</b><small>Täglich frisch</small></span>
+          <span><b>Nähe</b><small>U9 Pankstraße</small></span>
+          <span><b>Sortiment</b><small>Täglich wechselnd</small></span>
+        </div>
+      </aside>
     </div>
+    <div class="scroll-cue" aria-hidden="true">Scroll zur Theke</div>
   </section>
 
-  <section class="section intro" id="backstube">
-    <div class="wrap intro-grid">
-      <div>
-        <div class="section-kicker">Backstube</div>
-        <h2>Jeden Morgen frisch, ohne großes Theater.</h2>
+  <section class="section manifest" aria-label="Backinsel Frische">
+    <div class="wrap manifest-grid">
+      <div data-reveal>
+        <div class="kicker">Frisch gebacken in Wedding</div>
+        <h2 class="display">Erst der Duft. Dann der erste Biss.</h2>
       </div>
-      <div>
-        <p>Backinsel zeigt den Laden, die Backwaren und den Moment, wenn die Vitrine morgens noch warm wirkt.</p>
-        <p>Gebäck, Kuchen, Croissants und Kaffee wechseln mit dem Tag. Was da ist, sieht man am besten direkt vor Ort.</p>
+      <div class="manifest-copy" data-reveal>
+        <p class="lead">In der Backinsel trifft klassisches Bäckereihandwerk auf eine volle Vitrine: buttrige Croissants, saftige Kuchenstücke, belegte Brote und Getränke für den Weg durch den Tag.</p>
+        <p class="lead">Was morgens aus der Backstube kommt, landet direkt hinter Glas. Mal fruchtig, mal schokoladig, mal herzhaft, immer nah am Laden und an der Nachbarschaft.</p>
+        <div class="manifest-signature" aria-label="Sortimentbereiche">
+          <span class="tag">Backwaren</span>
+          <span class="tag">Kuchen</span>
+          <span class="tag">Croissants</span>
+          <span class="tag">Sandwiches</span>
+          <span class="tag">Drinks</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <figure class="wide-photo" aria-label="Auslage">
-    <img src="secme%20resimler/03-croissant-tepsileri.jpg" alt="Frische Croissants und Gebäck in der Auslage">
-  </figure>
-
-  <section class="section rhythm">
-    <div class="wrap rhythm-grid">
-      <article class="moment">
-        <figure><img src="secme%20resimler/06-kasekuchen.jpg" alt="Käsekuchen" loading="lazy"></figure>
-        <h3>Kuchen</h3>
-        <p>Stücke und ganze Formen, schlicht serviert und frisch angeschnitten.</p>
-      </article>
-      <article class="moment">
-        <figure><img src="secme%20resimler/05-cikolatali-pastry.jpg" alt="Schokoladen-Pastry" loading="lazy"></figure>
-        <h3>Gebäck</h3>
-        <p>Blättrig, gefüllt, glasiert oder einfach aus dem Ofen.</p>
-      </article>
-      <article class="moment">
-        <figure><img src="secme%20resimler/10-hero-cicekli.png" alt="Kaffee und Gebäck am Tisch" loading="lazy"></figure>
-        <h3>Kaffee</h3>
-        <p>Für den kurzen Halt, die Pause zwischendurch oder den Weg weiter durch Wedding.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section gallery" id="bilder">
+  <section class="section showcase" id="theke" aria-label="Thekenreise">
     <div class="wrap">
-      <div class="gallery-head">
-        <h2>Blick in die Vitrine.</h2>
-        <p>Eine kleine Auswahl aus dem Laden. Schlicht, echt und nah an dem, was morgens in der Vitrine liegt.</p>
+      <div class="showcase-head">
+        <div data-reveal>
+          <div class="kicker">Frisch in der Auslage</div>
+          <h2 class="display">Ein Blick in die Vitrine.</h2>
+        </div>
+        <p class="lead" data-reveal>Vier Sortimentswelten, ein Blick in die Vitrine: süßes Gebäck, Kuchenstücke, herzhafte Brote und Getränke für den Morgen, die Pause und den Nachmittag.</p>
       </div>
-      <div class="photo-grid">
-        <figure class="tall"><img src="secme%20resimler/07-karottenkuchen.jpg" alt="Karottenkuchen" loading="lazy"></figure>
-        <figure><img src="secme%20resimler/08-tiramisu.jpg" alt="Tiramisu" loading="lazy"></figure>
-        <figure class="tall"><img src="secme%20resimler/03-croissant-tepsileri.jpg" alt="Gebäckauslage" loading="lazy"></figure>
-        <figure class="wide"><img src="secme%20resimler/02-cilekli-croissant.jpg" alt="Croissant mit Erdbeeren" loading="lazy"></figure>
-        <figure><img src="secme%20resimler/10-hero-cicekli.png" alt="Kaffee und Gebäck" loading="lazy"></figure>
+
+      <div class="stage" data-reveal>
+        <div class="stage-main" aria-live="polite">
+          <img class="active" src="assets/images/backinsel-croissant-display.jpg" alt="Gefüllte Croissants in der Backinsel Vitrine" data-stage-img="0">
+          <img src="assets/images/backinsel-tiramisu-cake.jpg" alt="Tiramisu und Kuchenstücke" data-stage-img="1">
+          <img src="assets/images/backinsel-display-sandwiches.jpg" alt="Belegte Brote und Sandwiches in der Theke" data-stage-img="2">
+          <img src="assets/images/backinsel-magazine-drinks.jpg" alt="Kaffee und kalte Getränke" data-stage-img="3">
+          <div class="stage-label">
+            <strong id="stageTitle">Croissant-Vitrine</strong>
+            <span id="stageText">Gefüllt, glasiert, fruchtig oder schokoladig: die süße Hauptbühne der Backinsel.</span>
+          </div>
+        </div>
+        <div class="stage-rail" role="tablist" aria-label="Thekenbereiche">
+          <button class="stage-card active" type="button" data-stage="0" role="tab" aria-selected="true">
+            <span>01 · Süß</span>
+            <strong>Croissant-Vitrine</strong>
+            <p>Gefüllte Croissants, Plunder und kleine Highlights für den direkten Blickfang.</p>
+          </button>
+          <button class="stage-card" type="button" data-stage="1" role="tab" aria-selected="false">
+            <span>02 · Kuchen</span>
+            <strong>Stücke & Formen</strong>
+            <p>Tiramisu, Käsekuchen, Karotte und wechselnde Klassiker aus der Auslage.</p>
+          </button>
+          <button class="stage-card" type="button" data-stage="2" role="tab" aria-selected="false">
+            <span>03 · Herzhaft</span>
+            <strong>Belegte Brote</strong>
+            <p>Für Mittagspause, Arbeitsweg und schnellen Hunger in Wedding.</p>
+          </button>
+          <button class="stage-card" type="button" data-stage="3" role="tab" aria-selected="false">
+            <span>04 · Getränke</span>
+            <strong>Kaffee & Cold Cups</strong>
+            <p>Espresso, Matcha, Iced Drinks und alles, was zur Vitrine passt.</p>
+          </button>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section note" aria-label="Stimmung">
+  <section class="marquee" aria-label="Sortiment-Momente">
+    <div class="marquee-track" aria-hidden="true">
+      <div class="marquee-item"><img src="assets/images/backinsel-special-croissants.jpg" alt=""><div><span>Vitrine</span><b>Special Croissants</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-cheesecake.jpg" alt=""><div><span>Kuchen</span><b>Käsekuchen</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-bread-regal-clean.jpg" alt=""><div><span>Backwaren</span><b>Brote & Brötchen</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-iced-vanilla-latte-product.jpg" alt=""><div><span>Drinks</span><b>Iced Vanilla Latte</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-pistachio-donut.jpg" alt=""><div><span>Süß</span><b>Pistazien-Donut</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-display-sandwiches.jpg" alt=""><div><span>Mittag</span><b>Belegte Brote</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-special-croissants.jpg" alt=""><div><span>Vitrine</span><b>Special Croissants</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-cheesecake.jpg" alt=""><div><span>Kuchen</span><b>Käsekuchen</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-bread-regal-clean.jpg" alt=""><div><span>Backwaren</span><b>Brote & Brötchen</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-iced-vanilla-latte-product.jpg" alt=""><div><span>Drinks</span><b>Iced Vanilla Latte</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-pistachio-donut.jpg" alt=""><div><span>Süß</span><b>Pistazien-Donut</b></div></div>
+      <div class="marquee-item"><img src="assets/images/backinsel-display-sandwiches.jpg" alt=""><div><span>Mittag</span><b>Belegte Brote</b></div></div>
+    </div>
+  </section>
+
+  <section class="section catalog" id="sortiment" aria-label="Backinsel Sortiment">
     <div class="wrap">
-      <blockquote>Ein Laden für morgens, mittags und den kleinen Hunger dazwischen.</blockquote>
-      <p>Was heute frisch ist, sieht man am besten direkt an der Theke oder erfährt es mit einer kurzen Nachricht.</p>
+      <div class="catalog-head">
+        <div data-reveal>
+          <div class="kicker">Aus der Vitrine</div>
+          <h2 class="display">Was heute Lust auf Backinsel macht.</h2>
+        </div>
+        <div class="filterbar" data-reveal role="toolbar" aria-label="Sortiment filtern">
+          <button class="active" type="button" data-filter="all">Alles</button>
+          <button type="button" data-filter="sweet">Süß</button>
+          <button type="button" data-filter="cake">Kuchen</button>
+          <button type="button" data-filter="savory">Herzhaft</button>
+          <button type="button" data-filter="drinks">Drinks</button>
+        </div>
+      </div>
+
+      <div class="catalog-grid" data-reveal>
+        <article class="product product--vitrine" data-category="sweet">
+          <figure><img src="assets/images/backinsel-special-croissants.jpg" alt="Gefüllte Croissants" loading="lazy"></figure>
+          <span class="product-badge">Thekenblick</span>
+          <div class="product-body"><small>Süße Vitrine</small><h3>Special Croissants</h3><p>Frucht, Creme, Schokolade und saisonale Dekoration auf knusprigem Croissant.</p></div>
+        </article>
+        <article class="product product--contain" data-category="cake">
+          <figure><img src="assets/images/backinsel-tiramisu-cake.jpg" alt="Tiramisu Kuchen" loading="lazy"></figure>
+          <span class="product-badge">Wechselnd</span>
+          <div class="product-body"><small>Kuchen</small><h3>Tiramisu & Cremestücke</h3><p>Gekühlte Stücke mit Creme, Biskuit und feinem Finish für die süße Pause.</p></div>
+        </article>
+        <article class="product product--contain" data-category="cake">
+          <figure><img src="assets/images/backinsel-cheesecake.jpg" alt="Käsekuchen aus der Backinsel" loading="lazy"></figure>
+          <span class="product-badge">Cremig</span>
+          <div class="product-body"><small>Kuchen</small><h3>Käsekuchen</h3><p>Sanfte Creme, goldene Oberfläche und ein Klassiker für den Nachmittagsmoment.</p></div>
+        </article>
+        <article class="product product--contain" data-category="cake">
+          <figure><img src="assets/images/backinsel-carrot-cake.jpg" alt="Karottenkuchen" loading="lazy"></figure>
+          <span class="product-badge">Klassiker</span>
+          <div class="product-body"><small>Kuchen</small><h3>Karottenkuchen</h3><p>Saftig, würzig und mit feiner Creme als ruhiger Gegenpol zur süßen Croissant-Bühne.</p></div>
+        </article>
+        <article class="product product--top" data-category="cake">
+          <figure><img src="assets/images/backinsel-tartelette-eclair-clean.jpg" alt="Tartelettes und Eclairs in der Vitrine" loading="lazy"></figure>
+          <span class="product-badge">Fein</span>
+          <div class="product-body"><small>Kuchen</small><h3>Tartelettes & Eclairs</h3><p>Kleine Cremestücke mit Frucht, Schokolade und glänzendem Finish aus der Auslage.</p></div>
+        </article>
+        <article class="product product--vitrine" data-category="savory">
+          <figure><img src="assets/images/backinsel-display-sandwiches.jpg" alt="Belegte Brote" loading="lazy"></figure>
+          <span class="product-badge">Mittag</span>
+          <div class="product-body"><small>Herzhaft</small><h3>Belegte Brote</h3><p>Frisch belegte Auswahl für den schnellen Halt am Morgen oder zur Mittagszeit.</p></div>
+        </article>
+        <article class="product product--drink" data-category="drinks">
+          <figure><img src="assets/images/backinsel-matcha-latte-product.jpg" alt="Matcha Latte" loading="lazy"></figure>
+          <span class="product-badge">Kalt & warm</span>
+          <div class="product-body"><small>Drinks</small><h3>Matcha & Kaffee</h3><p>Warme Klassiker und moderne Becher für den Weg durch Wedding.</p></div>
+        </article>
+        <article class="product product--contain" data-category="sweet">
+          <figure><img src="assets/images/backinsel-pistachio-donut.jpg" alt="Pistazien Donut" loading="lazy"></figure>
+          <span class="product-badge">Saisonal</span>
+          <div class="product-body"><small>Süß</small><h3>Pistazien-Donut</h3><p>Weich, süß und cremig mit Pistaziennote für den kleinen Moment zwischendurch.</p></div>
+        </article>
+        <article class="product product--bread" data-category="savory">
+          <figure><img src="assets/images/backinsel-bread-regal-clean.jpg" alt="Brote und Brötchen im Backinsel Regal" loading="lazy"></figure>
+          <span class="product-badge">Backwaren</span>
+          <div class="product-body"><small>Backwaren</small><h3>Brote & Brötchen</h3><p>Goldene Brötchen, Brote und Laugengebäck direkt aus dem Regal.</p></div>
+        </article>
+        <article class="product product--drink" data-category="drinks">
+          <figure><img src="assets/images/backinsel-iced-vanilla-latte-product.jpg" alt="Iced Vanilla Latte" loading="lazy"></figure>
+          <span class="product-badge">To go</span>
+          <div class="product-body"><small>Drinks</small><h3>Iced Vanilla Latte</h3><p>Kalter Kaffee, cremig serviert und perfekt für den Weg durch Wedding.</p></div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section class="section visit" id="besuch">
+  <section class="section split" aria-label="Backinsel Atmosphäre">
+    <div class="wrap split-grid">
+      <div class="split-media" data-reveal>
+        <figure><img src="assets/images/backinsel-interior-hero.jpg" alt="Innenansicht der Backinsel Theke" loading="lazy"></figure>
+        <figure><img src="assets/images/backinsel-pastry-boxes.jpg" alt="Gebäckboxen in der Backinsel" loading="lazy"></figure>
+      </div>
+      <div class="split-copy" data-reveal>
+        <div class="kicker">Aus dem Laden</div>
+        <h2 class="display">Warm, nah und voller Auswahl.</h2>
+        <p class="lead">Backinsel lebt vom Blick in die Vitrine: goldene Croissants, glänzende Glasuren, frisches Brot und belegte Klassiker. Die Auswahl wechselt mit dem Tag, aber der Eindruck bleibt gleich: reich gefüllt, freundlich und direkt an der Badstraße.</p>
+        <div class="proof-grid" aria-label="Backinsel Merkmale">
+          <div class="proof"><b>01</b><span>Volle Vitrine</span></div>
+          <div class="proof"><b>02</b><span>Morgens frisch</span></div>
+          <div class="proof"><b>03</b><span>Direkt vor Ort</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section visit" id="besuch" aria-label="Besuch und Kontakt">
     <div class="wrap visit-grid">
-      <div class="visit-copy">
-        <div class="section-kicker">Besuch</div>
-        <h2>Badstraße 23.<br>Berlin Wedding.</h2>
-        <p>Nur ein paar Minuten von der U9 Pankstraße. Die Seite zeigt den Weg und gibt einen ruhigen Eindruck vom Laden.</p>
+      <div data-reveal>
+        <div class="kicker">Besuch</div>
+        <h2 class="display">Badstraße 23.<br>Berlin Wedding.</h2>
+        <p class="lead">Nur ein paar Minuten von der U9 Pankstraße entfernt. Für die aktuelle Auswahl, Reservierungen oder Fragen genügt eine kurze Nachricht oder der direkte Besuch im Laden.</p>
         <div class="map" aria-label="Karte zu Badstraße 23">
           <iframe title="Standort Backinsel" loading="lazy" referrerpolicy="no-referrer" src="https://www.openstreetmap.org/export/embed.html?bbox=13.379%2C52.546%2C13.391%2C52.553&amp;layer=mapnik&amp;marker=52.5497%2C13.3849"></iframe>
         </div>
-        <div class="links">
-          <a class="text-link" href="https://www.google.com/maps/search/?api=1&query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer">Route öffnen ↗</a>
-          <a class="text-link" href="mailto:back_insel@web.de">E-Mail</a>
-          <a class="text-link" href="https://wa.me/491721692138" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <div class="visit-links">
+          <a class="button" href="https://www.google.com/maps/search/?api=1&query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer">Route öffnen</a>
+          <a class="button alt" href="https://wa.me/491721692138" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
       </div>
 
-      <aside class="panel" aria-label="Öffnungszeiten und Kontakt">
+      <aside class="visit-card" data-reveal aria-label="Öffnungszeiten und Kontakt">
         <div class="status" id="status"><span class="dot"></span><span id="statusText">Heute geöffnet</span></div>
         <h3>Öffnungszeiten</h3>
         <div class="hours">
@@ -340,8 +597,8 @@ footer{background:#211912;color:rgba(255,250,242,.62);padding:48px clamp(20px,4v
         <div class="contact">
           <a href="tel:+491721692138">+49 172 169 21 38</a>
           <a href="mailto:back_insel@web.de">back_insel@web.de</a>
-          <a href="https://www.instagram.com/backinsel2026" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://www.tiktok.com/@backinsel2026" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="https://www.instagram.com/backinsel2026" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📸</span> Instagram</a>
+          <a href="https://www.tiktok.com/@backinsel2026" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">🎵</span> TikTok</a>
         </div>
       </aside>
     </div>
@@ -352,7 +609,7 @@ footer{background:#211912;color:rgba(255,250,242,.62);padding:48px clamp(20px,4v
   <div class="foot">
     <div class="foot-brand">Back<span>insel</span></div>
     <div class="foot-links">
-      <span>Berlin Wedding</span>
+      <span>Bäckerei · Berlin Wedding</span>
       <a href="#impressum">Impressum</a>
       <a href="#datenschutz">Datenschutz</a>
     </div>
@@ -386,10 +643,125 @@ footer{background:#211912;color:rgba(255,250,242,.62);padding:48px clamp(20px,4v
 
 <script>
 (() => {
+  const root = document.documentElement;
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const nav = document.getElementById("nav");
-  const updateNav = () => nav.classList.toggle("scrolled", window.scrollY > 12);
-  window.addEventListener("scroll", updateNav, {passive: true});
-  updateNav();
+  const bar = document.getElementById("scrollbar");
+  const splitFigures = [...document.querySelectorAll(".split-media figure")];
+  const updateChrome = () => {
+    const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const progress = Math.min(1, window.scrollY / max);
+    root.style.setProperty("--scroll", String(window.scrollY));
+    nav.classList.toggle("scrolled", window.scrollY > 12);
+    bar.style.transform = `scaleX(${progress})`;
+    if (!reduceMotion) {
+      splitFigures.forEach((figure, index) => {
+        const rect = figure.getBoundingClientRect();
+        const offset = (rect.top - window.innerHeight * .5) * (index ? -.035 : .028);
+        figure.style.transform = `translate3d(0, ${offset}px, 0)`;
+      });
+    }
+  };
+  window.addEventListener("scroll", updateChrome, {passive: true});
+  updateChrome();
+
+  if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+    window.addEventListener("pointermove", (event) => {
+      root.style.setProperty("--mx", `${event.clientX}px`);
+      root.style.setProperty("--my", `${event.clientY}px`);
+    }, {passive: true});
+  }
+
+  const stageData = [
+    ["Croissant-Vitrine", "Gefüllt, glasiert, fruchtig oder schokoladig: die süße Hauptbühne der Backinsel."],
+    ["Stücke & Formen", "Kuchenklassiker und Cremestücke als ruhiger, hochwertiger Teil der Auslage."],
+    ["Belegte Brote", "Herzhaft, frisch und direkt verständlich für Frühstück, Mittag oder Wegpause."],
+    ["Kaffee & Cold Cups", "Warme und kalte Getränke als moderner Begleiter zur Vitrine."]
+  ];
+  const stageButtons = [...document.querySelectorAll("[data-stage]")];
+  const stageImages = [...document.querySelectorAll("[data-stage-img]")];
+  const stageTitle = document.getElementById("stageTitle");
+  const stageText = document.getElementById("stageText");
+  let stageIndex = 0;
+  let stageTimer;
+  const setStage = (index) => {
+    stageIndex = index;
+    stageImages.forEach((img, i) => img.classList.toggle("active", i === index));
+    stageButtons.forEach((button, i) => {
+      button.classList.toggle("active", i === index);
+      button.setAttribute("aria-selected", String(i === index));
+    });
+    stageTitle.textContent = stageData[index][0];
+    stageText.textContent = stageData[index][1];
+  };
+  stageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setStage(Number(button.dataset.stage));
+      restartStage();
+    });
+  });
+  const stopStage = () => window.clearInterval(stageTimer);
+  const startStage = () => {
+    stopStage();
+    if (reduceMotion) return;
+    stageTimer = window.setInterval(() => {
+      setStage((stageIndex + 1) % stageData.length);
+    }, 5200);
+  };
+  const restartStage = () => {
+    stopStage();
+    startStage();
+  };
+  const stage = document.querySelector(".stage");
+  if (stage) {
+    stage.addEventListener("mouseenter", stopStage);
+    stage.addEventListener("mouseleave", startStage);
+  }
+  startStage();
+
+  const filterButtons = [...document.querySelectorAll("[data-filter]")];
+  const products = [...document.querySelectorAll("[data-category]")];
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+      filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+      products.forEach((product) => {
+        product.hidden = filter !== "all" && product.dataset.category !== filter;
+      });
+    });
+  });
+  if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+    products.forEach((product) => {
+      product.addEventListener("pointermove", (event) => {
+        const rect = product.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        product.style.setProperty("--ry", `${(x - .5) * 7}deg`);
+        product.style.setProperty("--rx", `${(.5 - y) * 7}deg`);
+        product.style.setProperty("--shine-x", `${x * 100}%`);
+        product.style.setProperty("--shine-y", `${y * 100}%`);
+      });
+      product.addEventListener("pointerleave", () => {
+        product.style.setProperty("--ry", "0deg");
+        product.style.setProperty("--rx", "0deg");
+      });
+    });
+  }
+
+  const revealItems = [...document.querySelectorAll("[data-reveal]")];
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.14});
+    revealItems.forEach((item) => observer.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add("visible"));
+  }
 
   const rows = ["h-so","h-mo","h-di","h-mi","h-do","h-fr","h-sa"];
   const hours = [[5,18],[4,19],[4,19],[4,19],[4,19],[4,19],[5,18]];
