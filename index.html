@@ -336,6 +336,18 @@ section[id]{scroll-margin-top:96px}
 .proof b{display:block;font-family:var(--serif);font-size:2rem;font-weight:400;color:var(--honey);line-height:1}
 .proof span{display:block;margin-top:.35rem;font-size:.72rem;font-weight:820;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
 
+.reviews{background:linear-gradient(180deg,#0b0806,#120d0a);border-top:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--cream)}
+.reviews .display{color:var(--cream)}
+.reviews .lead{color:rgba(255,247,232,.68)}
+.reviews-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(310px,.5fr);gap:clamp(28px,6vw,82px);align-items:center}
+.reviews-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.35rem}
+.reviews-card{border:1px solid var(--white-line);background:rgba(255,247,232,.06);padding:clamp(20px,3vw,34px);box-shadow:var(--shadow)}
+.reviews-source{display:inline-flex;align-items:center;gap:.65rem;margin-bottom:1.1rem;font-size:.72rem;font-weight:860;letter-spacing:.16em;text-transform:uppercase;color:var(--honey)}
+.reviews-source::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--honey);box-shadow:0 0 0 7px rgba(247,216,145,.12)}
+.reviews-card strong{display:block;font-family:var(--serif);font-size:clamp(2rem,4vw,4.2rem);font-weight:400;line-height:.95;letter-spacing:-.05em;color:var(--cream)}
+.reviews-card p{margin-top:1rem;color:rgba(255,247,232,.68)}
+.reviews-note{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,247,232,.12);font-size:.86rem;color:rgba(255,247,232,.55)}
+
 .visit{background:var(--night);color:var(--cream)}
 .visit .display{color:var(--cream)}
 .visit .lead{color:rgba(255,247,232,.66)}
@@ -422,7 +434,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 @media(max-width:1020px){
   .nav{grid-template-columns:1fr auto}
   .nav-links{display:none}
-  .hero-inner,.manifest-grid,.showcase-head,.stage,.catalog-head,.split-grid,.visit-grid{grid-template-columns:1fr}
+  .hero-inner,.manifest-grid,.showcase-head,.stage,.catalog-head,.split-grid,.reviews-grid,.visit-grid{grid-template-columns:1fr}
   .hero-panel{max-width:620px}
   .catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .filterbar{justify-content:flex-start}
@@ -773,6 +785,26 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
     </div>
   </section>
 
+  <section class="section reviews" id="bewertungen" aria-label="Google Bewertungen" data-aria-i18n="aria.reviews">
+    <div class="wrap reviews-grid">
+      <div data-reveal>
+        <div class="kicker" data-i18n="reviews.kicker">Google Bewertungen</div>
+        <h2 class="display" data-i18n="reviews.title">Aktuelle Stimmen direkt bei Google.</h2>
+        <p class="lead" data-i18n="reviews.copy">Die neuesten Rezensionen liegen im Google-Profil von Backinsel. Dort können Gäste Bewertungen lesen, den Weg planen oder selbst eine Bewertung schreiben.</p>
+        <div class="reviews-actions">
+          <a class="button" href="https://www.google.com/search?q=Backinsel+B%C3%A4ckerei+Rezensionen" target="_blank" rel="noopener noreferrer" data-i18n="reviews.google">Google Bewertungen ansehen</a>
+          <a class="button alt" href="https://www.google.com/search?q=Backinsel+B%C3%A4ckerei+Rezension+schreiben" target="_blank" rel="noopener noreferrer" data-i18n="reviews.write">Bewertung schreiben</a>
+        </div>
+      </div>
+      <aside class="reviews-card" data-reveal>
+        <div class="reviews-source" data-i18n="reviews.source">Google Profil</div>
+        <strong data-i18n="reviews.card.title">Direkt zu den neuesten Rezensionen.</strong>
+        <p data-i18n="reviews.card.copy">Die Bewertung öffnet sich bei Google in einem neuen Tab, damit Sterne, Fotos und neue Kommentare immer aktuell bleiben.</p>
+        <div class="reviews-note" data-i18n="reviews.note">Nach dem Besuch können Gäste dort auch ihre eigene Erfahrung teilen.</div>
+      </aside>
+    </div>
+  </section>
+
   <section class="section visit" id="besuch" aria-label="Besuch und Kontakt" data-aria-i18n="aria.visit">
     <div class="wrap visit-grid">
       <div data-reveal>
@@ -784,6 +816,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
         </div>
         <div class="visit-links">
           <a class="button" href="https://www.google.com/maps/search/?api=1&amp;query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer" data-i18n="hero.route">Route öffnen</a>
+          <a class="button alt" href="https://www.google.com/search?q=Backinsel+B%C3%A4ckerei+Rezensionen" target="_blank" rel="noopener noreferrer" data-i18n="reviews.google">Google Bewertungen ansehen</a>
           <a class="button alt" href="https://wa.me/491626413496" target="_blank" rel="noopener noreferrer">
             <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.4 18.6 6.5 15A7.6 7.6 0 1 1 9 17.4z"></path><path d="M9.7 8.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4-.1.6l-.4.5c.5.9 1.2 1.6 2.1 2.1l.5-.4c.2-.2.4-.2.6-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.4.7-.6.4-1.6.4-2.7 0-1.5-.5-3-1.8-4-3.2-1-1.5-1.4-2.9-1.1-4.1z"></path></svg>
             WhatsApp
@@ -970,6 +1003,15 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       "proof.1": "Volle Vitrine",
       "proof.2": "Morgens frisch",
       "proof.3": "Direkt vor Ort",
+      "reviews.kicker": "Google Bewertungen",
+      "reviews.title": "Aktuelle Stimmen direkt bei Google.",
+      "reviews.copy": "Die neuesten Rezensionen liegen im Google-Profil von Backinsel. Dort können Gäste Bewertungen lesen, den Weg planen oder selbst eine Bewertung schreiben.",
+      "reviews.google": "Google Bewertungen ansehen",
+      "reviews.write": "Bewertung schreiben",
+      "reviews.source": "Google Profil",
+      "reviews.card.title": "Direkt zu den neuesten Rezensionen.",
+      "reviews.card.copy": "Die Bewertung öffnet sich bei Google in einem neuen Tab, damit Sterne, Fotos und neue Kommentare immer aktuell bleiben.",
+      "reviews.note": "Nach dem Besuch können Gäste dort auch ihre eigene Erfahrung teilen.",
       "visit.kicker": "Besuch",
       "visit.title": "Badstraße 23.<br>Berlin Wedding.",
       "visit.copy": "Nur ein paar Minuten von der U8 Pankstraße entfernt. Für die aktuelle Auswahl, Reservierungen oder Fragen genügt eine kurze Nachricht oder der direkte Besuch im Laden.",
@@ -991,6 +1033,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       "aria.neu": "Neu auf der Karte",
       "aria.vitrine": "Vitrine der Backinsel",
       "aria.sortiment": "Backinsel Sortiment",
+      "aria.reviews": "Google Bewertungen",
       "aria.visit": "Besuch und Kontakt",
       "aria.social": "Backinsel auf Social Media",
       "aria.totop": "Nach oben scrollen",
@@ -1091,6 +1134,15 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       "proof.1": "Full display",
       "proof.2": "Fresh mornings",
       "proof.3": "Right here",
+      "reviews.kicker": "Google reviews",
+      "reviews.title": "Current voices directly on Google.",
+      "reviews.copy": "The latest reviews live on Backinsel's Google profile. Guests can read reviews there, plan a route or write their own review.",
+      "reviews.google": "View Google reviews",
+      "reviews.write": "Write a review",
+      "reviews.source": "Google profile",
+      "reviews.card.title": "Go straight to the latest reviews.",
+      "reviews.card.copy": "The review profile opens on Google in a new tab, so ratings, photos and new comments stay current.",
+      "reviews.note": "After visiting, guests can share their own experience there as well.",
       "visit.kicker": "Visit",
       "visit.title": "Badstraße 23.<br>Berlin Wedding.",
       "visit.copy": "Just a few minutes from U8 Pankstraße. For today's selection, reservations or questions, send a quick message or visit the shop directly.",
@@ -1112,6 +1164,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       "aria.neu": "New on the menu",
       "aria.vitrine": "Backinsel display",
       "aria.sortiment": "Backinsel selection",
+      "aria.reviews": "Google reviews",
       "aria.visit": "Visit and contact",
       "aria.social": "Backinsel on social media",
       "aria.totop": "Scroll to top",
