@@ -118,7 +118,7 @@ button{font:inherit;color:inherit}
 }
 .nav.scrolled{background:rgba(28,21,16,.82);backdrop-filter:blur(20px);border-color:var(--white-line);padding-block:12px}
 .brand{display:inline-flex;align-items:center;gap:.68rem;font-family:var(--serif);font-size:clamp(1.55rem,2.35vw,2.2rem);letter-spacing:-.045em;line-height:1}
-.brand span{font-style:italic;color:var(--honey)}
+.brand-text span{font-style:italic;color:var(--honey)}
 .brand-photo{width:66px;height:46px;border-radius:999px;overflow:hidden;border:1px solid rgba(247,216,145,.55);background:rgba(255,246,228,.08);box-shadow:0 10px 28px rgba(0,0,0,.26);flex:0 0 auto}
 .brand-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 48%;transform:scale(1.9);filter:saturate(1.04) contrast(1.04)}
 .nav-links{display:flex;align-items:center;justify-content:center;gap:clamp(.9rem,2.4vw,2.1rem);font-size:.72rem;font-weight:760;letter-spacing:.18em;text-transform:uppercase}
@@ -469,6 +469,29 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   .neu-banner{aspect-ratio:4/3}
   .product figure{aspect-ratio:1/1}
 }
+@media(max-width:520px){
+  .brand{font-size:1.25rem;gap:.55rem}
+  .brand-photo{width:46px;height:32px}
+  .brand-text{display:none}
+  .nav-cta{padding:.5rem .7rem;font-size:.6rem;letter-spacing:.06em}
+  .lang-switch button{min-width:28px;height:26px;font-size:.58rem;padding:0 .35rem}
+  .hero-inner{padding:104px 14px 36px}
+  .hero h1{font-size:clamp(3.6rem,22vw,6rem)}
+  .neu-grid{gap:8px}
+  .neu-card-tag b{font-size:.78rem}
+  .neu-card-tag span{font-size:.55rem;padding:.22rem .4rem}
+  .product figure{aspect-ratio:4/3}
+  .filterbar button{font-size:.66rem;padding:.55rem .75rem}
+  .visit-card{padding:18px}
+  .hours-row{grid-template-columns:36px 1fr auto;gap:.5rem;padding:.55rem 0}
+  .display{font-size:clamp(2.2rem,8vw,3.4rem)}
+  .lead{font-size:clamp(.98rem,3.5vw,1.15rem)}
+}
+@media(max-width:380px){
+  .neu-banner-tag b{font-size:1.1rem}
+  .neu-banner-arrow{width:38px;height:38px}
+  .button{padding:.7rem .85rem;font-size:.7rem}
+}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -483,7 +506,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 <nav class="nav" id="nav" aria-label="Hauptnavigation" data-aria-i18n="aria.nav">
   <a class="brand" href="#top" aria-label="Backinsel — zur Startseite" data-aria-i18n="aria.brand">
     <span class="brand-photo" aria-hidden="true"><img src="assets/images/backinsel-logo-scene.jpg" alt=""></span>
-    Back<span>insel</span>
+    <span class="brand-text">Back<span>insel</span></span>
   </a>
   <div class="nav-links">
     <a href="#neu" data-i18n="nav.new">Neu</a>
