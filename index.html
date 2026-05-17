@@ -110,6 +110,8 @@ button{font:inherit;color:inherit}
 .hero-media{position:absolute;inset:0;overflow:hidden}
 .hero-media video,.hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.08);transform:translateY(calc(var(--scroll,0) * .12px)) scale(1.08);will-change:transform}
 .hero-media img{display:none}
+.hero-video-failed .hero-media video{display:none}
+.hero-video-failed .hero-media img{display:block}
 .hero::after{
   content:"";position:absolute;inset:0;
   background:
@@ -414,7 +416,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
         </div>
         <div class="hero-actions">
           <a class="button" href="#sortiment">Sortiment entdecken</a>
-          <a class="button alt" href="https://www.google.com/maps/search/?api=1&query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer">Route öffnen</a>
+          <a class="button alt" href="https://www.google.com/maps/search/?api=1&amp;query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer">Route öffnen</a>
         </div>
       </div>
       <aside class="hero-panel" aria-label="Backinsel Kurzinfo">
@@ -489,7 +491,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       </div>
 
       <div class="stage" data-reveal>
-        <div class="stage-main" aria-live="polite">
+        <div class="stage-main" id="stagePanel" role="tabpanel" aria-live="polite">
           <img class="active" src="assets/images/backinsel-croissant-display.jpg" alt="Gefüllte Croissants in der Backinsel Vitrine" data-stage-img="0">
           <img src="assets/images/backinsel-tiramisu-cake.jpg" alt="Tiramisu und Kuchenstücke" data-stage-img="1">
           <img src="assets/images/backinsel-display-sandwiches.jpg" alt="Belegte Brote und Sandwiches in der Theke" data-stage-img="2">
@@ -500,22 +502,22 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
           </div>
         </div>
         <div class="stage-rail" role="tablist" aria-label="Thekenbereiche">
-          <button class="stage-card active" type="button" data-stage="0" role="tab" aria-selected="true">
+          <button class="stage-card active" type="button" data-stage="0" role="tab" aria-selected="true" aria-controls="stagePanel">
             <span>01 · Süß</span>
             <strong>Croissant-Vitrine</strong>
             <p>Gefüllte Croissants, Plunder und kleine Highlights für den direkten Blickfang.</p>
           </button>
-          <button class="stage-card" type="button" data-stage="1" role="tab" aria-selected="false">
+          <button class="stage-card" type="button" data-stage="1" role="tab" aria-selected="false" aria-controls="stagePanel">
             <span>02 · Kuchen</span>
             <strong>Stücke & Formen</strong>
             <p>Tiramisu, Käsekuchen, Karotte und wechselnde Klassiker aus der Auslage.</p>
           </button>
-          <button class="stage-card" type="button" data-stage="2" role="tab" aria-selected="false">
+          <button class="stage-card" type="button" data-stage="2" role="tab" aria-selected="false" aria-controls="stagePanel">
             <span>03 · Herzhaft</span>
             <strong>Belegte Brote</strong>
             <p>Für Mittagspause, Arbeitsweg und schnellen Hunger in Wedding.</p>
           </button>
-          <button class="stage-card" type="button" data-stage="3" role="tab" aria-selected="false">
+          <button class="stage-card" type="button" data-stage="3" role="tab" aria-selected="false" aria-controls="stagePanel">
             <span>04 · Getränke</span>
             <strong>Kaffee & Cold Cups</strong>
             <p>Espresso, Matcha, Iced Drinks und alles, was zur Vitrine passt.</p>
@@ -570,11 +572,11 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
           <h2 class="display">Was heute Lust auf Backinsel macht.</h2>
         </div>
         <div class="filterbar" data-reveal role="toolbar" aria-label="Sortiment filtern">
-          <button class="active" type="button" data-filter="all">Alles</button>
-          <button type="button" data-filter="sweet">Süß</button>
-          <button type="button" data-filter="cake">Kuchen</button>
-          <button type="button" data-filter="savory">Herzhaft</button>
-          <button type="button" data-filter="drinks">Drinks</button>
+          <button class="active" type="button" data-filter="all" aria-pressed="true">Alles</button>
+          <button type="button" data-filter="sweet" aria-pressed="false">Süß</button>
+          <button type="button" data-filter="cake" aria-pressed="false">Kuchen</button>
+          <button type="button" data-filter="savory" aria-pressed="false">Herzhaft</button>
+          <button type="button" data-filter="drinks" aria-pressed="false">Drinks</button>
         </div>
       </div>
 
@@ -662,7 +664,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
           <iframe title="Standort Backinsel" loading="lazy" referrerpolicy="no-referrer" src="https://www.openstreetmap.org/export/embed.html?bbox=13.379%2C52.546%2C13.391%2C52.553&amp;layer=mapnik&amp;marker=52.5497%2C13.3849"></iframe>
         </div>
         <div class="visit-links">
-          <a class="button" href="https://www.google.com/maps/search/?api=1&query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer">Route öffnen</a>
+          <a class="button" href="https://www.google.com/maps/search/?api=1&amp;query=Badstra%C3%9Fe%2023%2C%2013357%20Berlin" target="_blank" rel="noopener noreferrer">Route öffnen</a>
           <a class="button alt" href="https://wa.me/491721692138" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
       </div>
@@ -732,7 +734,13 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const nav = document.getElementById("nav");
   const bar = document.getElementById("scrollbar");
+  const heroVideo = document.querySelector(".hero-media video");
   const splitFigures = [...document.querySelectorAll(".split-media figure")];
+  if (heroVideo) {
+    heroVideo.addEventListener("error", () => {
+      document.body.classList.add("hero-video-failed");
+    });
+  }
   const updateChrome = () => {
     const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     const progress = Math.min(1, window.scrollY / max);
@@ -784,6 +792,15 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       setStage(Number(button.dataset.stage));
       restartStage();
     });
+    button.addEventListener("keydown", (event) => {
+      const direction = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : event.key === "ArrowLeft" || event.key === "ArrowUp" ? -1 : 0;
+      if (!direction) return;
+      event.preventDefault();
+      const nextIndex = (stageIndex + direction + stageButtons.length) % stageButtons.length;
+      stageButtons[nextIndex].focus();
+      setStage(nextIndex);
+      restartStage();
+    });
   });
   const stopStage = () => window.clearInterval(stageTimer);
   const startStage = () => {
@@ -809,7 +826,11 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const filter = button.dataset.filter;
-      filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+      filterButtons.forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle("active", isActive);
+        item.setAttribute("aria-pressed", String(isActive));
+      });
       products.forEach((product) => {
         product.hidden = filter !== "all" && product.dataset.category !== filter;
       });
