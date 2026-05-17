@@ -15,7 +15,7 @@
 <meta property="og:description" content="Backwaren, Kuchen, Sandwiches und Getränke frisch aus der Backinsel an der Badstraße 23.">
 <meta property="og:image" content="assets/images/backinsel-logo-scene.jpg">
 
-<link rel="preload" href="assets/images/backinsel-logo-scene.jpg" as="image">
+<link rel="preload" href="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" as="image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231c1510'/%3E%3Ctext x='50%25' y='61%25' font-family='Georgia,serif' font-size='22' text-anchor='middle' fill='%23f6d58c'%3EB%3C/text%3E%3C/svg%3E">
 
 <script type="application/ld+json">
@@ -110,8 +110,38 @@ button{font:inherit;color:inherit}
 
 .hero{position:relative;min-height:100svh;overflow:hidden;background:var(--night);color:var(--cream);display:grid;align-items:end}
 .hero-media{position:absolute;inset:0;overflow:hidden}
-.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(1.08) contrast(1.08);transform:translateY(calc(var(--scroll,0) * .12px)) scale(1.08);will-change:transform}
-.hero-media img{display:block}
+.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(1.08) contrast(1.08);transform:translateY(calc(var(--scroll,0) * .12px)) scale(1.06);will-change:transform,opacity;opacity:0;transition:opacity 1.4s ease;display:block}
+.hero-media img.active{opacity:1}
+
+.hero-badge{
+  position:absolute;z-index:3;top:clamp(82px,12vh,128px);right:clamp(16px,3vw,42px);
+  display:inline-flex;align-items:center;gap:.55rem;padding:.62rem 1.05rem;
+  border:1px solid rgba(255,247,232,.32);background:rgba(15,11,8,.72);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  color:var(--cream);font-size:.7rem;font-weight:860;letter-spacing:.24em;text-transform:uppercase;
+  border-radius:999px;box-shadow:0 16px 38px rgba(0,0,0,.42);
+  opacity:0;transform:translateY(-6px);transition:opacity .5s ease,transform .5s ease;
+}
+.hero-badge.visible{opacity:1;transform:translateY(0)}
+.hero-badge::before{
+  content:"";width:6px;height:6px;border-radius:999px;background:var(--honey);
+  box-shadow:0 0 12px rgba(247,216,145,.6);animation:badgePulse 2.4s ease-in-out infinite;
+}
+@keyframes badgePulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.25)}}
+
+.hero-dots{
+  position:absolute;z-index:3;left:50%;bottom:clamp(18px,3vh,30px);transform:translateX(-50%);
+  display:flex;gap:9px;padding:7px 12px;border-radius:999px;
+  background:rgba(15,11,8,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,247,232,.18);
+}
+.hero-dots button{
+  width:22px;height:3px;border:none;background:rgba(255,247,232,.28);cursor:pointer;border-radius:999px;padding:0;
+  transition:background .25s ease,width .35s ease;
+}
+.hero-dots button.active{background:var(--honey);width:44px}
+.hero-dots button:hover{background:rgba(247,216,145,.7)}
+.hero-dots button:focus-visible{outline:1px solid var(--honey);outline-offset:2px}
 .hero::after{
   content:"";position:absolute;inset:0;
   background:
@@ -408,6 +438,10 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   .social-rail a{width:36px;height:36px}
   .social-rail::before,.social-rail::after{display:none}
   .to-top{bottom:76px;right:14px;width:44px;height:44px}
+  .hero-dots{bottom:78px;padding:6px 10px}
+  .hero-dots button{width:18px}
+  .hero-dots button.active{width:32px}
+  .hero-badge{top:74px;right:14px;font-size:.6rem;padding:.5rem .85rem;letter-spacing:.18em}
 }
 @media(max-width:680px){
   body::before{background-size:28px 28px}
@@ -463,8 +497,20 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 <main id="main">
   <section class="hero" id="top" aria-label="Backinsel Bäckerei">
     <div class="hero-media" aria-hidden="true">
-      <img src="assets/images/backinsel-logo-scene.jpg" alt="">
+      <img class="active" src="assets/images/new/20a9f5f8-9b92-4e5d-98f0-2e31b99b660b.jpg" alt="Backinsel Vitrine voller Kuchen, Gebäck und Croissants" data-hero-slide="0">
+      <img src="assets/images/new/91490607-1c5c-42f8-9467-635a4f86e2da.jpg" alt="Backinsel Theke mit belegten Broten und Backwaren" data-hero-slide="1" loading="lazy">
+      <img src="assets/images/new/2ddd28e5-3150-47e1-970f-2a5620b4d87a.jpg" alt="Brote und Brötchen im warmen Holzregal" data-hero-slide="2" loading="lazy">
+      <img src="assets/images/new/055e6713-51a0-4510-a3be-b2b57ef155a4.jpg" alt="New York Roll Croissant in vier Sorten" data-hero-slide="3" loading="lazy">
+      <img src="assets/images/new/1e3ee284-783e-477a-88fd-9f733b3749cb.jpg" alt="Slush Eis in drei Sorten" data-hero-slide="4" loading="lazy">
     </div>
+    <div class="hero-badge" id="heroBadge" aria-hidden="true">Süße Vitrine</div>
+    <nav class="hero-dots" id="heroDots" aria-label="Hero Slideshow">
+      <button type="button" data-hero-dot="0" class="active" aria-label="Süße Vitrine"></button>
+      <button type="button" data-hero-dot="1" aria-label="Mittag · Belegte Brote"></button>
+      <button type="button" data-hero-dot="2" aria-label="Backwaren"></button>
+      <button type="button" data-hero-dot="3" aria-label="Neu · Süß"></button>
+      <button type="button" data-hero-dot="4" aria-label="Neu · Sommer"></button>
+    </nav>
     <div class="hero-inner">
       <div>
         <span class="eyebrow">Bäckerei · Berlin Wedding</span>
@@ -989,6 +1035,45 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       ? `öffnet heute ${String(openHour).padStart(2, "0")}:00`
       : `öffnet morgen`;
     statusText.textContent = `Heute geschlossen · ${reopens}`;
+  }
+
+  const heroSlides = [...document.querySelectorAll("[data-hero-slide]")];
+  const heroDots = [...document.querySelectorAll("[data-hero-dot]")];
+  const heroBadge = document.getElementById("heroBadge");
+  const heroBadgeLabels = ["Süße Vitrine", "Mittag", "Backwaren", "Neu · Süß", "Neu · Sommer"];
+  if (heroSlides.length && heroBadge) {
+    let heroIndex = 0;
+    let heroTimer;
+    const setHero = (index) => {
+      heroIndex = (index + heroSlides.length) % heroSlides.length;
+      heroSlides.forEach((slide, i) => slide.classList.toggle("active", i === heroIndex));
+      heroDots.forEach((dot, i) => dot.classList.toggle("active", i === heroIndex));
+      heroBadge.classList.remove("visible");
+      window.setTimeout(() => {
+        heroBadge.textContent = heroBadgeLabels[heroIndex];
+        heroBadge.classList.add("visible");
+      }, 220);
+    };
+    const stopHero = () => window.clearInterval(heroTimer);
+    const startHero = () => {
+      stopHero();
+      if (reduceMotion) return;
+      heroTimer = window.setInterval(() => setHero(heroIndex + 1), 6200);
+    };
+    const restartHero = () => { stopHero(); startHero(); };
+    heroDots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        setHero(Number(dot.dataset.heroDot));
+        restartHero();
+      });
+    });
+    const heroEl = document.querySelector(".hero");
+    if (heroEl) {
+      heroEl.addEventListener("mouseenter", stopHero);
+      heroEl.addEventListener("mouseleave", startHero);
+    }
+    window.setTimeout(() => heroBadge.classList.add("visible"), 600);
+    startHero();
   }
 
   const socialRail = document.getElementById("socialRail");
