@@ -322,6 +322,21 @@ section[id]{scroll-margin-top:96px}
 .product--drink-link img{object-position:50% 38%}
 .product-body a{color:var(--honey);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 .product-body a:hover{color:var(--cream)}
+.full-selection{margin-top:clamp(24px,4vw,42px);border:1px solid rgba(255,246,228,.14);background:rgba(255,246,228,.045)}
+.full-selection summary{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;cursor:pointer;
+  padding:clamp(18px,2.4vw,26px);list-style:none;color:var(--cream);
+}
+.full-selection summary::-webkit-details-marker{display:none}
+.full-selection summary span{display:block;font-size:.68rem;font-weight:860;letter-spacing:.18em;text-transform:uppercase;color:var(--honey);margin-bottom:.4rem}
+.full-selection summary strong{display:block;font-family:var(--serif);font-size:clamp(1.8rem,3vw,3.4rem);font-weight:400;line-height:.96;letter-spacing:-.045em}
+.full-selection summary p{max-width:520px;color:var(--muted);font-size:.95rem}
+.full-selection summary::after{content:"+";width:42px;height:42px;border:1px solid rgba(255,247,232,.22);border-radius:999px;display:grid;place-items:center;flex:0 0 auto;font-size:1.35rem;color:var(--honey)}
+.full-selection[open] summary::after{content:"-"}
+.selection-panel{padding:0 clamp(18px,2.4vw,26px) clamp(18px,2.4vw,26px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.selection-group{border-top:1px solid rgba(255,247,232,.12);padding-top:1rem}
+.selection-group h3{font-size:.72rem;font-weight:860;letter-spacing:.16em;text-transform:uppercase;color:var(--honey);margin-bottom:.65rem}
+.selection-group ul{list-style:none;display:grid;gap:.28rem;color:rgba(255,247,232,.72);font-size:.92rem}
 
 .split{background:radial-gradient(circle at 14% 18%,rgba(211,125,73,.15),transparent 34%),linear-gradient(180deg,#17100c,#0b0806);overflow:hidden}
 .split-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.02fr);gap:clamp(34px,8vw,102px);align-items:center}
@@ -442,6 +457,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   .catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .filterbar{justify-content:flex-start}
   .stage-rail{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .selection-panel{grid-template-columns:1fr}
   .stage-card:hover,.stage-card:focus-visible,.stage-card.active{transform:translateY(-2px)}
 }
 @media(max-width:760px){
@@ -783,6 +799,50 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
           <div class="product-body"><small data-i18n="filter.drinks">Drinks</small><h3 data-i18n="product.drinks.title">Specials &amp; Becher</h3><p data-i18n-html="product.drinks.copy">Iced Latte, Matcha-Bar, Chai, Heiße Schokolade und Orangensaft — die ganze Auswahl im <a href="#neu">Neu-Bereich</a>.</p></div>
         </article>
       </div>
+
+      <details class="full-selection" data-reveal>
+        <summary>
+          <div>
+            <span data-i18n="selection.kicker">Vollständige Auswahl</span>
+            <strong data-i18n="selection.title">Unser Sortiment im Überblick.</strong>
+          </div>
+          <p data-i18n="selection.note">Die Auswahl kann je nach Tag und Vitrine variieren.</p>
+        </summary>
+        <div class="selection-panel">
+          <div class="selection-group">
+            <h3 data-i18n="selection.coffee">Kaffeespezialitäten</h3>
+            <ul><li>Espresso</li><li>Café Crème</li><li>Americano</li><li>Cappuccino</li><li>Milchkaffee</li><li>Latte Macchiato</li><li>Trinkschokolade</li><li>Iced Americano</li><li>Iced Latte</li><li>Iced Vanilla Latte</li><li>Iced Dark Mocha</li><li>Iced Karamell Latte</li></ul>
+          </div>
+          <div class="selection-group">
+            <h3 data-i18n="selection.matcha">Matcha &amp; Spezialgetränke</h3>
+            <ul><li>Matcha Latte</li><li>Kokos Matcha</li><li>Mango Matcha</li><li>Strawberry Matcha</li><li>Chai Latte</li><li>Türkischer Tee</li><li>Orangensaft</li></ul>
+          </div>
+          <div class="selection-group">
+            <h3 data-i18n="selection.bread">Brot &amp; Brötchen</h3>
+            <ul><li>Kaiserbrötchen</li><li>Körnerbrötchen</li><li>Mehrkornbrötchen</li><li>Laugenstange</li><li>Brezel</li><li>Sesam Brezel</li><li>Bauernbrot</li><li>Mehrkornbrot</li><li>Baguette</li></ul>
+          </div>
+          <div class="selection-group">
+            <h3 data-i18n="selection.croissant">Croissant &amp; Premium Croissants</h3>
+            <ul><li>Pistazien New York Croissant</li><li>Himbeer New York Croissant</li><li>Schoko New York Croissant</li><li>Pistazien Croissant</li><li>Schoko Croissant</li><li>Erdbeer Croissant</li><li>Frucht Croissant</li></ul>
+          </div>
+          <div class="selection-group">
+            <h3 data-i18n="selection.sweet">Donuts, Cookies &amp; Klassiker</h3>
+            <ul><li>Donut Sorten</li><li>Dubai Donut Pistazie</li><li>Schoko Donut</li><li>Chocolate Chunk Cookie</li><li>Double Chocolate Cookie</li><li>Mandelstange</li><li>Mandelhörnchen</li><li>Marzipan Taler Hell</li><li>Marzipan Taler Dunkel</li><li>Bienenstich Hell</li><li>Bienenstich Dunkel</li></ul>
+          </div>
+          <div class="selection-group">
+            <h3 data-i18n="selection.cake">Kuchen &amp; Cheesecake</h3>
+            <ul><li>Käsekuchen</li><li>Apfelkuchen</li><li>Apfel-Quarkpudding Kuchen</li><li>Kirsch-Marzipan Kuchen</li><li>Rüblikuchen</li></ul>
+          </div>
+          <div class="selection-group">
+            <h3 data-i18n="selection.fruit">Fruchtige Spezialitäten &amp; Cremes</h3>
+            <ul><li>Tartelette mit Himbeeren</li><li>Obstplunder</li><li>Fruchtplunder</li><li>Frankfurter Kranzhörnchen</li><li>Eclair Cappuccinosahne</li><li>Eclair Vanillepudding</li><li>Windbeutel</li><li>Cremerolle</li><li>Rosinenschnecke</li><li>Streuselschnecke</li><li>Kranzstange mit Mohn</li><li>Kranzstange mit Rosinen</li></ul>
+          </div>
+          <div class="selection-group">
+            <h3 data-i18n="selection.snacks">Sandwiches &amp; Snacks</h3>
+            <ul><li>Croissant Sandwich</li><li>Körner Sandwich</li><li>Sandwich mit Ei</li><li>Sandwich mit Käse</li><li>Sandwich mit Salami</li><li>Chicken Sandwich</li><li>Baguette Sandwich</li></ul>
+          </div>
+        </div>
+      </details>
     </div>
   </section>
 
@@ -997,6 +1057,17 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       "product.brand.copy": "Vom ersten Kaffee bis zum Nachmittagsstück — alles unter einem Dach.",
       "product.drinks.title": "Specials & Becher",
       "product.drinks.copy": "Iced Latte, Matcha-Bar, Chai, Heiße Schokolade und Orangensaft — die ganze Auswahl im <a href=\"#neu\">Neu-Bereich</a>.",
+      "selection.kicker": "Vollständige Auswahl",
+      "selection.title": "Unser Sortiment im Überblick.",
+      "selection.note": "Die Auswahl kann je nach Tag und Vitrine variieren.",
+      "selection.coffee": "Kaffeespezialitäten",
+      "selection.matcha": "Matcha & Spezialgetränke",
+      "selection.bread": "Brot & Brötchen",
+      "selection.croissant": "Croissant & Premium Croissants",
+      "selection.sweet": "Donuts, Cookies & Klassiker",
+      "selection.cake": "Kuchen & Cheesecake",
+      "selection.fruit": "Fruchtige Spezialitäten & Cremes",
+      "selection.snacks": "Sandwiches & Snacks",
       "split.kicker": "Aus dem Laden",
       "split.title": "Warm, nah und voller Auswahl.",
       "split.copy": "Backinsel lebt vom Blick in die Vitrine: goldene Croissants, glänzende Glasuren, frisches Brot und belegte Klassiker. Die Auswahl wechselt mit dem Tag, aber der Eindruck bleibt gleich: reich gefüllt, freundlich und direkt an der Badstraße.",
@@ -1128,6 +1199,17 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       "product.brand.copy": "From the first coffee to the afternoon treat, all under one roof.",
       "product.drinks.title": "Specials & cups",
       "product.drinks.copy": "Iced latte, matcha bar, chai, hot chocolate and orange juice — see the full choice in the <a href=\"#neu\">new section</a>.",
+      "selection.kicker": "Full selection",
+      "selection.title": "Our selection at a glance.",
+      "selection.note": "The selection may vary depending on the day and display.",
+      "selection.coffee": "Coffee specialties",
+      "selection.matcha": "Matcha & special drinks",
+      "selection.bread": "Bread & rolls",
+      "selection.croissant": "Croissants & premium croissants",
+      "selection.sweet": "Donuts, cookies & classics",
+      "selection.cake": "Cakes & cheesecake",
+      "selection.fruit": "Fruity specialties & creams",
+      "selection.snacks": "Sandwiches & snacks",
       "split.kicker": "From the shop",
       "split.title": "Warm, local and full of choice.",
       "split.copy": "Backinsel lives from the look into the display: golden croissants, glossy glazes, fresh bread and savory classics. The choice changes with the day, but the impression stays the same: full, friendly and right on Badstraße.",
