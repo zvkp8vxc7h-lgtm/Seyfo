@@ -400,13 +400,16 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 }
 
 .social-rail{
-  position:fixed;z-index:49;top:50%;left:clamp(12px,1.8vw,24px);
-  display:flex;flex-direction:column;gap:12px;
-  opacity:0;transform:translate(-10px,-50%);transition:opacity .4s ease,transform .4s ease;
+  position:fixed;z-index:49;right:clamp(72px,7vw,92px);bottom:clamp(14px,2vw,24px);
+  display:flex;flex-direction:row;gap:8px;
+  padding:6px;border:1px solid rgba(255,247,232,.16);border-radius:999px;
+  background:rgba(15,11,8,.56);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 18px 48px rgba(0,0,0,.34);
+  opacity:0;transform:translateY(12px);transition:opacity .4s ease,transform .4s ease;
 }
-.social-rail.ready{opacity:1;transform:translate(0,-50%)}
+.social-rail.ready{opacity:1;transform:translateY(0)}
 .social-rail a{
-  position:relative;width:42px;height:42px;border-radius:999px;
+  position:relative;width:40px;height:40px;border-radius:999px;
   display:grid;place-items:center;color:#fff;overflow:hidden;
   box-shadow:0 8px 20px rgba(0,0,0,.38),0 0 0 1px rgba(0,0,0,.18);
   transition:transform .25s ease,box-shadow .25s ease;
@@ -442,11 +445,11 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   .stage-card:hover,.stage-card:focus-visible,.stage-card.active{transform:translateY(-2px)}
 }
 @media(max-width:760px){
-  .social-rail{top:auto;left:50%;bottom:14px;transform:translateX(-50%) translateY(8px);flex-direction:row;padding:6px 8px;gap:3px;border-radius:999px}
-  .social-rail.ready{transform:translateX(-50%) translateY(0)}
+  .social-rail{right:66px;bottom:14px;transform:translateY(8px);padding:5px;gap:5px}
+  .social-rail.ready{transform:translateY(0)}
   .social-rail a{width:36px;height:36px}
   .social-rail::before,.social-rail::after{display:none}
-  .to-top{bottom:76px;right:14px;width:44px;height:44px}
+  .to-top{bottom:14px;right:14px;width:44px;height:44px}
 }
 @media(max-width:680px){
   body::before{background-size:28px 28px}
