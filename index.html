@@ -39,7 +39,7 @@
   "@type": "Bakery",
   "name": "Backinsel",
   "image": "assets/images/backinsel-logo-scene.jpg",
-  "logo": "assets/images/backinsel-logo.svg",
+  "logo": "assets/images/backinsel-logo.png",
   "telephone": "+49 162 641 34 96",
   "email": "back_insel@web.de",
   "priceRange": "€",
@@ -117,11 +117,12 @@ button{font:inherit;color:inherit}
   border-bottom:1px solid transparent;transition:background .25s ease,color .25s ease,border-color .25s ease,padding .25s ease;
 }
 .nav.scrolled{background:rgba(28,21,16,.82);backdrop-filter:blur(20px);border-color:var(--white-line);padding-block:12px}
-.brand{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--serif);font-size:clamp(1.7rem,2.5vw,2.4rem);letter-spacing:-.045em;line-height:1}
-.brand-text{display:inline-flex;align-items:baseline;gap:.22em}
-.brand-text span{font-style:italic;color:var(--honey)}
-.brand-mark{width:clamp(40px,4.2vw,54px);height:clamp(40px,4.2vw,54px);color:var(--cream);flex:0 0 auto;filter:drop-shadow(0 4px 12px rgba(247,216,145,.18))}
-.brand-mark .leaf{fill:var(--honey)}
+.brand{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--serif);font-size:clamp(1.7rem,2.5vw,2.4rem);letter-spacing:-.045em;line-height:1}
+.brand-text{display:none}
+.brand-logo{
+  height:clamp(46px,4.6vw,62px);width:auto;flex:0 0 auto;
+  filter:brightness(0) saturate(100%) invert(91%) sepia(13%) saturate(2376%) hue-rotate(323deg) brightness(101%) contrast(94%) drop-shadow(0 4px 14px rgba(247,216,145,.22));
+}
 .nav-links{display:flex;align-items:center;justify-content:center;gap:clamp(.9rem,2.4vw,2.1rem);font-size:.72rem;font-weight:760;letter-spacing:.18em;text-transform:uppercase}
 .nav-links a{opacity:.72;transition:opacity .2s ease,color .2s ease}
 .nav-links a:hover,.nav-links a:focus-visible{opacity:1;color:var(--honey)}
@@ -453,7 +454,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   body::before{background-size:28px 28px}
   .nav{padding:13px 14px;gap:.55rem}
   .brand{font-size:1.45rem}
-  .brand-mark{width:42px;height:42px}
+  .brand-logo{height:48px}
   .nav-actions{gap:.4rem}
   .nav-cta{padding:.58rem .7rem;font-size:.66rem;letter-spacing:.08em}
   .lang-switch button{min-width:30px;height:28px;padding:0 .42rem;font-size:.6rem}
@@ -484,8 +485,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 }
 @media(max-width:520px){
   .brand{font-size:1.25rem;gap:.55rem}
-  .brand-mark{width:38px;height:38px}
-  .brand-text{display:none}
+  .brand-logo{height:42px}
   .nav-cta{padding:.5rem .7rem;font-size:.6rem;letter-spacing:.06em}
   .lang-switch button{min-width:28px;height:26px;font-size:.58rem;padding:0 .35rem}
   .hero-inner{padding:104px 14px 36px}
@@ -518,13 +518,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
 
 <nav class="nav" id="nav" aria-label="Hauptnavigation" data-aria-i18n="aria.nav">
   <a class="brand" href="#top" aria-label="Backinsel — zur Startseite" data-aria-i18n="aria.brand">
-    <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
-      <path class="leaf" d="M18 14 Q11 11 5.5 12.5 Q9 8.4 14 9.3 Q9.5 6 6 4.6 Q12 3.5 18 8.4 Q24 3.5 30 4.6 Q26.5 6 22 9.3 Q27 8.4 30.5 12.5 Q25 11 18 14 Z"/>
-      <path fill="currentColor" d="M17.4 14.2 L16.7 19.2 H19.3 L18.6 14.2 Z"/>
-      <path fill="currentColor" d="M5 24.5 C9 21.2 13.5 19.8 18 19.8 C22.5 19.8 27 21.2 31 24.5 Q31 26.3 29 26.3 L7 26.3 Q5 26.3 5 24.5 Z"/>
-      <path d="M3 30.4 q2.4 -1.6 4.8 0 t4.8 0 t4.8 0 t4.8 0 t4.8 0 t4.8 0 t4.8 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
-    </svg>
-    <span class="brand-text">Back<span>insel</span></span>
+    <img class="brand-logo" src="assets/images/backinsel-logo.png" alt="Backinsel" width="930" height="620" loading="eager">
   </a>
   <div class="nav-links">
     <a href="#neu" data-i18n="nav.new">Neu</a>
