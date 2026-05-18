@@ -42,7 +42,6 @@
   "logo": "assets/images/backinsel-logo.png",
   "telephone": "+49 162 641 34 96",
   "email": "back_insel@web.de",
-  "priceRange": "€",
   "servesCuisine": ["Backwaren", "Kuchen", "Kaffee", "Sandwiches"],
   "hasMenu": "#sortiment",
   "inLanguage": "de",
@@ -882,7 +881,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   <details id="impressum">
     <summary data-i18n="legal.imprint">Impressum</summary>
     <div class="legal-body">
-      <p data-i18n="legal.imprint.copy">Angaben gemäß § 5 TMG.</p>
+      <p data-i18n="legal.imprint.copy">Angaben gemäß § 5 DDG.</p>
       <h3 data-i18n="legal.provider">Anbieter</h3>
       <p>Backinsel<br>Badstraße 23<br>13357 Berlin · Deutschland</p>
       <h3 data-i18n="legal.contact">Kontakt</h3>
@@ -892,11 +891,11 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   <details id="datenschutz">
     <summary data-i18n="legal.privacy">Datenschutz</summary>
     <div class="legal-body">
-      <p data-i18n="legal.privacy.copy">Diese Seite setzt keine Cookies und nutzt kein Tracking. Beim Aufruf werden technische Log-Daten durch den Hosting-Anbieter verarbeitet.</p>
+      <p data-i18n="legal.privacy.copy">Diese Seite nutzt kein Tracking und keine Werbe-Cookies. Beim Aufruf können technische Log-Daten durch den Hosting-Anbieter verarbeitet werden. Die Sprachwahl wird nur gespeichert, wenn eine Besucherin oder ein Besucher aktiv DE oder EN auswählt.</p>
       <h3 data-i18n="legal.map">Karte</h3>
       <p data-i18n="legal.map.copy">Beim Laden der eingebundenen OpenStreetMap-Karte kann Ihre IP-Adresse an OpenStreetMap übertragen werden.</p>
       <h3 data-i18n="legal.external">Externe Links</h3>
-      <p data-i18n="legal.external.copy">Links zu Instagram, TikTok, WhatsApp und Google Maps öffnen externe Anbieter erst nach einem Klick.</p>
+      <p data-i18n="legal.external.copy">Links zu Instagram, TikTok, WhatsApp, Google Maps und Google Bewertungen öffnen externe Anbieter erst nach einem Klick. Dort gelten die Datenschutzregeln der jeweiligen Anbieter.</p>
     </div>
   </details>
 </section>
@@ -1016,15 +1015,15 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       "visit.hours": "Öffnungszeiten",
       "legal.imprint": "Impressum",
       "legal.privacy": "Datenschutz",
-      "legal.imprint.copy": "Angaben gemäß § 5 TMG.",
+      "legal.imprint.copy": "Angaben gemäß § 5 DDG.",
       "legal.provider": "Anbieter",
       "legal.contact": "Kontakt",
       "legal.phone": "Telefon",
-      "legal.privacy.copy": "Diese Seite setzt keine Cookies und nutzt kein Tracking. Beim Aufruf werden technische Log-Daten durch den Hosting-Anbieter verarbeitet.",
+      "legal.privacy.copy": "Diese Seite nutzt kein Tracking und keine Werbe-Cookies. Beim Aufruf können technische Log-Daten durch den Hosting-Anbieter verarbeitet werden. Die Sprachwahl wird nur gespeichert, wenn eine Besucherin oder ein Besucher aktiv DE oder EN auswählt.",
       "legal.map": "Karte",
       "legal.map.copy": "Beim Laden der eingebundenen OpenStreetMap-Karte kann Ihre IP-Adresse an OpenStreetMap übertragen werden.",
       "legal.external": "Externe Links",
-      "legal.external.copy": "Links zu Instagram, TikTok, WhatsApp und Google Maps öffnen externe Anbieter erst nach einem Klick.",
+      "legal.external.copy": "Links zu Instagram, TikTok, WhatsApp, Google Maps und Google Bewertungen öffnen externe Anbieter erst nach einem Klick. Dort gelten die Datenschutzregeln der jeweiligen Anbieter.",
       "aria.nav": "Hauptnavigation",
       "aria.brand": "Backinsel — zur Startseite",
       "aria.lang": "Sprache wechseln",
@@ -1147,15 +1146,15 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       "visit.hours": "Opening hours",
       "legal.imprint": "Legal notice",
       "legal.privacy": "Privacy",
-      "legal.imprint.copy": "Information according to § 5 TMG.",
+      "legal.imprint.copy": "Information according to § 5 DDG.",
       "legal.provider": "Provider",
       "legal.contact": "Contact",
       "legal.phone": "Phone",
-      "legal.privacy.copy": "This site does not use cookies and does not use tracking. Technical log data may be processed by the hosting provider when the site is accessed.",
+      "legal.privacy.copy": "This site does not use tracking or advertising cookies. Technical log data may be processed by the hosting provider when the site is accessed. The language choice is stored only when a visitor actively selects DE or EN.",
       "legal.map": "Map",
       "legal.map.copy": "When the embedded OpenStreetMap map loads, your IP address may be transferred to OpenStreetMap.",
       "legal.external": "External links",
-      "legal.external.copy": "Links to Instagram, TikTok, WhatsApp and Google Maps open external providers only after a click.",
+      "legal.external.copy": "Links to Instagram, TikTok, WhatsApp, Google Maps and Google reviews open external providers only after a click. The privacy rules of the respective providers apply there.",
       "aria.nav": "Main navigation",
       "aria.brand": "Backinsel — go to start",
       "aria.lang": "Switch language",
@@ -1181,7 +1180,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   const savedLang = localStorage.getItem("backinsel-lang");
   let activeLang = savedLang || ((navigator.language || "").toLowerCase().startsWith("en") ? "en" : "de");
   if (!translations[activeLang]) activeLang = "de";
-  const applyLanguage = (lang) => {
+  const applyLanguage = (lang, options = {}) => {
     activeLang = translations[lang] ? lang : "de";
     const copy = translations[activeLang];
     document.documentElement.lang = activeLang;
@@ -1207,7 +1206,9 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
       button.classList.toggle("active", isActive);
       button.setAttribute("aria-pressed", String(isActive));
     });
-    localStorage.setItem("backinsel-lang", activeLang);
+    if (options.persist) {
+      localStorage.setItem("backinsel-lang", activeLang);
+    }
     stageData = copy.stageData;
     if (stageTitle && stageText) setStage(stageIndex);
     if (typeof updateStatus === "function") updateStatus();
@@ -1361,7 +1362,7 @@ footer{background:#110d0a;color:rgba(255,247,232,.62);padding:56px clamp(18px,4v
   };
   updateStatus();
   document.querySelectorAll("[data-lang]").forEach((button) => {
-    button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+    button.addEventListener("click", () => applyLanguage(button.dataset.lang, {persist: true}));
   });
   applyLanguage(activeLang);
 
